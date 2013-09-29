@@ -1,0 +1,144 @@
+"General"
+{
+    "Contents"
+    {
+    "PackagingEngine" = "{61F73E15-FC82-11D0-A4B8-006097C9933C}"
+    "ProjectName" = "KonInstall"
+    "SccProjectName" = ""
+    "SccLocalPath" = ""
+    "SccAuxPath" = ""
+    "SccProvider" = ""
+    }
+}
+"Inputs"
+{
+    "F:{45A98897-704A-4743-8756-C9DE54A47F71}"
+    {
+    "Filename" = "C:\\Documents and Settings\\ban\\kon\\vskon.exe"
+    }
+    "F:{822C77AA-2E01-4F10-9F17-9F84949DA78D}"
+    {
+    "Filename" = "C:\\Documents and Settings\\ban\\kon\\bmp\\COPY.BMP"
+    }
+}
+"Configurations"
+{
+    "Debug"
+    {
+    "DisplayName" = "Debug"
+    "IsDebugOnly" = "T"
+    "IsReleaseOnly" = "F"
+        "EngineSpecificProperties"
+        {
+            "{61F73E15-FC82-11D0-A4B8-006097C9933C}"
+            {
+            "OutputFilename" = "KonInstall.EXE"
+            "AppName" = "KonInstall"
+            "InstallDirName" = "KonInstall"
+            "CreateInProgramFiles" = "T"
+            "CreateInStartMenu" = "F"
+            "StartName" = "KonInstall"
+            "StartInvokeEXE" = ""
+            "StartInvokeArgument" = ""
+            "IncludeAll" = "F"
+                "WebLibraryCollection"
+                {
+                    "WebLibraries"
+                    {
+                        "ADODLL"
+                        {
+                        "SectionName" = "ADODLL"
+                        "Setting" = "F"
+                        }
+                        "Microsoft Windows Foundation Classes for Java"
+                        {
+                        "SectionName" = "Microsoft Windows Foundation Classes for Java"
+                        "Setting" = "F"
+                        }
+                        "VMINST"
+                        {
+                        "SectionName" = "VMINST"
+                        "Setting" = "F"
+                        }
+                    }
+                }
+                "EXEsToRun"
+                {
+                }
+            "SPCFilename" = ""
+            "SigningEnabled" = "T"
+            "SelectCertificate" = "F"
+            "KeyName" = ""
+            "TimeserverURL" = "http://timestamp.verisign.com/scripts/timstamp.dll"
+                "RemoteComponents"
+                {
+                }
+            "RemoteServer" = ""
+            "PromptAlways" = "F"
+            "SetupFileProperties" = "0"
+                "SystemFiles"
+                {
+                }
+            }
+        }
+    }
+    "Release"
+    {
+    "DisplayName" = "Release"
+    "IsDebugOnly" = "F"
+    "IsReleaseOnly" = "T"
+        "EngineSpecificProperties"
+        {
+            "{61F73E15-FC82-11D0-A4B8-006097C9933C}"
+            {
+            "OutputFilename" = "KonInstall.EXE"
+            "AppName" = ""
+            "InstallDirName" = "KonInstall"
+            "CreateInProgramFiles" = "T"
+            "CreateInStartMenu" = "F"
+            "StartName" = "KonInstall"
+            "StartInvokeEXE" = ""
+            "StartInvokeArgument" = ""
+            "IncludeAll" = "F"
+                "WebLibraryCollection"
+                {
+                    "WebLibraries"
+                    {
+                        "ADODLL"
+                        {
+                        "SectionName" = "ADODLL"
+                        "Setting" = "F"
+                        }
+                        "Microsoft Windows Foundation Classes for Java"
+                        {
+                        "SectionName" = "Microsoft Windows Foundation Classes for Java"
+                        "Setting" = "F"
+                        }
+                        "VMINST"
+                        {
+                        "SectionName" = "VMINST"
+                        "Setting" = "F"
+                        }
+                    }
+                }
+                "EXEsToRun"
+                {
+                }
+            "SPCFilename" = ""
+            "SigningEnabled" = "T"
+            "SelectCertificate" = "F"
+            "KeyName" = ""
+            "TimeserverURL" = "http://timestamp.verisign.com/scripts/timstamp.dll"
+                "RemoteComponents"
+                {
+                }
+            "RemoteServer" = ""
+            "PromptAlways" = "F"
+            "SetupFileProperties" = "0"
+                "SystemFiles"
+                {
+                }
+            }
+        }
+    }
+}

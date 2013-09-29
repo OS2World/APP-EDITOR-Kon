@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Kon startup</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>K modules</h1>
+
+<p>Apart from startup.k, additional k-files (modules) can be loaded at startup,
+or while Kon is running.</p>
+<p>A module may contain any K-code and variables. It can also contain a 
+function "initModule()" which, if it's present, is called when the modules is
+loaded.</p>
+<p>The syntax for loading a k-file is
+<pre class="code">
+loadModule( "filetoload.k", TRUE);
+<i>or</i>
+loadModule( "filetoload.k", FALSE);
+where TRUE tells Kon to schedule loading of the module at startup.
+</pre>
+<p>Modules which has been loaded at runtime with the flag "addToPreloadList"
+set to TRUE, will be placed in the file <a href="../k/modules.k">modules.k.</a></p>
+</body>
+</html>

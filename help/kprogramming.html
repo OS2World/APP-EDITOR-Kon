@@ -1,0 +1,693 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title>Programming in K</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Programming in K</h1>
+
+<p>K has a C-like syntax but differs from C in many ways. 
+A few of the features in K not found in C are:</p>
+
+<ul type=disc>
+    <li>
+				K is an untyped language. The type of a variable is decided when 
+		    it is assigned a value, but the type can can change during 
+				execution.
+		</li>
+    <li>
+        K has no pointers, all memory handling is handled by the K itself.
+		</li>
+    <li>
+        K does not need to be compiled, K code can be run immediately 
+				from within Kon.
+		</li>
+</ul>
+
+<p>Running K-code directly from within Kon is very useful and offers the 
+possibility to try and execute semi-advanced K-code directly from the 
+commandline (or even from the clipboard) without having to exit Kon for 
+compiling and then load the module.</p>
+
+<p>K is very tightly integrated with Kon, and much of Kon is written in K.</p>
+
+<a class="link" href="#K quickstart">K quickstart</a><br>
+<a class="link" href="#K language definition">K language definition</a><br>
+ 
+<h3><a name="K quickstart"></a></h3>
+<h2>K quickstart</h2>
+
+<i>Please note that some programming knowledge is required! No knowledge of C is required, but it will probably help.</i>
+
+<p>Let's start by defining a function in K:</p>
+
+<pre class="code">testFunction( a, b )
+{
+    insertString( a );
+    insertString( b );
+}</pre>
+ 
+
+<p>Note that as opposed to C, no type declarations is defined.</p>
+
+<p>This function takes two parameters, a and b. The code within the 
+function calls the "insertString" function with each of a and b as 
+parameters. Every command in K is followed by a semicolon, as in C.</p>
+
+<p>Supposing that this function is available in Kon, we call it from the 
+commandline:</p>
+
+<pre class="code">testFunction( "A number: ", 123 );</pre>
+
+<p>This will call "testFunction" with parameter a = "A number: " and b=123. 
+Note that parameter a is a string (by enclosing "A number: " with quotation 
+marks), and parameter b is a number.</p>
+
+<p>The output will look like:</p>
+
+<pre class="code">A number: 123</pre>
+
+<p>Now suppose that we wanted to output the character resulting from the 
+ASCII-code 123 instead. Define the function:</p>
+
+<pre class="code">testFunction2( a, b )
+{
+    insertString( a );
+
+    if( isInteger( b ) )
+        insertString( toChar( b ) );
+    else
+        insertString( b );
+}</pre>
+
+<p>This function will test if the type of b is an integer. If so, output 
+the resulting character from that ASCII-code, otherwise just output b.</p>
+
+<p>Now call the function from the command line:</p>
+
+<pre class="code">testFunction2( "A character: ", 123 );</pre>
+
+<p>The output will look like:</p>
+
+<pre class="code">A character: {</pre>
+
+<p>That's nice, but we can improve it. We want to display which ASCII-code 
+the character is. We can do that without redefining the function:</p>
+
+<pre class="code">testFunction2( "Character for ASCII-code " @ 123 @ ": ", 123 );</pre>
+
+<p>The '@' operator means "concatenate (as) strings". The output will 
+look like:</p>
+
+<pre class="code">Character for ASCII-code 123: {</pre>
+
+<p>You should have a basic feel for K now. Let's have a look at a more formal definition.</p>
+
+<a name="K language definition"></a><h3>K language definition</h3>
+
+<h2>General</h2>
+
+<p>K is case sensitive.</p>
+
+<p>Every statement should end with a semi-colon, as in C.</p>
+
+<p>Comments are placed after "//" as in C++. Block comments are not used.</p>
+
+<pre class='code'>print( a );    // Prints the variable a to the message window</pre>
+
+<h3>Variables</h3>
+
+<p>Variables can be globally or locally defined. A variable is:</p>
+
+<ul type=disc>
+    <li>
+       Global if it is declared outside the scope of a function
+		</li>
+    <li>
+    	 Local if it is declared within a function
+		</li>
+</ul>
+ 
+<p>Global variables can be accessed by any K-function. Local variables 
+can ne accessed within the K-function where the variable is declared only.</p>
+
+<p>A function can be declared anywhere in the code.</p>
+ 
+<h3>Strings</h3>
+
+<p>A string is enclosed in " or ' marks. In order to have non-printable 
+characters within a string or a quoatation mark, a literal character is 
+defined, the backslash ("\"). If a \ is within a string, the next character 
+is handled in a special way. (Note! This is only if the string is defined 
+in the K-code. A genereted string can have any characters except the 
+NULL character within.)</p>
+ 
+<h4>Backslash character constants</h4>
+
+<table border=1 cellspacing=0 cellpadding=3 width="70%">
+	<tr>
+		<td>Constant</td>
+		<td>Meaning</td>
+	</tr>
+	<tr>
+		<td>\n</td>
+		<td>
+			Linefeed character (Ascii 10)
+		</td>
+	</tr>
+	<tr>
+		<td>\r</td>
+		<td>
+			Carriage Return character (Ascii 13)
+		</td>
+	</tr>
+	<tr>
+		<td>\t</td>
+		<td>
+			Tab character (Ascii 9)
+		</td>
+	</tr>
+	<tr>
+		<td>\\</td>
+		<td>
+			Backslash
+		</td>
+	</tr>
+	<tr>
+		<td>\'</td>
+		<td>
+			Quote
+		</td>
+	</tr>
+	<tr>
+		<td>\"</td>
+		<td>
+			Double quote
+		</td>
+	</tr>
+</table>
+ 
+<p>It is possible to access individual characters within a string using 
+array syntax:</p>
+
+<pre class='code'>a = "abcdef"
+a[1] == "b"
+</pre>
+
+<h3>Arrays</h3>
+
+<p>An array can hold variables of any type. They may be of any dimension. 
+Arrays are zero indexed.</p>
+
+<pre class='code'>a = [1, "abc", 2, [3, "def", [4, "ghi"]]];
+
+a[0] == 1
+a[1] == "abc"
+a[3][0] == 3
+a[3][1] == "def"
+a[3][2][1] == "ghi"</pre>
+ 
+<h3>Operators</h3>
+
+<h4>Assignment operator</h4>
+
+<table border=1 cellspacing=0 cellpadding=3 width="70%">
+	<tr>
+		<td>Operator</td>
+		<td>Meaning</td>
+	</tr>
+	<tr>
+		<td>=</td>
+		<td>
+			Sets a variable equal to an expression
+		</td>
+ 	</tr>
+</table>
+
+<h4>Arithmetical operators</h4>
+
+<table border=1 cellspacing=0 cellpadding=3 width="70%">
+	<tr>
+		<td>Operator</td>
+		<td>Meaning</td>
+	</tr>
+	<tr>
+		<td>+</td>
+		<td>
+			Addition. This operator has effect on strings also, see 
+			"string operators" for an explanation.
+		</td>
+	</tr>
+	<tr>
+		<td>-</td>
+		<td>
+			Subtraction. Also used as a unary operator: -a = -1 * a
+		</td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>
+			Multiplication
+		</td>
+	</tr>
+	<tr>
+		<td>/</td>
+		<td>
+			Division
+		</td>
+	</tr>
+	<tr>
+		<td>%</td>
+		<td>
+			Modulus
+		</td>
+	</tr>
+	<tr>
+		<td>++, --</td>
+		<td>
+			<p>Incement and decrement a value: a++ is equal to a = a + 1. </p>
+			<p>The position of ++ or , gives different results:</p>
+<pre class='code'>a = 1;
+b = ++a;
+
+gives b = 2 and a = 2. However:
+
+a = 1;
+b = a++;
+
+gives b = 1 and a = 2</pre>
+		</td>
+	</tr>
+</table>		
+ 
+<h4>String operators</h4>
+
+<table border=1 cellspacing=0 cellpadding=3 width="70%">
+	<tr>
+		<td>Operator</td>
+		<td>Meaning</td>
+	</tr>
+	<tr>
+		<td>@</td>
+		<td>
+			Concatenates as strings. If at least one of the expressions is not 
+			a string, it is converted to a string before concatenating.
+<pre class='code'>"abc" @ 123
+
+gives
+
+"abc123"</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>+</td>
+		<td>
+			Concatenates. If both expressions are strings, they are simply 
+			concatenated. If one of the expressions is a number, the other 
+			expression is examined if it is possible to convert to a number. 
+			If so, it works like the arithmetical + operator.
+
+<pre class='code'>"abc" + "def"
+
+gives
+
+"abcdef"</pre>
+
+<pre class='code'>"123" + 1
+
+gives
+
+124</pre>
+
+<pre class='code'>"123a" + 1
+
+gives
+
+"123a1"</pre>
+		</td>
+ 	</tr>
+</table>
+
+<h4>Relational and logical operators</h4>
+
+<p>True in K is any non-zero value, and False is zero.</p>
+
+<table border=1 cellspacing=0 cellpadding=3 width="70%">
+	<tr>
+		<td>Operator</td>
+		<td>Meaning</td>
+	</tr>
+	<tr>
+		<td>></td>
+		<td>
+			Greater than
+		</td>
+	</tr>
+	<tr>
+		<td>>=</td>
+		<td>
+			Greater than or equal to
+		</td>
+	</tr>
+	<tr>
+		<td><</td>
+		<td>
+			Less than
+		</td>
+	</tr>
+	<tr>
+		<td><=</td>
+		<td>
+			Less than or equal to
+		</td>
+	</tr>
+	<tr>
+		<td>==</td>
+		<td>
+			Equal
+		</td>
+	</tr>
+	<tr>
+		<td>!=</td>
+		<td>
+			Not equal
+		</td>
+	</tr>
+	<tr>
+		<td>&amp;&amp;</td>
+		<td>
+			Logical and
+		</td>
+	</tr>
+	<tr>
+		<td>||</td>
+		<td>
+			Logical or
+		</td>
+	</tr>
+	<tr>
+		<td>|</td>
+		<td>
+			Logical not
+		</td>
+ 	</tr>
+</table>
+
+<h4>Bitwise operators</h4>
+
+<table border=1 cellspacing=0 cellpadding=3 width="70%">
+	<tr>
+		<td>Operator</td>
+		<td>Meaning</td>
+	</tr>
+	<tr>
+		<td>&amp;</td>
+		<td>
+			And
+		</td>
+	</tr>
+	<tr>
+		<td>|</td>
+		<td>
+			Or
+		</td>
+	</tr>
+	<tr>
+		<td>^</td>
+		<td>
+			Xor
+		</td>
+ 	</tr>
+</table>
+
+ 
+<h4>Shorthand operators</h4>
+
+<table border=1 cellspacing=0 cellpadding=3 width="70%">
+	<tr>
+		<td>Operator</td>
+		<td>Meaning</td>
+	</tr>
+	<tr>
+		<td>+=, -=, *=, /=, @=</td>
+		<td>
+<pre class='code'>a += 1;
+
+equals
+
+a = a + 1;</pre>
+		</td>
+ 	</tr>
+</table>
+ 
+<h4>Operator Precedence</h4>
+
+ 
+
+<table border=1 cellspacing=0 cellpadding=3 width="70%">
+	<tr>
+		<td>[]</td>
+	</tr>
+	<tr>
+		<td>! - ++ --</td>
+	<tr>
+		<td>* / %</td>
+	<tr>
+		<td>+ - @</td>
+	<tr>
+		<td>!= == >= <= < ></td>
+	<tr>
+		<td>&amp;&amp; || | ^ &amp;</td>
+	<tr>
+		<td>= += -= *= /= |= @=</td>
+	</tr>
+</table>
+
+<h3>Functions</h3>
+
+<p>A functions is defined as:</p>
+
+<pre class='definition'>functionName( arg1, arg2, ,, argN )
+{
+    // Function body
+    return returnvalue;   // 'return' is optional
+}</pre>
+
+<p>The return statement can be executed from anywhere in the function, 
+and returns a value to the caller.</p>
+
+<h4>Function overloading</h4>
+<p>A very useful feature of K is the possibility to overload any function. This
+means that you may define a function with the same function definition as a
+previous and from within the new function may call the old one.</p>
+<p>Anyone calling the function will automatically call the newly defined
+function which may add functionality or override the old function</p>
+ 
+<p>Accessing the previous function is done by prepending a ':' to the function
+name.</p>
+
+<p>The order of functions is defined in the order they are declared. You should
+genereally not rely on the order the functions are executed since module loading
+may be rearranged by yourself or another user.</p>
+<p>Example:</p>
+
+<pre class='code'>overload( s )
+{
+  print( "In orginal function!" );
+}
+
+overload( s )
+{
+  print( "In new function!" );
+  :overload( s );
+  print( "Called original function!" );
+}</pre>
+
+<p>Running overload will give the following output:</p>
+
+<pre class='code'>In new function!
+In original function!
+Called original function!</pre>
+
+<p>Function overloading is used extensively in Kon.</p>
+
+<p>You may for instance overload the function insertString to add 
+auto-completition based on the file-type loaded.</p>
+
+<h4>Call-by-reference</h4>
+
+<p>Parameters to a function can be references (Call-by-reference) by 
+placing an '&amp;' before the parameter in the function definition. 
+This means that instead of passing the value of a variable as a 
+parameter to the function, a reference to the variable is passed instead. 
+Modifying the value of the parameter in the function, will modify the 
+variable itself, instead of a copy.</p>
+
+<p>Example:</p>
+
+<pre class='code'>testReference( &amp;arg )
+{
+    print( "arg is at testReference entry: " @ arg );
+    arg = 2;
+    print( "arg value within testReference, after modifying: " @ arg );
+}
+
+test()
+{
+    a = 1;
+    print( "Value of a before being passed to testReference: " @ a );
+    testReference( a );
+    print( "Value of a after being passed to testReference: " @ a );
+}</pre>
+
+<p>Running test() will give the following output:</p>
+
+<pre class='code'>Value of a before being to testReference: 1
+arg is at testReference entry: 1
+arg value within testReference, after modifying: 2
+Value of a after being passed to testReference: 2</pre>
+
+ 
+<h3>if statement</h3>
+
+<p>An if-statement is defined as:</p>
+
+<pre class='definition'>if( expression )
+    statement1;
+else
+    statement2;</pre> 
+
+<p>Example:</p>
+
+<pre class='code'>if( a == 1 )
+    print( "a is 1!" );
+else
+{
+    print( "a is not 1!" );
+    print( "Do something else." );
+}</pre>
+ 
+<h3>switch statement</h3>
+
+<p>The switch statement compares an expression agains a list of 
+expressions. (As opposed to C, where the statement can only be compared 
+to constants.)</p>
+
+<p>A switch statement is defined as:</p>
+
+<pre class='definition'>switch( expression )
+{
+    case expression1:
+        statement1;
+        statement2;
+        .
+        statementn;
+        break;
+    case expression2:
+        statement1;
+        statement2;
+        .
+        statementn;
+        break;
+    default:
+        statement1;
+        statement2;
+        .
+        statementn;
+}</pre>
+
+<p>If the break statement is omitted, the execution continues to the 
+next case statement until either a break or the end of switch is reached.</p>
+
+<pre class='code'>a = 12;
+
+switch( a )
+{
+    case 6 * 2 :
+    case 3 * 4 :
+        print( "a is 12" );
+        break;
+    default :
+        print( "a is not 12" );
+}</pre>
+
+<h3>for loop</h3>
+
+<p>A for loop is defined as:</p>
+
+<pre class='definition'>for(initialization; condition; increment)
+    statement;</pre>
+
+<p>Initialization is a statement initializing the loop control variable(s). 
+Condition is an expression that determines when the loop exits. 
+Increment defines how the loop variable(s) change each time the loop 
+is repeated.</p>
+
+<p>Statement can be empty, a single statement or a block of statement 
+within { }.</p>
+
+<p>Example of a for-loop:</p>
+
+<pre class='code'>a = 10;
+for( b = 0; b < a; b++ )
+    print( b );</pre>
+ 
+<p>This loop will initalize the variable b to 0. It will then loop until 
+b is equal to a. Every loop b is incremented by one.</p>
+
+<p>A variant of the for loop is possible by using the comma operator:</p>
+
+<pre class='code'>for( a = 0, b = 0; a + b < 10; a++, b += 2 )
+    print( a @ ", " @ b );</pre>
+
+<p>This loop will initialize a and b to zero, loop until a+b > 10 and 
+for each loop a is incremented by one, and b by 2.</p>
+
+<h3>while loop</h3>
+
+<p>The while loop is defined as:</p>
+
+<pre class='definition'>while( condition )
+    statement;</pre>
+ 
+<h3>do-while loop</h3>
+
+<p>The do-while loop is similar to the while loop, except that the 
+condition is tested at the bottom of the loop.</p>
+
+<pre class='definition'>do
+    statement;
+while( condition );</pre>
+ 
+<h3>break statement</h3>
+
+<p>The break statement can be used to terminate a loop.</p>
+ 
+<h3>continue statement</h3>
+
+<p>The continue statement is used to continue the iteration of the 
+loop, skipping any code between the continue statement and the 
+condition testing.</p>
+
+<pre class='code'>a = 1;
+
+while( a < 5 )
+{
+    a++;
+    if( a == 3 ) continue;
+    print( a  );
+}</pre>
+
+
+<p>gives</p>
+
+
+<pre class='code'>2
+4
+5</pre>
+
+</body>
+</html>

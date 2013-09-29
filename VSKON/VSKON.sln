@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSKON", "VSKON.vcproj", "{85DF8825-43C0-4B51-9FCA-D54660752FEA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glic", "glic.vcproj", "{019DFC60-3F1F-4663-A41C-E5E64A6F1DCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85DF8825-43C0-4B51-9FCA-D54660752FEA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{85DF8825-43C0-4B51-9FCA-D54660752FEA}.Debug|Win32.Build.0 = Debug|Win32
+		{85DF8825-43C0-4B51-9FCA-D54660752FEA}.Release|Win32.ActiveCfg = Release|Win32
+		{85DF8825-43C0-4B51-9FCA-D54660752FEA}.Release|Win32.Build.0 = Release|Win32
+		{019DFC60-3F1F-4663-A41C-E5E64A6F1DCA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{019DFC60-3F1F-4663-A41C-E5E64A6F1DCA}.Debug|Win32.Build.0 = Debug|Win32
+		{019DFC60-3F1F-4663-A41C-E5E64A6F1DCA}.Release|Win32.ActiveCfg = Release|Win32
+		{019DFC60-3F1F-4663-A41C-E5E64A6F1DCA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

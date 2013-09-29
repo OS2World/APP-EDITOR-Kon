@@ -1,0 +1,113 @@
+<html>
+<head>
+  <title>Regular expressions</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Regular expressions</h1>
+
+<p>With regular expressions, you can search for text by applying patterns
+instead of an exact text string to search for.</p>
+
+<table width="100%">
+	<tr>
+		<td width="20%" valign="top">Beginning	of line</td>
+		<td width="10%" valign="top" align="center">^</td>
+		<td width="70%">Matches a line start.</td>
+	</tr>
+	<tr>
+		<td valign="top">End	of line</td>
+		<td valign="top" align="center">$</td>
+		<td>Matches a line end.</td>
+	</tr>
+	<tr>
+		<td valign="top">Any character</td>
+		<td valign="top" align="center">.</td>
+		<td>Matches any single character.</td>
+	</tr>
+	<tr>
+		<td valign="top">Zero or more</td>
+		<td valign="top" align="center">*</td>
+		<td>Matches zero or more of the preceding expression. Example: ta*
+		    matches t, ta and taa. t(ab)* matches t, tab and tabab.</td>
+	</tr>
+	<tr>
+		<td valign="top">One or more</td>
+		<td valign="top" align="center">+</td>
+		<td>Matches one or more of the preceding expression. Example: ta+
+		    matches ta, taa and taaa.</td>
+	</tr>
+	<tr>
+		<td valign="top">Set of characters</td>
+		<td valign="top" align="center">[]</td>
+		<td>Matches any of the characters within the brackets. Example: t[ab]
+		    matches ta and tb.</td>
+	</tr>
+	<tr>
+		<td valign="top">Not in set</td>
+		<td valign="top" align="center">[^]</td>
+		<td>Matches any characters not within the brackets (following the '^'. 
+		    Example: t[^ab] matches tc and td, but not ta or tb.</td>
+	</tr>
+	<tr>
+		<td valign="top">Or</td>
+		<td valign="top" align="center">|</td>
+		<td>Matches the expression before or after the '|'. Example (ta)|(tb)
+		    matches ta or tb, but not tc.</td>
+	</tr>
+	<tr>
+		<td valign="top">Grouping</td>
+		<td valign="top" align="center">()</td>
+		<td>Groups a subexpression.</td>
+	</tr>
+	<tr>
+		<td valign="top">Nth subexpression</td>
+		<td valign="top" valign="top" align="center">\N</td>
+		<td>Each group ('(expression)') gets an order number from 1 to 9. 0 is the
+		    whole expression. When replacing, the text matching the Nth expression 
+				from the found text is inserted. Example: t(a)|(b) should be replaced
+				with u\1. In the text "ta", the replacement will result in "ua", and
+				in the text "tb" the replacement will result in "ub".</td>
+	</tr>
+	<tr>
+		<td valign="top">Character code</td>
+		<td valign="top" align="center">\nnn or \xnn</td>
+		<td>Inserts or searches for the decimal character code nnn or the
+		    hexadecimla character code xnn.</td>
+	</tr>
+	<tr>
+		<td valign="top">Alphabetic string</td>
+		<td valign="top" align="center">:a</td>
+		<td>Equivalent to [a-zA-Z].</td>
+	</tr>
+	<tr>
+		<td valign="top">Uppercase alphabetic string</td>
+		<td valign="top" align="center">:u</td>
+		<td>Equivalent to [A-Z].</td>
+	</tr>
+	<tr>
+		<td valign="top">Lowercase alphabetic string</td>
+		<td valign="top" align="center">:l</td>
+		<td>Equivalent to [a-z].</td>
+	</tr>
+	<tr>
+		<td valign="top">Numeric string</td>
+		<td valign="top" align="center">:n</td>
+		<td>Equivalent to [0-9].</td>
+	</tr>
+	<tr>
+		<td valign="top">Alphanumeric string</td>
+		<td valign="top" align="center">:m</td>
+		<td>Equivalent to [a-zA-Z0-9].</td>
+	</tr>
+	<tr>
+		<td valign="top">Space character</td>
+		<td valign="top" align="center">:s</td>
+		<td>Equivalent to [\032\009].</td>
+	</tr>
+</table>
+
+</body>
+</html>

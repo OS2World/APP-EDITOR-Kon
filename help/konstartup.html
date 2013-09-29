@@ -1,0 +1,84 @@
+<html>
+<head>
+  <title>Kon startup</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Kon startup</h1>
+
+<p>First Kon checks if there is a previous instance already running. If 
+there is, the filenames specified at startup are passed to the previous
+instance.</p>
+
+<p>Otherwise, if this is the first instance, configuration data such as preferences,
+and window positions are loaded. Then the syntax definition file, 
+<a href="../kon.syn">kon.syn</a>, is loaded.</p>
+
+<p>Finally (before the actual files to edit are loaded), the K startup module 
+is loaded. This is where you should place code that is run during startup, 
+constant defintions and functions that should be available while Kon is 
+running.</p>
+
+<h2>K startup module</h2>
+
+<p>The startup module is named <a href="../k/startup.k">startup.k</a> and is 
+placed in &lt;KON HOMEDIR&gt;\k, where &lt;KON HOMEDIR&gt; is the directory 
+where Kon is installed, such as C:\Program Files\Kon.</p>
+
+<p>The function being called initially is startup(). The most important thing
+placed here by default is the key bindings, and the code for building
+the main menu.</p>
+
+<p>The default startup function looks like this:</p>
+
+<pre class="code">
+startKon()
+{
+  bindKey( "Ctrl+q-Ctrl+f", "searchDialog();" );
+  bindKey( "Ctrl+q-Ctrl+a", "replaceDialog();" );
+  bindKey( "F3", "repeatFind();" );
+  bindKey( "Ctrl+k-Ctrl+s", "saveFile();" );
+  bindKey( "F2", "saveFile();" );
+  bindKey( "Ctrl+s", "saveFile();" );
+  bindKey( "Ctrl+Insert", "copyBlockToClipboard();" );
+  .
+  . // Parts removed
+  .
+  bindKey( "Ctrl+Space", "savePos();" );
+  bindKey( "Ctrl+Up", "jumpToPrevPos();" );
+  bindKey( "Ctrl+Down", "jumpToNextPos();" );
+  
+  buildMainMenu();
+
+  print( "*** startup script is finished" );
+}
+</pre>
+
+<p>buildMainMenu() is located in the K-file menu.k.</p>
+
+<p>Startup.k includes a number of files by default:</p>
+
+<ul>
+  <li><b><a href="../k/prefs.k">prefs.k</a></b>: Some preferences that are automatcally saved in this 
+  file</li>
+  <li><b><a href="../k/util.k">util.k</a></b>: Useful functions such as quicksort.</li>
+  <li><b><a href="../k/base.k">base.k</a></b>: Functions which are needed for Kon to operate. Contains
+  many of the core functions in the editor, and constant definitions.</li>
+  <li><b><a href="../k/menu.k">menu.k</a></b>: Functions to build the main menu and the context
+  sensitive popup menu.</li>
+  <li><b><a href="../k/toolbar.k">toolbar.k</a></b>: Auto generated file containing the defintion for
+  the toolbar. This file may be edited by hand, but changes will be lost if
+  the toolbar is modified from within Kon while editing the file.</li>
+  <li><b><a href="../k/signals.k">signals.k</a></b>: Contains callback functions for various signals
+  from Kon. Used when items in the menu or toolbar should be disabled/enabled
+  or checked.</li>
+  <li><b><a href="../k/wordwrap.k">wordwrap.k</a></b>: Wordwrap support.</li>
+  <li><b><a href="../k/fillcol.k">fillcol.k</a></b>: Support for filling a 
+  column selection with a string.</li>
+</<li><b><a href="../k/modules.k">modules.k</a></b>: User defined modules.</li>
+</ul>
+
+</body>
+</html>

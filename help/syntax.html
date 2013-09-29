@@ -1,0 +1,272 @@
+<html>
+<head>
+  <title>Syntax highlighting</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Syntax highlighting</h1>
+
+<p>Syntax highlighting is set up in the file <a href="../kon.syn">kon.syn</a>.
+Defining syntax highlighting for a filetype is mainly done by specifying for 
+which file extensions the scheme should be activated, listing groups of
+keywords and the color each group should have, and perhaps certain other
+primitives such as how comments are defined, and which character are used to 
+delimit words.</p>
+
+<p>Kon can also define syntax highlighting using
+<a href="grep.html">regular expressions</a>.</p>
+
+<p>In the definition for each filetype, you can also specify how 
+<a href="#Code sections">code sections</a>
+should be identified using <a href="grep.html">regular expressions</a>. 
+The identified code sections will be shown in a drop-down list for fast
+navigation.</p>
+
+<p>The layout of kon.syn is as follows:</p>
+
+<pre class="code">
+// Color definitions, set color and font attributes statements may appear 
+// before any syntax definitions
+
+define color Blue = 0,0,255
+define color Cyan = 0,128,128
+define color LightGray = 128,128,128
+
+// ------------------
+// K syntax highlight
+
+name = "K"  // The name of this syntax highlighting scheme
+
+extensions = .k  // The extension(s) for which this scheme should be used
+
+sections = "^([:m]+)\\(", 1  // Regular expressions defining code sections in the file
+
+set caseinsensitive = no  // yes if all keywords are case insensitive
+
+literal = \  // Escape character
+
+set foreground = Blue  // All keywords defined after this should have it's 
+                       // foreground set to blue (RGB 0,0,255 above)
+
+delimitors = ",;:\"'[](){}-+="  // Delimitors separating words (apart from 
+                                // white-spaces)
+
+// Blue keywords
+keyword = break, case, continue, default, do, else, for, if, 
+          return, switch, while
+
+set foreground = Cyan  // All keywords defined after this should have it's 
+                       // foreground set to cyan (RGB 0,128,128 above)
+
+eolword = #include     // A word where the color settings will extend to the
+                       // end of the line
+
+set foreground = LightGray  // All keywords defined after this should have it's 
+                            // foreground set to LightGray 
+                            // (RGB 128,128,128 above)
+
+set fontattribute = italic  // All keywords defined after this should have 
+                            // an italic font
+
+
+eolcomment = "//"           // A comment to the end of line
+
+set fontattribute = normal  // Set the font back to normal
+
+pair = "'":"'", '"':'"'     // Strings declaration
+
+grep = (0x[0-9abcdef]+)     // A regular expression which in this case defines
+                            // what is a hexadecimal value. Note that parts
+                            // which should be highlighted must be defined
+                            // as groups: (Enclosing in '('..')').
+
+// --------------
+// .syn highlight
+
+// Repeat as above for a different scheme
+.
+.
+.
+</pre>
+
+<h2>The following commands can be used in kon.syn:</h2>
+
+<ul>
+  <li>
+    <p class="h5">Define a color (Can appear anywhere)</p>
+    <pre class="definition3">
+    define color &lt;COLORNAME&gt; = &lt;RED&gt;, &lt;GREEN&gt;, &lt;BLUE&gt;
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Start a new syntax defintion</p>
+    <pre class="definition3">
+    name = "Scheme name"
+    </li>
+  </pre>
+
+  <li>
+    <p class="h5">Define extensions using the syntax definition</p>
+    <pre class="definition3">
+    extensions = .ext1,.ext2, ..
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Define code sections</p>
+    <a name="Code sections"></a>
+    <pre class="definition3">
+    sections = "regular expression 1", groupToUse 1, 
+               "regular expression 2", groupToUse 2, . . .
+    </pre>
+    <p>Each regular expression defines a code section to define. Following
+    the regular expressions is a numeric value specifying which group
+    in the regular expression is to be shown in the pull-down list.</p>
+    <p>For an explanation of grouping in regular expression, see
+    <a href="grep.html">regular expressions</a>.</p>
+    <p class="example2">// Identify a K-function. The first group contains the function name
+
+sections = "^([:m]+)\\(", 1</p>
+  </li>
+
+  <li>
+    <p class="h5">Set case sensitivity</p>
+    <pre class="definition3">
+    set caseinsensitive = yes/no
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Define the literal character.</p>
+    <pre class="definition3">
+    literal = &lt;char&gt;
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Set the foreground for the following keywords/syntax 
+                  elements</p>
+    <pre class="definition3">
+    set foreground = &lt;RGB color&gt;/&lt;Color definition&gt;
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Set the background for the following keywords/syntax 
+                  elements</p>
+    <pre class="definition3">
+    set background = &lt;RGB color&gt;/&lt;Color definition&gt;
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Set the font attribute for the following keywords/syntax 
+                  elements</p>
+    <pre class="definition3">
+    set fontattribute = italic/bold/underscore/normal
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Declare a range of keywords</p>
+    <pre class="definition3">
+    keyword = word1, word2, ... wordn
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Define character sequence for comment to end of line</p>
+    <pre class="definition3">
+    eolcomment = "characters"
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Define a pair which encloses a range of characters in the 
+                  code. Cannot extend to multiple lines.</p>
+    <pre class="definition3">
+    pair = "startcharacters", "endcharacters"
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Define a pair which encloses a range of characters in the 
+                  code which can extend to multiple lines</p>
+    <pre class="definition3">
+    multilinepair = "startcharacters", "endcharacters"
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Define a comment pair which can extend to multiple lines</p>
+    <pre class="definition3">
+    multilinecomment = "startcharacters", "endcharacters"
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Define a set of word delimitors</p>
+    <pre class="definition3">
+    delimitors = "characters"
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Defines the literal character</p>
+    <pre class="definition3">
+    literal = character
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Defines a word which causes higlighting to extend to end of 
+                  line</p>
+    <pre class="definition3">
+    eolword = word
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Defines a <a href="grep.html">regular expressions</a> 
+                  definition for syntax highlighting.</p>
+    <pre class="definition3">
+    grep = "expression"
+    </pre>
+    <p>Kon doesn't highlight the full expression found but only the parts that 
+    has been defined as a group (subexpression).</p>
+    <p>Grep definitions in syntax highlighting does <i>not</i> extend over line
+    breaks.</p>
+    <p class="example2">// Highlight an XML tag including '<' and '>' but not its attributes.
+
+grep = "(<[:a]+):s[^>]*(>)"</p>
+  </li>
+
+  <li>
+    <p class="h5">Set the following keywords to require a delimitor in front</p>
+    <pre class="definition3">
+    set requiresdelimfront = yes/no
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Set the following keywords to require a delimitor at end of 
+                  word</p>
+    <pre class="definition3">
+    set requiresdelimend = yes/no
+    </pre>
+  </li>
+
+  <li>
+    <p class="h5">Set the following keywords to require a delimitor at both 
+                  ends</p>
+    <pre class="definition3">
+    set requiresdelim = yes/no
+    </pre>
+  </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<html>
+<head>
+  <title>Search and replace</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Search (and replace)</h1>
+
+<a class="link" href="#searchoptions">Search properties</a><br>
+<a class="link" href="#replaceoptions">Replace properties</a><br>
+<a class="link" href="#multfile">Multiple files</a><br>
+<a class="link" href="grep.html">Regular expressions</a><br>
+
+<p>The search (and replace) dialog has two subdialogs, "search properties" and 
+"multiple files".</p>
+
+<a name="searchoptions"><h2>Search properties</h2></a>
+
+<img src=Find1.gif hspace=10 vspace=10><img src=Replace1.gif hspace=10><br><br>
+
+<p>In "search properties" you enter the search criteria, and the options
+for the search criterieas such as whether to differ between upper and lower
+case, and where the search should be done within the file.</p>
+<p>If you press "search/replace in current buffer", the search will be done
+in the current buffer only.</p>
+
+<p><b>Options</b></p>
+<table width="80%">
+	<tr>
+		<td width="20%"><i>Case sensitive</i></td>
+		<td width="80%">Check to differ between cases.</td>
+	</tr>
+	<tr>
+		<td width="20%"><i>Whole words</i></td>
+		<td width="80%">Check to search whole words only.</td>
+	</tr>
+	<tr>
+		<td width="20%"><i>Regular expressions</i></td>
+		<td width="80%">Search using regular expressions. A reference for Kon's
+		                implementation of regular expressions can be found
+                                <a href="grep.html">here</a>.</td>
+	</tr>
+	<tr>
+		<td width="20%"><i>Hex search</i></td>
+		<td width="80%">Search string is entered in hexadecimal notation.
+		                Each character is entered as a 1- or 2-digit
+				hexadecimal number optionally separated by 
+				spaces. (If not separated by spaces, each number
+				must be 2 digits).</td>
+	</tr>
+</table>
+
+<p><b>Origin</b></p>
+<table width="80%">
+	<tr>
+		<td width="20%"><i>From cursor</i></td>
+		<td width="80%">Start searching from cursor position.</td>
+	</tr>
+	<tr>
+		<td width="20%"><i>Entire document</i></td>
+		<td width="80%">Start searching from (selected, see below) text start.</td>
+	</tr>
+</table>
+
+<p><b>Direction</b></p>
+<table width="80%">
+	<tr>
+		<td width="20%"><i>Forward</i></td>
+		<td width="80%">Search forwards.</td>
+	</tr>
+	<tr>
+		<td width="20%"><i>Backward</i></td>
+		<td width="80%">Search backwards.</td>
+	</tr>
+</table>
+
+<p><b>Scope</b></p>
+<table width="80%">
+	<tr>
+		<td width="20%"><i>Global</i></td>
+		<td width="80%">Search within the entire text.</td>
+	</tr>
+	<tr>
+		<td width="20%"><i>Selected</i></td>
+		<td width="80%">Search the selected text only.</td>
+	</tr>
+</table>
+
+<a name="replaceoptions"><h2>Replace properties</h2></a>
+
+<p>The properties are the same as for search with the following additions:</p>
+
+<p><b>Options</b></p>
+<table width="80%">
+	<tr>
+		<td width="20%"><i>Prompt on replace</i></td>
+		<td width="80%">Query before replace.</td>
+	</tr>
+	<tr>
+		<td width="20%"><i>Replace all</i></td>
+		<td width="80%">Replace all occurences, not only the first one found.
+		                If "Prompt on replace" is selected, this can be selected
+										from the query dialog.</td>
+	</tr>
+</table>
+
+<a name="multfile"><h2>Multiple files</h2></a>
+
+<img src=MultFile.gif hspace=10><br><br>
+
+<p>In the "multiple files" subdialog, you can select multiple files to search
+or replace within. You can either specify the files to search by entering
+a number of search patterns separated with semicolons in the "Files" entry 
+field, or select the button "Buffers only", and then select the buffers
+you want to search in the "Buffers" list box.</p>
+<p>If you select to search files on disk you should also enter the path
+where to begin the search, and you also have the option to search
+in the directory structure by checking "search subdirectories".</p>
+<p><b>Note! Replacements made on disk (not loaded buffers) cannot be 
+undone!</b></p>
+</body>
+</html>

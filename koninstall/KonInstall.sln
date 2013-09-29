@@ -1,0 +1,13 @@
+Microsoft Visual Studio Solution File, Format Version 1.00
+Project("{491C8F90-CE40-11D0-8A4D-00A0C91E2ACD}") = "KonInstall", "KonInstall.pkp", "{A8EC6F7F-4C44-46A9-933D-F97031AD9544}"
+EndProject
+Global
+	GlobalSection(LocalDeployment) = postSolution
+		StartupProject = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(BuildOrder) = postSolution
+		0 = {A8EC6F7F-4C44-46A9-933D-F97031AD9544}
+	EndGlobalSection
+	GlobalSection(DeploymentRoot) = postSolution
+	EndGlobalSection
+EndGlobal

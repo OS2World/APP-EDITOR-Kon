@@ -1,0 +1,240 @@
+<html>
+<head>
+  <title>Kon introduction</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Kon quickstart</h1>
+
+<p><i>Note that all key bindings that are mentioned in this text corresponds
+to the standard key bindings as configured in the initial installation of
+Kon. You can easily edit and configure them for your 
+<a href="configure.html">own preferences</a>.</i></p>
+
+<a class="link" href="#windowsetup">The Kon windows</a><br>
+<a class="link" href="#editandmove">Editing and navigating in the text</a><br>
+<a class="link" href="#wordwrap">Word wrap</a><br>
+<a class="link" href="#hexeditor">Hex editor</a><br>
+<a class="link" href="#macros">Macro recording</a><br>
+<a class="link" href="#uncommon">Some not so common features</a><br>
+<a class="link" href="#search">Search for text</a><br>
+<a class="link" href="#replace">Search and replace text</a><br>
+<a class="link" href="#unicode">Unicode</a><br>
+
+<a name="windowsetup"></a><h2>The Kon windows</h2>
+
+<img src=MainWindow.gif vspace=10><br>
+
+<p>The kon window is divided into specific parts:.</p>
+
+<ul>
+  <li>A tabbed control where you edit your text files.</li>
+  <li>Optionally a section browser which you use for navigating quickly in the
+      code text.</li>
+  <li>A messages window where search results and information about
+      running K-programs is displayed.</li>
+  <li>A command prompt where you can enter K-commands.</li>
+</ul>
+
+<p>Kon may contain several text editor windows, but with only one 
+visible at a time. They are then contained within the tab-control.</p>
+
+<p>You can switch between the windows by any of the following methods:</p>
+<ul>
+  <li>Left-click on the appropriate tab.</li>
+  <li>Right-click on the tab field to popup a menu where you can choose a file.</li>
+  <li>Press Alt-PageDown to swith to the next window, or press  Alt-PageUp for 
+      the previous one.</li>
+  <li>Press Ctrl-Tab or Ctrl-Shift-Tab for similar operation.</li> 
+  <li>Jump directly to a window, by selecting Window from the main menu, and 
+      then choose the window you want to jump to.</li>
+</ul>
+
+<a name="editandmove"></a><h2>Editing and navigating in the text</h2>
+
+<p>Kon is inspired by the WordStar word processor, which also many
+other texteditors have been influenced by. The idea behind the keystrokes used
+by the WordStar key-bindings is that you should be able to reach all commands
+from the alpha-numeric keyboard and without having to leave your 
+finger setting.</p>
+
+<p>Not all of the key bindings in WordStar has been implemented, for example
+the cursor diamond and some keystrokes which conflict with Windows common 
+keystrokes.</p>
+
+<p>Note however, that it is very easy to implement your own keyboard bindings
+in case you wish to modify the default bindings!</p>
+
+<p>Entering and moving around in the text is straight forward. Kon is by default
+using "virtual-spaces" which means you can move the cursor beyond line ends. 
+This can be very useful, but can be turned off to implement a more traditional 
+behaviour.</p>
+
+<p>Marking text is done by using the mouse, or by using the shift-cursor keys.
+</p>
+
+<p>Kon also has a "column-block" mode, where you work with block selections
+as columns, as opposed to a string of text. This can be very useful when
+modifying text arranged in columns.</p>
+
+<p>Kon has a mode <a href="prefs.html#editor.html">"persistent blocks"</a> 
+where block marking is not reset when you move the cursor. This can sometimes 
+be useful, but is not set by default.
+</p>
+
+<p>There is also an undo/redo function. Every change you make to the text
+can be undone, and redone. The size of the undo buffer is 
+<a href="prefs.html#editor.html">configurable</a>.</p>
+
+<a name="wordwrap"></a><h2>Word wrap</h2>
+
+<p>Kon has support for word wrapping in two ways:</p>
+
+<ul>
+  <li>
+    <b>Using soft line breaks</b>. A paragraph is ended by a normal CR+LF (or LF) 
+    sequence and linebreaks within the paragraph is represented with a CR+CR+LF
+    sequence. This is the default behaviour, but when saving the file, line 
+    ends will be in non-standard format. To avoid this, the line-endings can be 
+    removed (which is the usual way this is handled by text-editors) or 
+    "finalized" by replacing the soft line breaks with hard line breaks.
+  </li>
+  <li>
+    <b>Using hard line breaks</b>. A paragraph is ended by two line breaks
+    in sequence. A "soft" line break is represented by a single line break.
+  </li>
+</ul>
+
+<p>Word wrap settings can be reached from the main menu: Edit->Word wrap.</p>
+
+<a name="hexeditor"></a><h3>Hex editor</h3>
+
+<img src=KonHex.gif><br><br>
+
+<p>The Hex view is useful for editing or viewing binary data. You can modify
+the binary data as characters, or by modifying the hex code for each
+character.</p>
+
+<p>The view may also be usable for viewing text-only data as well: Sometimes
+the textlines may be too long for Kon to handle in the Ascii view. Switching
+to the Hex view lets you inspect all text in a file. It can also be useful for
+distincting and replacing for example NULL-characters to spaces, or for 
+inspecting which line ending sequence is used in a file.
+
+<p>You can switch between the Ascii-field and the Hex-field by using the 
+TAB-key, or by simply clicking with the mouse where you want to edit.</p>
+
+<p>Be careful when editing binary data! Kon allows for insertion or deletion of 
+text which may corrupt data, since binary data often is dependent on absolute 
+positions of text in the file.</p>
+
+<a name="macros"></a><h2>Macro recording</h2>
+
+<p>The macro recording in Kon is very powerful. The simplest way to use macros
+is to simply record them by pressing Ctrl-Alt-R (the letter 'R' will be 
+displayed in the status bar to indicate macro recording) and then input the 
+sequence you want to repeat. This may include dialogs: The dialogs wont be 
+displayed at playback, only the results from the dialog interaction will be 
+used. To end the recording, press Ctrl-Alt-R again.</p>
+
+<p>To playback the macro, simply press Ctrl-Alt-P.</p>
+
+<p>The macro itself is a K-program. After the macro is recorded you can
+edit and execute it in a number of ways.</p>
+
+<p>Apart from saving it to disk, and then include it in a module which is
+loaded at startup, you can also edit it directly by using the clipboard:</p>
+
+<p>You can copy the recorded macro to the clipboard, paste it in a editor
+window, edit it, and copy it back to the clipboard. You can then choose to
+execute the macro from the clipboard. You can of course also write macros 
+directly which you copy to the clipboard and execute from there.</p>
+
+<p>All of these functions can be reached from the main menu: 
+Choose Edit->Macro.</p>
+
+<p>Saving a macro in any of these ways can be a good starting point for
+writing a small K-program.</p>
+
+<a name="uncommon"></a><h2>Some not so common features</h2>
+
+<p>Kon represents the file internally as a stream of data. This lets you for
+instance see which byte-position you are standing at in the file: Simply switch 
+to hex view and see where you are positioned. You can also always jump to a 
+specific byte position by pressing Ctrl-p and specify to which position you 
+want to jump.</p>
+
+<p>You can also jump directly to a line by pressing Ctrl-j.</p>
+
+<p>It is possible to show the position in the file relative another 
+position. Pressing Ctrl-p will reset the position indicator in the window's
+lower left with a zero. Moving backwards will show a negative position 
+relative the position where you pressed Ctrl-p, and positive when moving
+the cursor after the marked position.</p>
+
+<p>You can store the position you're currently standing at in any of these 
+ways:</p>
+
+<ul>
+  <li>By pressing Ctrl-PageDown your current position will be stored on a stack.
+      Pressing Ctrl-PageUp will restore the latest position from the stack.</li>
+  <li>You can store a position in a "slot" numbered from 0 to 9, by pressing
+      Ctrl-K-&lt;slot number&gt;. You retrieve the position in a slot by 
+      pressing Ctrl-Q-&lt;slot number&gt;.</li>
+  <li>By pressing Ctrl-Space at the places you wish to store, and then press
+      Ctrl-Up or Ctrl-Down to jump between them.</li>
+</ul>
+
+<p>All positions will be marked in the left column of the editor window (if the
+left margin is set to be visible).</p>
+
+<a name="search"></a><h2>Searching for text</h2>
+
+<img src=Find1.gif><br><br>
+
+<p>Kon can search for text in the currently active file, the files opened in
+the editor, or on files on disk.</p>
+
+<p>For a simple search, just type the text you want to search for in the
+"Text to find" field, and then press "Search current buffer".</p>
+
+<p>To search in more than one file, select the tab "Multiple files". Then
+either type the files you want to search (a search pattern works fine. You may
+separate different files, search patterns using semi-colons.) Also fill in
+the directory you want to search in or press the "current dir" button.</p>
+
+<p>You can also check "buffers only" and select which opened files you want to
+search in</p>
+
+<p>For a more comprehensive description of search click 
+<a href="searchreplace.html">here</a></p>
+
+<a name="replace"></a><h2>Search and replace text</h2>
+
+<p>Works very similar to search. <i>Note that replacing in several files
+on disk is NOT undoable!</i></p>
+
+<p>For a more comprehensive description of search and replace click 
+<a href="searchreplace.html">here</a></p>
+
+<a name="unicode"></a><h2>Unicode</h2>
+
+<p>Internally, Kon works with 8-bit characters. This choice has been made for
+Kon to work properly as a hex-editor also. Kon does however handle Unicode
+files to a certain extent. Most Unicode files can be converted into an Ansi
+equivalent and Kon attempts to do that when a file is loaded. If the content
+cannot be determined (Unicode files should have a leading byte sequence
+indicating which type of Unicode the file is encoded with), conversion can 
+be done within the editor (from the "View"-menu, "convert from ..."). When 
+the file later on is saved, it can be saved in Ansi or Unicode. This is 
+specified in the "Save as.." dialog. See also <a href="prefs.html#misc">
+Misc settings</a></p>
+
+<p>For editing Unicode files with a mix of languages not contained in the
+default codepage, Kon is probably not the right editor to use, at least not
+with this version. In time this may change.</p>
+
+</body>
+</html>

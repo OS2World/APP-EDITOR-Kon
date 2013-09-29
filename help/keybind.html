@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Modifying the key bindings</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Modifying the key bindings</h1>
+
+<p>The key bindings are modified by calling the K-function "bindKey". bindKey
+takes two parameters: The key sequence to bind to, and the K-code to execute.
+</p>
+
+<p>For example:</p>
+
+<pre class="code">
+bindKey( "Ctrl+Z", "undo();" );
+</pre>
+
+<p>The key bindings can be modified any time, but the best way to do it
+would be when Kon loads, for example in the startup function in 
+<a href="konstartup.html">startup.k</a></p>
+
+<p><a href="kfunref.html#bindKey">Full description of the bindKey command</a></p>
+
+</body>
+</html>

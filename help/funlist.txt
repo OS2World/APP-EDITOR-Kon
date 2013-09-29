@@ -1,0 +1,12 @@
+<fun>
+<name>bindKey</name>
+<param>keyBinding1</param><expl>yadayada1</expl>
+<param>keyBinding2</param><expl>yadayada2</expl>
+<descr>description</descr>
+</fun>
+<fun>
+<name>bindKey2</name>
+<param>keyBinding21</param><expl>yadayada21</expl>
+<param>keyBinding22</param><expl>yadayada22</expl>
+<descr>description2</descr>
+</fun>

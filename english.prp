@@ -1,0 +1,255 @@
+1: Add tool
+2: Toggle button size
+3: Button type
+4: ~Command
+5: ~Space
+6: Select a command:
+7: Type description:
+8: OK
+9: Cancel
+10: Remove tool
+11: Modify tool
+12: Remove space
+13: Syntax highlighting error
+14: '=' missing in '%s'-statement at line %d.
+15: Unknown statement '%s' at line %d.
+16: Unknown define '%s' at line %d.
+17: Missing color '%s' name at line %d.
+18: Error in RGB value (unknown '%s') at line %d.
+19: Missing comma at line %d.
+20: Extensions must first be defined before syntax definitions can be defined at line %d.
+21: yes or no is missing at line %d.
+22: Unknown set at line %d.
+23: Missing color at line %d.
+24: Color '%s' is undefined at line %d.
+25: Unexpected end of file!
+26: Unknown font attribute '%s' at line %d.
+27: Literal char should be one character long at line %d.
+28: Delimitors string is missing at line %d.
+29: Missing ':' in pair list at line %d.
+30: Missing pair end at line %d.
+31: *
+32: Ins
+33: 
+34: Rec
+35: K execution error
+36: Unrecognized data type in '%s'
+37: Unknown function '%s'
+38: Out of bounds '%s'
+39: Subscript error
+40: Can only subscript from arrays
+41: Subscripting from non-variable
+42: Unknown variable
+43: Can't modify non variable
+44: Invalid operator '%s' on integer
+45: Invalid operator '%s' on string
+46: Invalid operator '%s' on array
+47: Wrong number of arguments in '%s'
+48: Conflicting types (Only one argument is an array)
+49: *** Kon startup
+50: *** Startup script wasn't executed
+51: Type error in call to %s
+52: Close
+53: Clear
+54: K console
+55: Couldn't add tool
+56: Command already exists in the toolbar!
+57: No overloaded function '%s' exist!
+58: Nothing to pop!
+59: Missing string in '%s' at line %d.
+60: Syntax definition is unnamed
+61: A syntax definition must begin with "name".
+62: Search text
+63: Search current buffer
+64: Search multiple files
+65: Options
+66: ~Case sensitive
+67: Whole ~words
+68: Re~gular expressions
+69: Origin
+70: ~From cursor
+71: ~Entire document
+72: Direction
+73: Forwar~d
+74: ~Backward
+75: ~Global
+76: ~Selected
+77: ~Text to find:
+78: Scope
+79: Loading %d%%...
+80: Saving...
+81: ~New text:
+82: ~Prompt on replace
+83: Replace text
+84: Replace in current buffer
+85: Replace in multiple files
+86: Search properties
+87: Multiple files
+88: Replace properties
+89: Replace ~all
+90: Load file
+91: ~Filename:
+92: ~Drives:
+93: F~iles
+94: Di~rectories:
+95: Path ~hist.:
+96: File not saved
+97: File %s has been modified! Do you want to save it?
+98: ~Files:
+99: ~Path:
+100: ~Buffers
+101: ~Select path
+102: Search ~subdirectories
+103: Buffers ~only
+104: ~Options
+105: Replace text?
+106: Do you want to replace
+107: with
+108: ~Yes
+109: ~No
+110: Replace ~all
+111: Replace in all ~files
+112: ~Skip file
+113: %d replacements done in %s
+114: Fatal: Couldn't locate a main window
+115: Searching...
+116: Search done.
+117: Search terminated!
+118: Save file as
+119: Source
+120: ~All
+121: ~Selected
+122: ~Lines
+123: ~to
+124: Syntax highlighting
+125: Print ~color
+126: Print ~keywords in bold
+127: Print ~comments in italic
+128: Textfont
+129: ~Font
+130: Si~ze
+131: Fi~xed width only
+132: Printer
+133: ~Port
+134: Pages
+135: T~wo up
+136: ~Even pages
+137: ~Odd pages
+138: Header/Footer
+139: ~Header
+140: ~Footer
+141: Margins (mm)
+142: ~Left
+143: ~Right
+144: ~Top
+145: ~Bottom
+146: Set~up printer
+147: Print
+148: Header/Footer font
+149: Printing...
+150: Abort
+151: Printing page: 
+152: File not found
+153: Path not found
+154: Access denied
+155: Sharing violation
+156: File open error
+157: End of file reached
+158: Read error
+159: Save error
+160: Replacing: %d replacements done.
+161: %d replacements done.
+162: String not found!
+163: Text
+164: Header/Footer
+165: Page
+166: Ascii view 1
+167: Bitmapped fonts only
+168: Options
+169: ~Foreground
+170: ~Background
+171: ~Text item
+172: Text
+173: Selected text
+174: Highlighted text
+175: // This is an automatically generated file.
+176: // If the toolbar is manually changed, this file will be overwritten
+177: // on program exit.
+178: // Edit with caution.
+179: Hex view
+180: ~Persistent selection
+181: ~Tab size:
+182: ~Max undo size (Kb):
+183: ~Word separators:
+184: ~CR+LF
+185: ~LF
+186: Options
+187: Editor
+188: Editor
+189: Line ending
+190: Display
+191: Syntax highlighting
+192: Syntax ~highlight
+193: Right margin
+194: ~Show right margin
+195: Right ~margin:
+196: Misc
+197: Save file
+198: ~Backup files
+199: Autosave
+200: ~Enable autosave
+201: Autosave ~timeout (s):
+202: ~Use tab
+203: ~Optimal fill
+204: ~Use system file dialog
+205: All files (*.*)
+206: About
+207: Use alt. fonts in GUI
+208: Close this buffer
+209: Ascii view 2
+210: Show ~line numbers
+211: Show ~saved positions
+212: Left margin
+213: Characters:
+214: Line numbers
+215: Saved positions
+216: Autoclose main window
+217: Outside modification of file
+218: The file '%s' has been modified outside of the editor. Do you want to reload the file from disk?
+219: The file '%s' has been modified outside of the editor. Do you want to loose your edits and reload the file from disk?
+220: Show command field
+221: Bad registration data
+222: The license key is wrong! Please reenter your license information!
+223: Register!
+224: This version of Kon is unregistered!
+225: See readme.txt or HTML-documentation
+226: for details on how to register.
+227: Bad registration information! Please check that you typed the information exactly the way you received it!
+228: ~Name:
+229: License ~key:
+230: Enable ~virtual space
+231: ~Show numeric info
+232: Additional info
+233: ~Reuse existing control
+234: Encoding:
+235: Ansi
+236: UTF-8
+237: UTF-16
+238: Unicode file
+239: The file is stored in Unicode. Loading this file may loose characters and hex-edit will not reflecte the true contents on disk. Do you wish to continue loading the file as Unicode?
+240: Query before loading unicode file
+241: Terminating running command.
+242: Select path
+243: Website:
+244: Support email:
+245: Control not found
+246: Display line numbers in ~hex
+247: ~Hex search
+248: Show section ~browser
+249: ~Regenerate sections on activate
+250: Regenerate sections
+251: Missing statement at line %d
+252: ~Clear result window
+253: Show ~toolbar
+254: Hide ascii < 32
+255: Wrap ~around to start

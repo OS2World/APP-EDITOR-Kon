@@ -1,0 +1,543 @@
+// Color definitions, set color and font attributes statements may appear 
+// before any syntax definitions
+
+define color Blue = 0,0,255
+define color DarkBlue = 0,0,128
+define color Green = 0,128,0
+define color Cyan = 0,128,128
+define color LightGray = 128,128,128
+define color Red = 128,0,0
+define color DarkRed = 128,0,0
+
+// --------------------
+// C++ syntax highlight
+
+name = "C++"
+
+extensions = .c, .cpp, .h
+
+sections = "^[:m_][:m:s_*]*\\:\\:([:m_~])+\\(", 1,    // C++ member methods
+           "^[:m_][:m:s*_]*(:s|\\*)([:m_])+\\(", 2,   // C Function 
+           "^class[:s]+([:m_]+)", 1,                  // C++ class def
+           "^([:m_])+\\(", 1                          // untyped C function
+
+set caseinsensitive = no
+
+literal = \
+
+set foreground = Blue
+
+delimitors = ",;:\"'[](){}-+="
+keyword = break, case, catch, continue, default, do, else, for, goto, if, 
+          return, sizeof, switch, this, throw, try, while
+
+set foreground = Green
+keyword = delete, friend, inline, new, private, protected, public, template, 
+          virtual
+
+set foreground = Red
+keyword = TRUE, FALSE
+
+set foreground = DarkBlue
+keyword = auto, __cdecl, _cdecl, cdecl, char, class, const, double, enum, 
+          __export, _export, extern, __far16, _far16, __fastcall, _fastcall, 
+          float, int, long, operator, __pascal, _pascal, pascal, register, 
+          short, signed, static, __stdcall, _stdcall, struct, __syscall, 
+          _syscall, typedef, union, unsigned, void, volatile, __int64, bool
+
+set foreground = Cyan
+eolword = #define, #elif, #else, #endif, #include, #if, #ifdef, #ifndef, 
+          #pragma, #undef
+
+set requiresDelim = yes
+
+set foreground = Red
+grep = (0x[0-9abcdef]+)
+
+set foreground = Red
+grep = (0[0-7]+)
+
+set foreground = Red
+grep = ([1-9\.][0-9\.]*)
+
+set requiresDelim = no
+
+set foreground = LightGray
+set fontattribute = italic
+eolcomment = "//"
+multilinecomment = /*:*/
+set fontattribute = normal
+
+pair = "'":"'", '"':'"'
+
+// ------------------
+// K syntax highlight
+
+name = "K"
+
+extensions = .k
+
+sections = "^([:m]+)\\(", 1
+
+set caseinsensitive = no
+
+literal = \
+
+set foreground = Blue
+
+delimitors = ",;:\"'[](){}-+="
+keyword = break, case, continue, default, do, else, for, if, 
+          return, switch, while
+
+set foreground = Cyan
+eolword = #include 
+
+set foreground = LightGray
+set fontattribute = italic
+
+eolcomment = "//"
+
+set fontattribute = normal
+
+previousword = (
+pair = "'":"'", '"':'"'
+
+// --------------
+// .syn highlight
+
+name = "Kon syntax file"
+
+extensions = .syn
+
+sections = "name[:s]+=[:s]+\\\"([^\\\"]+)", 1
+
+set caseinsensitive = no
+
+literal = \
+
+set foreground = Blue
+
+delimitors = ",:="
+
+keyword = extensions, keyword, eolcomment, previousword, pair, multilinepair, 
+          multilinecomment, delimitors, literal, eolword, grep, sections
+
+set foreground = Red
+
+keyword = name
+
+set foreground = DarkBlue
+
+keyword = color, caseinsensitive, set, foreground, background, 
+          fontattribute, requiresDelimFront, requiresDelimEnd, requiresDelim
+
+set foreground = Cyan
+
+keyword = define
+
+set foreground = LightGray
+set fontattribute = italic
+
+eolcomment = "//"
+
+set fontattribute = normal
+
+pair = "'":"'", '"':'"'
+
+// --------------------------------
+// SQL Syntax highlighting (Oracle)
+
+name = "SQL"
+
+extensions = .sql
+
+set caseinsensitive = yes
+
+set foreground = Blue
+
+delimitors = "(),:;=*<>."
+
+keyword = ACCESS, DEFAULT, ADD, CHECK, ALL, CLUSTER, DESC, COLUMN, 
+          DISTINCT, AND, COMMENT, ANY, COMPRESS, ELSE, AS, CONNECT, 
+          EXCLUSIVE, ASC, EXISTS, AUDIT, CURRENT, FILE, BETWEEN, 
+          BY, DECIMAL, FOR, FROM, NOT, SHARE, GRANT, NOWAIT, SIZE, 
+          GROUP, HAVING, START, IDENTIFIED, OF, SUCCESSFUL, 
+          IMMEDIATE, OFFLINE, SYNONYM, IN, ON, SYSDATE, INCREMENT, 
+          ONLINE, TABLE, INDEX, OPTION, THEN, INITIAL, OR, TO, 
+          ORDER, TRIGGER, INTEGER, PCTFREE, UID, INTERSECT, PRIOR, 
+          UNION, INTO, PRIVILEGES, UNIQUE, IS, PUBLIC, LEVEL, USER, 
+          LIKE, RENAME, VALIDATE, LOCK, RESOURCE, VALUES, REVOKE, 
+          MAXEXTENTS, ROW, MINUS, ROWID, VIEW, MLSLABEL, ROWNUM, 
+          WHENEVER, MODE, ROWS, WHERE, MODIFY, WITH, 
+          NOAUDIT, SESSION, NOCOMPRESS, SET, REFERENCES, CONSTRAINT,
+          FOREIGN, KEY, PRIMARY, CASE, WHEN, END, TRUNCATE
+
+set foreground = DarkBlue
+
+keyword = DELETE, ALTER, DROP, CREATE, INSERT, REPLACE, UPDATE, SELECT, 
+          CALL, EXEC, DISABLE, ENABLE
+
+set foreground = DarkRed
+
+keyword = NULL
+
+set foreground = Red
+
+keyword = CHAR, DATE, FLOAT, SMALLINT, NUMBER, RAW, LONG, VARCHAR, VARCHAR2
+
+set foreground = Green
+
+eolword = PROMPT
+
+set foreground = LightGray
+set fontattribute = italic
+
+multilinecomment = /*:*/
+eolcomment = "--"
+
+set fontattribute = normal
+
+pair = '"':'"', "'":"'"
+
+// --------------------
+// Pascal syntax highlight
+// Contributed by Peter Jespersen
+
+name = "Pascal"
+extensions = .pas, .inc
+
+set caseinsensitive = yes
+
+set foreground = Green
+set fontattribute = italic
+
+multilinecomment = {:}
+
+set fontattribute = normal
+
+set foreground = Blue
+
+keyword = break, case, do, else, for, goto, if, return, switch, while
+
+set requiresDelimEnd = no
+
+set foreground = Blue
+keyword = AND,ARRAY,ASM,BEGIN,BOOLEAN,BYTE,CASE,CHAR,COMP,CONSTRUCTOR,
+CONST,DESTRUCTOR,DIV,DOUBLE,DOWNTO,DO,ELSE,END,EXIT,EXTENDED,EXTERNAL,
+FALSE,FILE,FORWARD,FOR,FUNCTION,GOTO,IF,IMPLEMENTATION,INTEGER,
+INTERFACE,IN,LABEL,LONGINT,MOD,NIL,NOT,OBJECT,OF,OR,OTHERWISE,PACKED,
+PRIVATE,PROCEDURE,PROGRAM,REAL,RECORD,REPEAT,SEGMENT,SET,SHL,SHR,
+SHORTINT,SINGLE,STRING,THEN,TO,TRUE,TYPE,UNIT,UNTIL,USES,VAR,VIRTUAL,
+WHILE,WITH,WORD,XOR,PROGRAM,IF,THEN,TEXT
+
+set foreground = Red
+keyword = ABS,ARCTAN,CHR,COS,DISPOSE,EOF,EOLN,EXP,GET,LN,NEW,ODD,ORD,
+PACK,PAGE,PRED,PUT,READLN,READ,RESET,REWRITE,ROUND,SIN,SQRT,SUCC,TRUNC,
+UNPACK,WRITELN,WRITE,ClRSCR,GOTOXY,ASSIGN,CLOSE,DELETE
+
+set foreground = DarkRed
+keyword =
+"$",".",",",":=","@","(",")",".","=","*","+","-","/","[","]","#","<",">",
+":",";","{","}","^"
+
+set foreground = LightGray
+pair = "(":")"
+
+// --------------------------
+// PL/SQL Syntax highlighting
+
+name = "PL/SQL"
+
+extensions = .prc, .fnc
+
+set caseinsensitive = yes
+
+sections = "^[:s]*(FUNCTION|SUB)[:s]*([:i_]+)[^\\)]*\\)[:m:s]*IS[:s]*$", 2
+
+set foreground = Blue
+
+delimitors = "(),:;=*<>."
+
+keyword = ALL, AND, ANY, ARRAY, AS, ASC, AT, AUTHID, AVG, 
+          BETWEEN, BINARY_INTEGER, BODY, BULK, BY, 
+          CHAR_BASE, CHECK, CLOSE, CLUSTER, COLLECT, COMMENT, 
+          COMMIT, COMPRESS, CONNECT, CONSTANT, CURRENT, 
+          CURRVAL, CURSOR, DAY, DECLARE, DEFAULT, DESC, 
+          DISTINCT, EXCLUSIVE, 
+          EXECUTE, EXISTS, EXTENDS, FALSE, FETCH, FOR, 
+          FORALL, FROM, FUNCTION, GROUP, HAVING, HEAP, 
+          HOUR, IMMEDIATE, IN, INDEX, INDICATOR, 
+          INTERFACE, INTERSECT, INTERVAL, INTO, IS, ISOLATION, 
+          JAVA, LEVEL, LIKE, LIMITED, LOCK, LONG, MAX, MIN, 
+          MINUS, MINUTE, MLSLABEL, MOD, MODE, MONTH, NATURAL, 
+          NATURALN, NEW, NEXTVAL, NOCOPY, NOT, NOWAIT, 
+          NUMBER_BASE, OCIROWID, OF, ON, OPAQUE, OPEN, OPERATOR, 
+          OPTION, OR, ORDER, ORGANIZATION, OTHERS, OUT, PACKAGE, 
+          PARTITION, PCTFREE, PLS_INTEGER, POSITIVE, POSITIVEN, 
+          PRAGMA, PRIOR, PRIVATE, PROCEDURE, PUBLIC, RAISE, 
+          RANGE, RECORD, REF, RELEASE, REVERSE, 
+          ROLLBACK, ROW, ROWID, ROWNUM, ROWTYPE, SAVEPOINT, 
+          SECOND, SEPARATE, SET, SHARE, SPACE, SQL, 
+          SQLCODE, SQLERRM, START, STDDEV, SUBTYPE, SUCCESSFUL, 
+          SUM, SYNONYM, SYSDATE, TABLE, TIME, TIMESTAMP, 
+          TO, TRIGGER, TRUE, TYPE, UID, UNION, UNIQUE,
+          USE, USER, VALIDATE, VALUES, VARIANCE, VIEW, WHEN, 
+          WHENEVER, WHERE, WITH, WORK, WRITE, YEAR, ZONE
+
+set foreground = Blue
+
+keyword = BEGIN, DO, ELSE, ELSIF, END, EXIT, GOTO, IF, LOOP, RETURN, THEN
+
+set foreground = DarkBlue
+
+keyword = DELETE, ALTER, DROP, CREATE, INSERT, REPLACE, UPDATE, SELECT, 
+          WHILE
+
+set foreground = DarkRed
+
+keyword = NULL
+
+set foreground = Red
+
+keyword = CHAR, DATE, FLOAT, SMALLINT, NUMBER, RAW, LONG, VARCHAR, VARCHAR2, 
+          DECIMAL, REAL, INTEGER, STRING, EXCEPTION, BOOLEAN
+
+
+set foreground = LightGray
+set fontattribute = italic
+
+multilinecomment = /*:*/
+eolcomment = "--"
+
+set fontattribute = normal
+
+pair = '"':'"', "'":"'"
+
+// --------------------------
+// REXX Syntax highlighting
+
+name = "REXX"
+
+extensions = .cmd
+
+set caseinsensitive = yes
+
+set foreground = Blue
+
+delimitors = "(),:;=*<>."
+
+keyword = THEN, ELSE, END, WHEN, OTHERWISE, NOT, AND, OR, ADDRESS, ARG, 
+          CALL, DO, DROP, EXIT, FOREVER, IF, INTERPRET, ITERATE, LEAVE, 
+          NOP, NUMERIC, OPTIONS, PARSE, PROCEDURE, PULL, PUSH, QUEUE, 
+          RETURN, SAY, SELECT, SIGNAL, TRACE, ABBREV, ABS, ADDRESS, 
+          ARG, BEEP, BITAND, BITOR, BITXOR, B2X, CENTER, CENTRE, CHARIN, 
+          CHAROUT, CHARS, COMPARE, CONDITION, COPIES, C2D, C2X, DATATYPE, 
+          DATE, DELSTR, DELWORD, DIGITS, D2C, D2X, DIRECTORY, ERRORTEXT, 
+          ENDLOCAL, FILESPEC, FORM, FORMAT, FUZZ, INSERT, LASTPOS, LEFT, 
+          LENGTH, LINEIN, LINEOUT, LINES, MAX, MIN, OVERLAY, POS, QUEUED, 
+          RANDOM, REVERSE, RIGHT, RXFuncAdd, RXFuncDrop, RXFuncQuery, 
+          RXQueue, SETLOCAL, SIGN, SOURCELINE, SPACE, STREAM, STRIP, 
+          SUBSTR, SUBWORD, SYMBOL, TIME, TRACE, TRANSLATE, TRUNC, VALUE, 
+          VERIFY, WORD, WORDINDEX, WORDLENGTH, WORDPOS, WORDS, XRANGE, 
+          X2B, X2C, X2D, RxMessageBox, SysCls, SysCopyObject, 
+          SysCreateShadow, SysMoveObject, SysCreateObject, SysCurPos, 
+          SysCurState, SysDeregisterObjectClass, SysDestroyObject, 
+          SysDriveInfo, SysDriveMap, SysDropFuncs, SysFileDelete, 
+          SysFileTree, SysFileSearch, SysGetEA, SysGetKey, SysGetMessage, 
+          SysIni, SysMkDir, SysOpenObject, SysOS2Ver, SysPutEA, 
+          SysQueryClassList, SysRegisterObjectClass, SysRmDir, 
+          SysSaveObject, SysSearchPath, SysSetIcon, SysSetObjectData, 
+          SysSleep, SysTempFileName, SysTextScreenRead, SysTextScreenSize, 
+          SysWaitNamedPipe, SysWaitNamedPipe
+
+
+set foreground = LightGray
+set fontattribute = italic
+
+multilinecomment = /*:*/
+
+set fontattribute = normal
+
+pair = '"':'"', "'":"'"
+
+// --------------------
+// HTML syntax highlight
+
+name = "HTML"
+
+extensions = .htm, .html
+
+set caseinsensitive = yes
+
+literal = \
+
+set foreground = Blue
+set requiresDelimFront = no
+set requiresDelimEnd = yes
+
+delimitors = "<>/\"'"
+keyword = <A, <ABBR, <ACRONYM, <ADDRESS, <APPLET, <AREA, <B, <BASE, <BASEFONT, 
+          <BDO, <BIG, <BLOCKQUOTE, <BODY, <BR, <BUTTON, <CAPTION, <CENTER, <CITE, 
+          <CODE, <COL, <COLGROUP, <DD, <DEL, <DFN, <DIR, <DIV, <DL, <DT, <EM, 
+          <FIELDSET, <FONT, <FORM, <FRAME, <FRAMESET, <H1, <H2, <H3, <H4, <H5, <H6, 
+          <HEAD, <HR, <HTML, <I, <IFRAME, <IMG, <INPUT, <INS, <ISINDEX, <KBD, 
+          <LABEL, <LEGEND, <LI, <LINK, <MAP, <MENU, <META, <NOFRAMES, <NOSCRIPT, 
+          <OBJECT, <OL, <OPTGROUP, <OPTION, <P, <PARAM, <PRE, <Q, <S, <SAMP, 
+          <SCRIPT, <SELECT, <SMALL, <SPAN, <STRIKE, <STRONG, <STYLE, <SUB, 
+          <SUP, <TABLE, <TBODY, <TD, <TEXTAREA, <TFOOT, <TH, <THEAD, <TITLE, 
+          <TR, <TT, <U, <UL, <VAR
+
+set requiresDelimEnd = no
+
+keyword = </A>, </ABBR>, </ACRONYM>, </ADDRESS>, </APPLET>, </AREA>, </B>, </BASE>, </BASEFONT>, 
+          </BDO>, </BIG>, </BLOCKQUOTE>, </BODY>, </BR>, </BUTTON>, </CAPTION>, </CENTER, </CITE>, 
+          </CODE>, </COL>, </COLGROUP>, </DD>, </DEL>, </DFN>, </DIR>, </DIV>, </DL, </DT, </EM>, 
+          </FIELDSET>, </FONT>, </FORM>, </FRAME>, </FRAMESET>, </H1>, </H2>, </H3, </H4, </H5>, </H6>, 
+          </HEAD>, </HR>, </HTML>, </I>, </IFRAME>, </IMG>, </INPUT>, </INS>, </ISINDEX, </KBD>, 
+          </LABEL>, </LEGEND>, </LI>, </LINK>, </MAP>, </MENU>, </META>, </NOFRAMES>, </NOSCRIPT>, 
+          </OBJECT>, </OL>, </OPTGROUP>, </OPTION>, </P>, </PARAM>, </PRE>, </Q, </S, </SAMP>, 
+          </SCRIPT>, </SELECT>, </SMALL>, </SPAN>, </STRIKE>, </STRONG>, </STYLE>, </SUB>, 
+          </SUP>, </TABLE>, </TBODY>, </TD>, </TEXTAREA>, </TFOOT>, </TH>, </THEAD>, </TITLE>, 
+          </TR, </TT, </U, </UL, </VAR, <, </, >
+
+set foreground = LightGray
+set fontattribute = italic
+multilinecomment = <!--:-->
+set fontattribute = normal
+
+// --------------------
+// XSLT syntax highlight
+
+name = "XSLT"
+
+extensions = .xsl, .xslt
+
+set caseinsensitive = yes
+
+literal = \
+
+set foreground = Blue
+
+delimitors = "<>/\"'"
+
+keyword = "xsl:apply-imports", "xsl:apply-templates", "xsl:attribute", 
+          "xsl:attribute-set", "xsl:call-template", "xsl:choose", "xsl:comment", 
+					"xsl:copy", "xsl:copy-of", "xsl:decimal-format", "xsl:element", 
+					"xsl:fallback", "xsl:for-each", "xsl:if", "xsl:import", 
+					"xsl:include", "xsl:key", "xsl:message", "xsl:namespace-alias", 
+					"xsl:number", "xsl:otherwise", "xsl:output", "xsl:param", 
+					"xsl:preserve-space", "xsl:processing-instruction", "xsl:sort", 
+					"xsl:strip-space", "xsl:stylesheet", "xsl:template", "xsl:text", 
+					"xsl:value-of", "xsl:variable", "xsl:when", "xsl:with-param"
+
+set foreground = DarkBlue
+
+keyword = xsl
+
+set foreground = Green
+
+set requiresDelimFront = no
+set requiresDelimEnd = yes
+
+keyword = <A, <ABBR, <ACRONYM, <ADDRESS, <APPLET, <AREA, <B, <BASE, <BASEFONT, 
+          <BDO, <BIG, <BLOCKQUOTE, <BODY, <BR, <BUTTON, <CAPTION, <CENTER, <CITE, 
+          <CODE, <COL, <COLGROUP, <DD, <DEL, <DFN, <DIR, <DIV, <DL, <DT, <EM, 
+          <FIELDSET, <FONT, <FORM, <FRAME, <FRAMESET, <H1, <H2, <H3, <H4, <H5, <H6, 
+          <HEAD, <HR, <HTML, <I, <IFRAME, <IMG, <INPUT, <INS, <ISINDEX, <KBD, 
+          <LABEL, <LEGEND, <LI, <LINK, <MAP, <MENU, <META, <NOFRAMES, <NOSCRIPT, 
+          <OBJECT, <OL, <OPTGROUP, <OPTION, <P, <PARAM, <PRE, <Q, <S, <SAMP, 
+          <SCRIPT, <SELECT, <SMALL, <SPAN, <STRIKE, <STRONG, <STYLE, <SUB, 
+          <SUP, <TABLE, <TBODY, <TD, <TEXTAREA, <TFOOT, <TH, <THEAD, <TITLE, 
+          <TR, <TT, <U, <UL, <VAR
+
+set requiresDelimEnd = no
+
+keyword = </A>, </ABBR>, </ACRONYM>, </ADDRESS>, </APPLET>, </AREA>, </B>, </BASE>, </BASEFONT>, 
+          </BDO>, </BIG>, </BLOCKQUOTE>, </BODY>, </BR>, </BUTTON>, </CAPTION>, </CENTER, </CITE>, 
+          </CODE>, </COL>, </COLGROUP>, </DD>, </DEL>, </DFN>, </DIR>, </DIV>, </DL, </DT, </EM>, 
+          </FIELDSET>, </FONT>, </FORM>, </FRAME>, </FRAMESET>, </H1>, </H2>, </H3, </H4, </H5>, </H6>, 
+          </HEAD>, </HR>, </HTML>, </I>, </IFRAME>, </IMG>, </INPUT>, </INS>, </ISINDEX, </KBD>, 
+          </LABEL>, </LEGEND>, </LI>, </LINK>, </MAP>, </MENU>, </META>, </NOFRAMES>, </NOSCRIPT>, 
+          </OBJECT>, </OL>, </OPTGROUP>, </OPTION>, </P>, </PARAM>, </PRE>, </Q, </S, </SAMP>, 
+          </SCRIPT>, </SELECT>, </SMALL>, </SPAN>, </STRIKE>, </STRONG>, </STYLE>, </SUB>, 
+          </SUP>, </TABLE>, </TBODY>, </TD>, </TEXTAREA>, </TFOOT>, </TH>, </THEAD>, </TITLE>, 
+          </TR, </TT, </U, </UL, </VAR, <, </, >
+
+set foreground = LightGray
+set fontattribute = italic
+multilinecomment = <!--:-->
+set fontattribute = normal
+
+// --------------------
+// XML syntax highlight
+
+name = "XML"
+
+extensions = .xml
+
+set caseinsensitive = yes
+
+literal = \
+
+set foreground = Blue
+
+delimitors = "<>/\"'"
+
+set foreground = Blue
+
+set requiresDelimFront = no
+set requiresDelimEnd = no
+
+grep = "(<[^ >?]+>)", "(</[^ >?]+>)", "(<[^ >?]+):s[^>]*(>)"
+// Catch at least the XML tag if the tag contains a line break
+grep = "(<[^ >?]+:s)"
+
+set foreground = Cyan
+
+grep = "<[^ >]+(:s[^>]*)>"
+
+set foreground = Red
+
+grep = "(<?[^ >]+>)", "(</?[^ >]+>)", "(<?[^ >]+):s[^>]*(>)"
+
+set foreground = LightGray
+set fontattribute = italic
+multilinecomment = <!--:-->
+set fontattribute = normal
+
+// --------------------
+// Visual Basic syntax highlight
+
+name = "Visual Basic"
+extensions = .bas, .vb
+
+set caseinsensitive = yes
+
+sections = "$[^'\\x0a]*(Sub|Function|Property)[:s]+([:i_])+", 2
+
+literal = \
+
+set foreground = Blue
+
+keyword = AddressOf, Alias, And, AndAlso, Ansi, As, Assembly, Binary, Boolean,
+          ByRef, Byte, ByVal, Call, Case, Catch, Char, Class, Compare, Const,
+          CType, Date, Decimal, Declare, Dim, DirectCast, Do, Double, Each,
+          Else, ElseIf, End, Enum, Error, Event, Exit, Explicit, False, Finally,
+          For, Friend, Function, Get, GetType, GoTo, If, Implements, Imports,
+          In, Inherits, Integer, Is, IsNot, Let, Lib, Long, Loop, Me, Module,
+          MyBase, Namespace, New, Next, Not, Nothing, Object, Off, On, Option,
+          Optional, Or, OrElse, Overloads, Overridable, Overrides, Private,
+          Private, Property, Protected, Public, RaiseEvent, ReadOnly, ReDim,
+          Region, Resume, Return, Select, Set, Shadows, Shared, Short, Single,
+          Strict, String, Structure, Sub, Text, Then, Throw, To, True, Try,
+          TypeOf, Unicode, When, While, With, WithEvents, WriteOnly
+
+set requiresDelim = no
+set foreground = Cyan
+pair = '"':'"'
+
+set foreground = Green
+eolcomment = "'"
+set foreground = LightGray
+grep = "^(<[^>]+>)" // Attributes
+eolword = #region, #end

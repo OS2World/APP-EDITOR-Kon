@@ -1,0 +1,1872 @@
+#include "bowl.h"
+#include "ctrlwin.h"
+#include "kerrcoll.h"
+
+#if !defined WM_MOUSEWHEEL
+#define WM_MOUSEWHEEL                   0x020A
+#define GET_WHEEL_DELTA_WPARAM(wParam)  ((short)HIWORD(wParam))
+#define SPI_GETWHEELSCROLLLINES    0x0068
+#endif
+
+BOOL Window::baseClassRegistered = FALSE;
+BOOL FrameWindow::fbaseClassRegistered = FALSE;
+
+BOOL Window::W2K_SetForegroundWindow (HWND hWndToForce)
+{
+  HWND hCurrWnd;
+  int iMyTID;
+  int iCurrTID;
+  BOOL bRetVal;
+
+  if( IsIconic( hWndToForce ) )
+  	ShowWindow( hWndToForce, SW_RESTORE );
+	else
+  	ShowWindow( hWndToForce, SW_SHOW );
+
+  hCurrWnd = GetForegroundWindow ();
+  iMyTID   = GetCurrentThreadId ();
+  iCurrTID = GetWindowThreadProcessId (hCurrWnd,0);
+
+  // Connect to the current process.
+  AttachThreadInput (iMyTID, iCurrTID, TRUE);
+
+  // Now we look like the foreground process, we can set the
+  // foreground window.
+  bRetVal = SetForegroundWindow (hWndToForce);
+
+  // Now detach.
+  AttachThreadInput (iMyTID, iCurrTID, FALSE);
+  return bRetVal;
+}
+
+Desktop * Desktop::pDesktop = new Desktop();
+
+int Scrollbar::PAGERIGHT = -1;
+int Scrollbar::PAGELEFT = -2;
+int Scrollbar::LINERIGHT = -3;
+int Scrollbar::LINELEFT = -4;
+int Scrollbar::PAGEUP = -5;
+int Scrollbar::PAGEDOWN = -6;
+int Scrollbar::LINEUP = -7;
+int Scrollbar::LINEDOWN = -8;
+int Scrollbar::HORZRELEASED = -9;
+int Scrollbar::VERTRELEASED = -12;
+int Scrollbar::HORZTRACK = -10;
+int Scrollbar::VERTTRACK = -11;
+
+int Label::LEFT = 8192;
+int Label::CENTER = 16384;
+int Label::RIGHT = 32768;
+
+int SComboBox::STATIC = 32768;
+
+int PopupMessage::error = 1;
+int PopupMessage::warning = 2;
+int PopupMessage::message = 3;
+int PopupMessage::query = 4;
+int PopupMessage::ok = 5;
+int PopupMessage::cancel = 6;
+int PopupMessage::yes = 7;
+int PopupMessage::no = 8;
+int PopupMessage::querywithwarning = 9;
+int PopupMessage::querywithwarningNoCancel = 10;
+
+LRESULT APIENTRY WndProc( HWND hWnd, UINT iMessage,
+                          WPARAM mParam1, LPARAM mParam2)
+{
+	Window *pWindow = (Window *)GetWindowLong( hWnd, GWL_USERDATA );
+
+	if (pWindow == 0) {
+		if (iMessage == WM_CREATE) {
+			pWindow = (Window *)Application::tempthis;
+			SetWindowLong(hWnd,GWL_USERDATA,(ULONG)pWindow);
+			return pWindow->wndProc(hWnd,iMessage,mParam1,mParam2);
+		} else
+			return DefWindowProc(hWnd,iMessage,mParam1,mParam2);
+	} else
+		return pWindow->wndProc(hWnd,iMessage,mParam1,mParam2);
+
+/*  if( pWindow->killMe )
+  {
+    pWindow->killMe = FALSE;
+    PostMessage( ControllerWindow::getInstance()->getHWND(), WM_USER+1, (WPARAM)4, (LPARAM)pWindow );
+  }
+
+  return res;*/
+}
+
+void Window::registerBaseClass()
+{
+	strcpy( className, "KONWINDOWBASECLASS" );
+
+	currentPointer = LoadCursor( NULL, IDC_ARROW );
+
+	if(!baseClassRegistered )
+	{
+		baseClassRegistered = TRUE;
+
+		WNDCLASS wndClass;
+
+//			itoa( id, className, 10);
+
+		wndClass.style = CS_DBLCLKS | CS_HREDRAW | CS_VREDRAW;
+		wndClass.lpfnWndProc = WndProc;
+		wndClass.cbClsExtra = 4;
+		wndClass.cbWndExtra = 0;
+		wndClass.hInstance = Application::hInstance;
+		wndClass.hIcon = NULL;
+		wndClass.hCursor = NULL;//currentPointer;
+		wndClass.hbrBackground = (HBRUSH)COLOR_APPWORKSPACE;
+		wndClass.lpszMenuName = NULL;
+		wndClass.lpszClassName = className;
+
+		ATOM atom = RegisterClass( &wndClass );
+
+		if( !atom )
+			exit( 1 );
+	}
+}
+
+void Window::createWindow( Window *parent, char *text, char *windowClass,
+                           Window *behind, ULONG windowStyle, int x, int y,
+                           int width, int height )
+{
+  char *wClass;
+
+  graphics = NULL;
+  
+  if( windowStyle & WS_POPUP && windowStyle & WS_CHILD )
+    windowStyle ^= WS_CHILD;
+
+  mouseButtonDown = FALSE;
+
+  this->parent = parent;
+  if( parent->getType() == DIALOG )
+  	behind = (Window *)parent->getLastControl();
+	else
+  	behind = NULL;
+
+  type = WINDOW;
+  this->id = Iterator::getNext();
+
+  Application::tempthis = this;
+
+  oldWndProc = NULL;
+
+  //ATOM atom;
+
+  if( windowClass == 0L )
+  {
+		registerBaseClass();
+    wClass = className;
+  }
+  else
+  {
+    currentPointer = NULL;
+    wClass = windowClass;
+		strcpy( className, "" );
+  }
+
+  hWndFrame = NULL;
+
+  char *tilde = strchr( text, '~' );
+
+  if( tilde )
+    *tilde = '&';
+
+	isPopup = (windowStyle & WS_POPUP);
+
+  hWndFrame = hWndClient = CreateWindow( wClass, text, windowStyle|WS_CLIPSIBLINGS|WS_CLIPCHILDREN, x, parent->getClientHeight()-(height+y),
+                                         width, height, parent->getHWND(), (windowClass != 0L && !(windowStyle & WS_POPUP) ) ? (HMENU)id : NULL,
+                                         Application::hInstance, NULL );
+
+
+//	if( behind != NULL )
+//  	SetWindowPos( behind->getHWND(), hWndFrame, 0, 0, 0, 0, SWP_NOMOVE|SWP_NOSIZE);
+
+  if( tilde )
+    *tilde = '~';
+
+  // Subclass window
+
+  if( wClass == windowClass )
+  {
+	  SetWindowLong(hWndFrame, GWL_USERDATA, (ULONG)this);
+  	oldWndProc = (WNDPROC)SetWindowLong(hWndFrame, GWL_WNDPROC, (LONG)WndProc);
+  }
+
+  RECT rect;
+
+  GetClientRect( hWndClient, &rect );
+
+  graphics = new Graphics( hWndClient, rect.right - rect.left, rect.bottom - rect.top );
+
+  graphics->setDialogFont();
+  SendMessage( hWndFrame, WM_SETFONT, (WPARAM)graphics->getCurrentFontHandle(), MAKELPARAM( TRUE, 0 ) );
+}
+
+ULONG Window::xlatProperties( ULONG properties )
+{
+  ULONG windowStyle = 0;
+
+  if( properties & ISTABSTOP )
+    windowStyle |= WS_TABSTOP;
+
+  if( properties & NOADJUSTSIZE )
+    windowStyle |= LBS_NOINTEGRALHEIGHT;
+
+  if( properties & NEWGROUP )
+    windowStyle |= WS_GROUP;
+
+  if( properties & MULTIPLESEL )
+    windowStyle |= LBS_MULTIPLESEL;
+
+/*  if( properties & ISDEFAULT )
+    windowStyle |= BS_DEFPUSHBUTTON;
+*/
+/*  if( properties & SYNCPAINT )
+    windowStyle |= WS_SYNCPAINT;*/
+
+  if( properties & CLIPSIBLINGS )
+    windowStyle |= WS_CLIPSIBLINGS;
+
+  if( properties & POPUP )
+    windowStyle |= WS_POPUP;
+	else
+    windowStyle |= WS_CHILD;
+
+	setDialogFilter( properties );
+
+  return windowStyle;
+}
+
+void Window::deleteMe()
+{
+//  killMe = TRUE;
+  PostMessage( ControllerWindow::getInstance()->getHWND(), WM_USER+1, (WPARAM)4, (LPARAM)this );
+  // Send a message get into the WndProc in case this method was called from
+  // a thread
+//  PostMessage( hWndFrame, WM_USER+100, NULL, NULL );
+}
+
+BOOL Window::hasParentAtLevel( Window *window, int level )
+{
+	Window *rparent = (Window *)window->getParent();
+
+	while( rparent != Desktop::getInstance() && --level > 0 )
+		rparent = (Window *)rparent->getParent();
+	return (level == 0);
+}
+
+void Window::getCursorPos( int &x, int &y )
+{
+  POINT ptl;
+  GetCursorPos( &ptl );
+  ScreenToClient( hWndClient, &ptl );
+  x = ptl.x;
+  y = height - ptl.y - 1;
+}
+
+void Window::acceptDrop( BOOL accept )
+{
+	DragAcceptFiles( hWndClient, accept );
+}
+
+LRESULT Window::stdWndProc( HWND hWnd, UINT iMessage, WPARAM wParam,
+                            LPARAM lParam, BOOL *returned )
+{
+  switch( iMessage )
+  {
+    case WM_USER + 10 : hideCursor(); break;
+    case WM_USER + 11 :
+    {
+		  ScrollWindowEx( hWndClient, 0, wParam, (RECT *)lParam, (RECT *)lParam, NULL,
+                   NULL, SW_INVALIDATE|SW_SCROLLCHILDREN );
+    	break;
+    }
+    case WM_USER + 12 :
+    {
+		  ScrollWindowEx( hWndClient, wParam, 0, (RECT *)lParam, (RECT *)lParam, NULL,
+                   NULL, SW_INVALIDATE|SW_SCROLLCHILDREN );
+    	break;
+    }
+    case WM_USER + 30 :
+    {
+    	return execFromMainThread( 30, NULL );
+    }
+  	case WM_COPYDATA :
+  	{
+  		dataReceived( (char *)((PCOPYDATASTRUCT)lParam)->lpData );
+  		return (LRESULT)TRUE;
+  		break;
+  	}
+  	case WM_FONTCHANGE :
+    {
+    	Graphics::reEnumerateFonts(); // Reenumerate fonts on next getFonts()
+    	break;
+    }
+    case WM_MOUSEACTIVATE : if( !isEnabled ) return MA_NOACTIVATEANDEAT; break;
+    case WM_ENABLE : isEnabled = (BOOL)wParam; break;
+    case WM_KILLFOCUS :
+    {
+      if( type != Window::LISTBOX /*&&
+          type != Window::COMBOLISTBOX*/ )
+      {
+        focus( FALSE );
+        focusSet( FALSE );
+      }
+      break;
+    }
+    case WM_SETFOCUS :
+    {
+      int focusChanged = 0;
+      if( type != Window::LISTBOX /*&&
+          type != Window::COMBOLISTBOX*/ )
+      {
+        focusChanged = focus( TRUE );
+        focusSet( TRUE );
+      }
+      if( focusChanged ) return 0;
+      break;
+    }
+    case WM_LBUTTONDOWN :
+    {
+    	BOOL ret = FALSE;
+      click = 0;
+      if( type == SCROLLBAR )
+        setFocus();
+
+      if( mouseListener.getSize() != 0 )
+      {
+				// Check if triple click
+
+				int newTick = GetTickCount();
+				if( newTick - lastTick <= GetDoubleClickTime() )
+				{
+	        Point pos( LOWORD(lParam), getClientHeight() - HIWORD(lParam) - 1 );
+		      ret = performMouseEvent( &pos, AMouseEvent::LEFT, AMouseEvent::TRIPLECLICK );
+					click = 4;	// Do not perform click on release
+	        if( ret ) 
+						return 0;
+					else
+						break;
+				}
+				else				
+		  		SetTimer( hWnd, 1, 50, NULL );
+
+        mouseButtonDown = TRUE;
+        SetCapture( hWnd );
+        Point pos( LOWORD(lParam), getClientHeight() - HIWORD(lParam) - 1 );
+        ret = (performMouseEvent( &pos, AMouseEvent::LEFT, AMouseEvent::DOWN )) ? TRUE : ret;
+        if( ret ) return 0;
+        break;
+      }
+      break;
+    }
+    case WM_LBUTTONUP :
+    {
+      if( type == LISTBOX ||
+          type == COMBOLISTBOX )
+      {
+        performFocusEvent(
+          (int)SendMessage( (HWND)hWnd, LB_GETCURSEL, WPARAM(0), LPARAM(NULL) ) );
+      }
+
+      if( mouseListener.getSize() != 0 )
+      {
+      	BOOL ret = FALSE;
+        mouseButtonDown = FALSE;
+        KillTimer( hWnd, 1 );
+        ReleaseCapture();
+        Point pos( LOWORD(lParam), getClientHeight() - HIWORD(lParam) - 1 );
+        if( click < 3 )
+          ret = performMouseEvent( &pos, AMouseEvent::LEFT, AMouseEvent::CLICK );
+        ret = (performMouseEvent( &pos, AMouseEvent::LEFT, AMouseEvent::RELEASE )) ? TRUE : ret;
+        if( ret )
+        	return 0;
+        break;
+      }
+      break;
+    }
+    case WM_RBUTTONDOWN :
+    {
+      click = 0;
+      if( mouseListener.getSize() != 0 )
+      {
+        mouseButtonDown = TRUE;
+        SetCapture( hWnd );
+	  		SetTimer( hWnd, 1, 50, NULL );
+        Point pos( LOWORD(lParam), getClientHeight() - HIWORD(lParam)  - 1 );
+        if( performMouseEvent( &pos, AMouseEvent::RIGHT, AMouseEvent::DOWN ) )
+        	return 0;
+      }
+      break;
+    }
+    case WM_RBUTTONUP :
+    {
+      if( mouseListener.getSize() != 0 )
+      {
+        mouseButtonDown = FALSE;
+        KillTimer( hWnd, 1 );
+        ReleaseCapture();
+        Point pos( LOWORD(lParam), getClientHeight() - HIWORD(lParam) - 1 );
+        performMouseEvent( &pos, AMouseEvent::RIGHT, AMouseEvent::RELEASE );
+        if( click < 3 )
+         	if( performMouseEvent( &pos, AMouseEvent::RIGHT, AMouseEvent::CLICK ) )
+		        return 0;
+      }
+      break;
+    }
+    case WM_LBUTTONDBLCLK :
+    {
+			BOOL ret = FALSE;
+      if( mouseListener.getSize() != 0 )
+      {
+				click = 4;
+        Point pos( LOWORD(lParam), getClientHeight() - HIWORD(lParam) - 1 );
+        ret = performMouseEvent( &pos, AMouseEvent::LEFT, AMouseEvent::DOUBLECLICK );
+      }
+			lastTick = GetTickCount();
+			if( ret ) return 0;
+      break;
+    }
+    case WM_RBUTTONDBLCLK :
+    {
+      if( mouseListener.getSize() != 0 )
+      {
+        Point pos( LOWORD(lParam), getClientHeight() - HIWORD(lParam) - 1 );
+        performMouseEvent( &pos, AMouseEvent::RIGHT, AMouseEvent::DOUBLECLICK );
+      }
+      break;
+    }
+    case WM_MOUSEMOVE :
+    {
+      if( currentPointer != NULL )
+        SetCursor( currentPointer );
+      if( mouseListener.getSize() != 0 )
+      {
+        Point pos( (short int)LOWORD(lParam), getClientHeight() - (short int)HIWORD(lParam) - 1 );
+        performMouseEvent( &pos, 0, AMouseEvent::MOVE );
+        return (LPARAM)TRUE;
+      }
+      break;
+    }
+    case WM_MOUSEWHEEL :
+    {
+      if( mouseListener.getSize() != 0 )
+      {
+        UINT lines;
+        SystemParametersInfo( SPI_GETWHEELSCROLLLINES, 0, &lines, 0 );
+        Point pos( 0, (GET_WHEEL_DELTA_WPARAM(wParam) / 120) * lines);
+        return (LPARAM)!performMouseEvent( &pos, 0, AMouseEvent::WHEEL );
+      }
+      break;
+    }
+    case WM_TIMER :
+    {
+      if( mouseButtonDown )
+      {
+        click++;
+        POINT ptl;
+        GetCursorPos( &ptl );
+        ScreenToClient( hWnd, &ptl );
+
+        if( ptl.y < 0 || ptl.y > height )
+        {
+          Point pos( ptl.x, height - ptl.y - 1 );
+          performMouseEvent( &pos, 0, AMouseEvent::MOVE );
+        }
+      }
+      break;
+    }
+    case WM_SIZE :
+    {
+      if( hWnd != hWndFrame || type == SCOMBOBOX ) break;
+
+      RECT rect;
+      int oldWidth = width, oldHeight = height;
+
+      GetWindowRect( hWndFrame, &rect );
+
+      width = rect.right - rect.left;
+      height = rect.bottom - rect.top;
+
+      if( oldWidth == width && oldHeight == height ) break;
+
+/*      POINT pnt;
+
+      pnt.x = rect.left;
+      pnt.y = rect.bottom;
+
+      MapWindowPoints( HWND_DESKTOP, ((Window *)parent)->getHWND(), &pnt, 1 );
+
+      x = pnt.x;
+      y = parent->getHeight() - pnt.y;
+*/
+      if( graphics != NULL )
+      {
+        graphics->setWidth( width );
+        graphics->setHeight( height );
+      }
+
+      if( hWndClient != hWndFrame && hWndClient != NULL )
+      {
+        int cWidth = LOWORD( lParam ), cHeight = HIWORD( lParam );
+        GetClientRect( hWnd, &rect );
+        SetWindowPos( hWndClient, HWND_TOP, rect.left, rect.top, cWidth, cHeight,
+                      SWP_NOZORDER | SWP_NOACTIVATE );
+        graphics->setHeight( cWidth );
+        graphics->setWidth( cHeight );
+      }
+      size( oldWidth, oldHeight );
+      break;
+    }
+    case WM_HSCROLL :
+    {
+      if( type == LISTBOX || type == COMBOLISTBOX ) break;
+      int id = GetWindowLong( (HWND)lParam, GWL_ID );
+      switch( LOWORD( wParam ) )
+      {
+        case SB_PAGERIGHT :
+        {
+          performScrollbarEvent( id, Scrollbar::PAGERIGHT,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_PAGELEFT :
+        {
+          performScrollbarEvent( id, Scrollbar::PAGELEFT,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_LINERIGHT :
+        {
+          performScrollbarEvent( id, Scrollbar::LINERIGHT,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_LINELEFT :
+        {
+          performScrollbarEvent( id, Scrollbar::LINELEFT,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_THUMBTRACK :
+        {
+          performScrollbarEvent( id, Scrollbar::HORZTRACK,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_THUMBPOSITION :
+        {
+          performScrollbarEvent( id,
+                                 Scrollbar::HORZRELEASED,
+                                 HIWORD( wParam ) );
+          break;
+        }
+      }
+      return 0;
+    }
+    case WM_VSCROLL :
+    {
+      if( type == LISTBOX || type == COMBOLISTBOX ) break;
+      int id = GetWindowLong( (HWND)lParam, GWL_ID );
+      switch( LOWORD( wParam ) )
+      {
+        case SB_PAGEDOWN :
+        {
+          performScrollbarEvent( id, Scrollbar::PAGEDOWN,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_PAGEUP :
+        {
+          performScrollbarEvent( id, Scrollbar::PAGEUP,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_LINEDOWN :
+        {
+          performScrollbarEvent( id, Scrollbar::LINEDOWN,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_LINEUP :
+        {
+          performScrollbarEvent( id, Scrollbar::LINEUP,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_THUMBTRACK :
+        {
+          performScrollbarEvent( id, Scrollbar::VERTTRACK,
+                                 HIWORD( wParam ) );
+          break;
+        }
+        case SB_THUMBPOSITION :
+        {
+          performScrollbarEvent( id,
+                                 Scrollbar::VERTRELEASED,
+                                 HIWORD( wParam ) );
+          break;
+        }
+      }
+      return 0;
+    }
+    case WM_CLOSE :
+    {
+      if( close() )
+        deleteMe();
+      return 0;
+    }
+    case WM_COMMAND :
+    {
+      Window *control = (Window *)getControl( LOWORD(wParam) );
+      if( control != NULL )
+      {
+        if( control->type == PUSHBUTTON )
+        {
+          control->performButtonEvent( control, control->id );
+          return FALSE;
+        }
+        else
+        if( control->type == Window::LISTBOX ||
+            control->type == Window::COMBOLISTBOX )
+        {
+          switch( HIWORD(wParam) )
+          {
+            case LBN_KILLFOCUS : control->focus( FALSE ); break;
+            case LBN_SETFOCUS : control->setFocus(); break;
+            case LBN_DBLCLK :
+              control->performSelectionEvent(
+                (int)SendMessage( (HWND)lParam, LB_GETCURSEL, WPARAM(0), LPARAM(0) ) );
+              break;
+          }
+        }
+/*        else
+        if( control->type == Window::SCROLLBAR )
+        {
+          switch( HIWORD(mParam1) )
+          {
+            case SLN_KILLFOCUS : control->focus( FALSE ); break;
+            case SLN_SETFOCUS : control->setFocus(); break;
+          }
+        }*/
+        else
+        if( control->type == Window::RADIOBUTTON ||
+            control->type == Window::CHECKBOX )
+        {
+          switch( HIWORD( wParam ) )
+          {
+            case BN_CLICKED :
+            case BN_DBLCLK :
+              control->performButtonEvent( control, control->id );
+              break;
+          }
+        }
+      }
+      else
+      {
+        // A menu selection?
+
+        if( HIWORD( wParam ) == 0 || HIWORD( wParam ) == 1 )  // Menu (or accelerator) selection
+          performMenuEvent( LOWORD(wParam) );
+        break;
+      }
+      break;
+    }
+    case WM_SYSKEYUP :
+    case WM_KEYUP :
+    {
+      if( type == LISTBOX )
+      {
+      	int selected = (int)SendMessage( (HWND)hWnd, LB_GETCURSEL, WPARAM(0), LPARAM(NULL) );
+        if( selected != LB_ERR )
+        	performFocusEvent( selected );
+      }
+      break;
+		}
+    case WM_SYSKEYDOWN :
+    case WM_KEYDOWN :
+    {
+/*      if( !((getType() == INTERNALENTRYFIELD || getType() == ENTRYFIELD) &&
+          (wParam == VK_LEFT || wParam == VK_RIGHT || 
+           wParam == VK_UP || wParam == VK_DOWN) ||
+           (getType() == LISTBOX || getType() == COMBOLISTBOX) &&
+          (wParam == VK_UP || wParam == VK_DOWN)) )
+      {
+      	BOOL res = TRUE;
+        if( parent->getType() == DIALOG )
+          res = ((Dialog *)parent)->handleKEYDOWN( ((Window *)parent)->getHWND(), iMessage, wParam, lParam );
+        else
+        if( getType() == INTERNALENTRYFIELD && parent->getParent()->getType() == DIALOG )
+          res = ((Dialog *)parent->getParent())->handleKEYDOWN( ((Window *)parent->getParent())->getHWND(), iMessage, wParam, lParam );
+        else
+        if( getType() == INTERNALENTRYFIELD && parent->getParent()->getType() == COMBOBOX &&
+            parent->getParent()->getParent()->getType() == DIALOG )
+          res = ((Dialog *)parent->getParent()->getParent())->handleKEYDOWN( ((Window *)parent->getParent()->getParent())->getHWND(), iMessage, wParam, lParam );
+
+        if( !res ) return FALSE;
+      }*/
+
+      if( !(getFilterDialogArrows() &&
+          (wParam == VK_LEFT || wParam == VK_RIGHT || 
+           wParam == VK_UP || wParam == VK_DOWN)/* ||
+           (getType() == LISTBOX || getType() == COMBOLISTBOX) &&
+          (wParam == VK_UP || wParam == VK_DOWN)*/) 
+           /*&& getType() != SCOMBOBOX*/ )
+      {
+      	BOOL res = TRUE;
+        if( parent->getType() == DIALOG )
+          res = ((Dialog *)parent)->handleKEYDOWN( ((Window *)parent)->getHWND(), iMessage, wParam, lParam );
+        else
+        if( getPassDialogKeys() && hasParentAtLevel( this, 2 ) &&
+				    parent->getParent()->getType() == DIALOG )
+          res = ((Dialog *)parent->getParent())->handleKEYDOWN( ((Window *)parent->getParent())->getHWND(), iMessage, wParam, lParam );
+        else
+        if( getPassDialogKeys() && hasParentAtLevel( this, 3 ) &&
+				    parent->getParent()->getPassDialogKeys() &&
+            parent->getParent()->getParent()->getType() == DIALOG )
+          res = ((Dialog *)parent->getParent()->getParent())->handleKEYDOWN( ((Window *)parent->getParent()->getParent())->getHWND(), iMessage, wParam, lParam );
+
+        if( !res ) return FALSE;
+      }
+
+      int modifiers = 0;
+
+      if( GetKeyState( VK_SHIFT ) & 0x80 )
+        modifiers |= KeyDef::SHIFT;
+
+      if( GetKeyState( VK_CONTROL ) & 0x80 )
+        modifiers |= KeyDef::CTRL;
+
+      if( GetKeyState( VK_MENU ) & 0x80 )
+        modifiers |= KeyDef::kALT;
+
+      int key = 0;
+
+      switch( wParam )
+      {
+        case VK_UP : key = KeyDef::UP; break;
+        case VK_DOWN : key = KeyDef::DOWN; break;
+        case VK_LEFT : key = KeyDef::LEFT; break;
+        case VK_RIGHT : key = KeyDef::RIGHT; break;
+        case VK_PRIOR : key = KeyDef::PAGEUP; break;
+        case VK_NEXT : key = KeyDef::PAGEDOWN; break;
+        case VK_INSERT : key = KeyDef::INSERT; break;
+        case VK_DELETE : key = KeyDef::kDELETE; break;
+        case VK_HOME : key = KeyDef::HOME; break;
+        case VK_END : key = KeyDef::END; break;
+        case VK_ESCAPE : key = KeyDef::ESCAPE; break;
+        case VK_F1 : key = KeyDef::F1; break;
+        case VK_F2 : key = KeyDef::F2; break;
+        case VK_F3 : key = KeyDef::F3; break;
+        case VK_F4 : key = KeyDef::F4; break;
+        case VK_F5 : key = KeyDef::F5; break;
+        case VK_F6 : key = KeyDef::F6; break;
+        case VK_F7 : key = KeyDef::F7; break;
+        case VK_F8 : key = KeyDef::F8; break;
+        case VK_F9 : key = KeyDef::F9; break;
+        case VK_F10 : key = KeyDef::F10; break;
+        case VK_F11 : key = KeyDef::F11; break;
+        case VK_F12 : key = KeyDef::F12; break;
+      }
+
+      if( key != 0 )
+        if( performKeyEvent( this, modifiers, key ) ) return FALSE;
+
+/*      if( (getFilterDialogArrows() &&
+          (wParam == VK_LEFT || wParam == VK_RIGHT || 
+           wParam == VK_UP || wParam == VK_DOWN) ) )
+			{
+				return FALSE;
+			}*/
+      break;
+    }
+    case WM_SYSCHAR :
+    case WM_CHAR :
+    {
+      if( type == LISTBOX )
+      {
+      	int selected = (int)SendMessage( (HWND)hWnd, LB_GETCURSEL, WPARAM(0), LPARAM(NULL) );
+        if( selected != LB_ERR )
+        	performFocusEvent( selected );
+      }
+
+    	BOOL res = TRUE;
+
+/*      if( parent->getType() == DIALOG )
+         res = ((Dialog *)parent)->handleCHAR( ((Window *)parent)->getHWND(), iMessage, wParam, lParam );
+      else
+      if( getType() == INTERNALENTRYFIELD && parent->getParent()->getType() == DIALOG )
+         res = ((Dialog *)parent->getParent())->handleCHAR( ((Window *)parent->getParent())->getHWND(), iMessage, wParam, lParam );
+      else
+      if( getType() == INTERNALENTRYFIELD && parent->getParent()->getType() == COMBOBOX &&
+          parent->getParent()->getParent()->getType() == DIALOG )
+         res = ((Dialog *)parent->getParent()->getParent())->handleCHAR( ((Window *)parent->getParent()->getParent())->getHWND(), iMessage, wParam, lParam );*/
+
+      if( parent->getType() == DIALOG )
+         res = ((Dialog *)parent)->handleCHAR( ((Window *)parent)->getHWND(), iMessage, wParam, lParam );
+      else
+      if( getPassDialogKeys() && 
+			   hasParentAtLevel( this, 2 ) &&
+			   parent->getParent()->getType() == DIALOG )
+         res = ((Dialog *)parent->getParent())->handleCHAR( ((Window *)parent->getParent())->getHWND(), iMessage, wParam, lParam );
+      else
+      if( getPassDialogKeys() && 
+			    hasParentAtLevel( this, 3 ) &&
+			    parent->getParent()->getPassDialogKeys() &&
+          parent->getParent()->getParent()->getType() == DIALOG )
+         res = ((Dialog *)parent->getParent()->getParent())->handleCHAR( ((Window *)parent->getParent()->getParent())->getHWND(), iMessage, wParam, lParam );
+
+			if( !res ) return FALSE;
+
+      if( parent->getType() == DIALOG && type != SCOMBOBOX )
+      	((Dialog *)parent)->focusHotkey( (int)wParam );
+
+      int key = (int)wParam;
+      int modifiers = 0;
+
+      if( GetKeyState( VK_SHIFT ) & 0x80 )
+        modifiers |= KeyDef::SHIFT;
+
+      if( GetKeyState( VK_CONTROL ) & 0x80 )
+      {
+        if( key <= 'Z' - 'A' + 1 )
+          key += 'A' - 1;
+        modifiers |= KeyDef::CTRL;
+      }
+
+      if( GetKeyState( VK_MENU ) & 0x80 )
+			{
+				if( !(modifiers & KeyDef::CTRL) )
+					modifiers |= KeyDef::kALT;
+			}
+
+      switch( key )
+      {
+        case 0x08 : key = KeyDef::BACKSPACE;break;
+        case 0x0d : key = KeyDef::RETURN; break;
+        case 0x09 : key = KeyDef::TAB; break;
+        case 0x20 : key = KeyDef::SPACE; break;
+      }
+
+/*			FILE *f = fopen( "key", "a" );
+			fprintf( f, "M: %x, L: %x, R: %x, C: %x, KS: %x, mod: %x, key: %x\n", 
+			         GetKeyState( VK_MENU ) & 0x80,
+							 GetKeyState( VK_LMENU ) & 0x80,
+							 GetKeyState( VK_RMENU ) & 0x80,
+							 GetKeyState( VK_CONTROL ) & 0x80,
+							 GetKeyState( VK_CONTROL ),
+							 modifiers, key ); 
+			fclose( f );*/
+
+      if( performKeyEvent( this, modifiers, key ) )
+      	return FALSE;
+
+      break;
+    }
+    case WM_USER + 1 :
+    {
+      return (LRESULT)execFromMainThread( (int)wParam, (void *)lParam );
+    }
+    case WM_USER + 2 :
+    {
+      CreateCaret( hWndClient, NULL, (int)wParam, (int)lParam );
+      break;
+    }
+    case WM_USER + 3 :
+    {
+      SetCaretPos( (int)wParam, (int)lParam );
+      ShowCaret( hWndClient );
+      break;
+    }
+    case WM_SETFONT :
+    {
+      if( type == ENTRYFIELD )
+        SendMessage( ((EntryField *)this)->internalEntryField->getHWND(), WM_SETFONT, wParam, lParam );
+      if( type == COMBOBOX )
+        SendMessage( ((ComboBox *)this)->entryField->getHWND(), WM_SETFONT, wParam, lParam );
+      break;
+    }
+		case WM_DROPFILES :
+		{
+			HDROP hDrop = (HDROP)wParam;
+			UINT count = DragQueryFile(hDrop, -1, NULL, 0 );
+      long filesToProcess = 0;
+
+			char **files;
+
+			files = (char **)malloc( sizeof( char * ) * count );
+
+			for( int i = 0; i < count; i++ )
+			{
+				UINT size = DragQueryFile( hDrop, i, NULL, 0 );
+				files[filesToProcess] = (char *)malloc( size + 1 );
+				DragQueryFile( hDrop, i, files[filesToProcess], size+1 );
+
+        if( !(GetFileAttributes( files[filesToProcess] ) & FILE_ATTRIBUTE_DIRECTORY ) )
+          filesToProcess++;
+			}
+
+			filesDropped( files, filesToProcess );
+
+			for( i = 0; i < filesToProcess; i++ )
+	      free( (void *)files[i] );
+
+      free( (void *)files );
+			DragFinish( hDrop );
+			return 0;
+		}
+  }
+  *returned = FALSE;
+  return (LRESULT)NULL;
+}
+
+LRESULT Window::wndProc( HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam )
+{
+  switch( iMessage )
+  {
+    case WM_PAINT :
+    {
+      if( oldWndProc != NULL ) break;
+      if( (hWndFrame != hWndClient && hWnd == hWndClient) || hWndFrame == hWndClient )
+      {
+        RECT rcl;
+
+        if( GetUpdateRect( hWnd, &rcl, FALSE ) )
+        {
+          PAINTSTRUCT Paint;
+          HDC hdc = BeginPaint( hWnd, &Paint );
+          RECT winRect;
+          GetWindowRect( hWnd, &winRect );
+          Rect rect( rcl.left, (winRect.bottom - winRect.top) - rcl.bottom, rcl.right - rcl.left, rcl.bottom - rcl.top );
+          Graphics *graph = new Graphics( hdc, winRect.right - winRect.left, winRect.bottom - winRect.top );
+          paint( &rect, graph );
+          delete graph;
+          EndPaint( hWnd, &Paint );
+          return 0;
+        }
+      }
+      break;
+    }
+    case WM_ERASEBKGND : if( oldWndProc != NULL ) break; return TRUE;
+    case WM_MOVE :
+    {
+      if( hWnd != hWndFrame || type == SCOMBOBOX ) break;
+      RECT rect;
+
+      GetWindowRect( hWndFrame, &rect );
+
+      POINT pnt;
+
+      pnt.x = rect.left;
+      pnt.y = rect.bottom;
+
+      MapWindowPoints( HWND_DESKTOP, ((Window *)parent)->getHWND(), &pnt, 1 );
+
+      x = pnt.x;
+      y = parent->getClientHeight() - pnt.y;
+      move();
+      break;
+    }
+  }
+
+  BOOL returned = TRUE;
+  LRESULT retVal = stdWndProc( hWnd, iMessage, wParam, lParam, &returned );
+
+  if( !returned )
+  {
+    if( oldWndProc == NULL )
+      return DefWindowProc( hWnd, iMessage, wParam, lParam );
+    else
+#if defined _MSC_VER
+      return CallWindowProc( (WNDPROC)oldWndProc, hWnd, iMessage, wParam, lParam );
+#else
+      return CallWindowProc( (FARPROC)oldWndProc, hWnd, iMessage, wParam, lParam );
+#endif
+  }
+  else
+    return retVal;
+}
+
+void Window::setPointer( int type )
+{
+  LPCTSTR getPointer = NULL;
+  HINSTANCE hInst = NULL;
+
+  switch( type )
+  {
+    case PTR_ARROW : getPointer = IDC_ARROW; break;
+    case PTR_TEXT : getPointer = IDC_IBEAM; break;
+    case PTR_WAIT : getPointer = IDC_WAIT; break;
+    case PTR_MOVE : hInst = Application::getInstance(); getPointer = MAKEINTRESOURCE(IDC_MOVE); break;
+    case PTR_HAND : getPointer = MAKEINTRESOURCE(32649); break;
+  }
+
+  if( getPointer != NULL )
+    currentPointer = LoadCursor( hInst, getPointer );
+  else
+    currentPointer = NULL;
+
+  // Display the new pointer by focring a WM_MOUSEMOVE
+
+/*  POINTL pos;
+
+  WinQueryPointerPos( HWND_DESKTOP, &pos );
+  WinSetPointerPos( HWND_DESKTOP, pos.x, pos.y );*/
+}
+
+void Window::setCursor( int x, int y, int width, int height )
+{
+  if( !CreateCaret( hWndClient, NULL, width, height ) )
+  {
+    // Not the owner window
+    PostMessage( hWndClient, WM_USER+2, (WPARAM)width, (LPARAM)height );
+    PostMessage( hWndClient, WM_USER+3, (WPARAM)x, (LPARAM)(this->height - y - height) );
+  }
+  else
+  {
+    SetCaretBlinkTime( 500 );
+    SetCaretPos( x, this->height - y - height );
+    ShowCaret( hWndClient );
+  }
+  ownsCursor = TRUE;
+}
+
+void Window::hideCursor()
+{
+  if( ownsCursor )
+    DestroyCaret();
+  ownsCursor = FALSE;
+}
+
+void Window::getCursorExtent( int &width, int &height )
+{
+  ICONINFO udtIconInfo;
+  //int nMultiplier;
+  //BITMAPINFO udtBitmapInfo; 
+//		HDC hDC;
+	HCURSOR hCursor = GetCursor();
+
+	width = height = 0;
+
+  if( GetIconInfo(hCursor, &udtIconInfo) != 0) 
+	{
+		width = udtIconInfo.xHotspot;
+		height = GetSystemMetrics(SM_CYCURSOR) - udtIconInfo.yHotspot;
+/*			if( udtIconInfo.hbmMask != 0 )
+		{
+			if( udtIconInfo.hbmColor = 0 )
+			{
+				// If this is a black and white cursor, then the bitmap is actually twice 
+				// the height of the cursor. 
+				nMultiplier = 0.5;
+			}
+			else 
+			{
+				// If this is a color bitmap, then the bitmap is the actual height of the 
+				// cursor 
+				nMultiplier = 1;
+				// Release the color bitmap created by GetIconInfo. 
+				DeleteObject( udtIconInfo.hbmColor );
+			}
+
+			// Initialize the biSize member so that Windows knows what kind of structure 
+			// it has to fill. 
+
+			udtBitmapInfo.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+
+			// Get the bitmap information 
+
+			hDC = GetDC( getHWND() );
+
+			if( GetDIBits(hDC, udtIconInfo.hbmMask, 0, 0, NULL, &udtBitmapInfo, DIB_RGB_COLORS) != 0 )
+			{
+				// Release the mask bitmap created by GetIconInfo 
+				DeleteObject( udtIconInfo.hbmMask );
+
+				//Adjust the height for a black and white cursor, if necessary (see above) 
+
+				udtBitmapInfo.bmiHeader.biHeight = udtBitmapInfo.bmiHeader.biHeight * nMultiplier;
+
+				// Calculate the actual return values 
+
+				int left = x - udtIconInfo.xHotspot; 
+				int top = y - udtIconInfo.yHotspot;
+				// Find extent of cursor in twips. Add to beginning edge of cursor, already in 
+				//   twips. 
+				int right = udtBitmapInfo.bmiHeader.biWidth + left;
+				int bottom = udtBitmapInfo.bmiHeader.biHeight + top;
+			}
+			DWORD err = GetLastError();
+			DeleteObject( hDC );
+		}*/
+	}
+}
+
+void Window::setFocus()
+{
+  if( !SetFocus( hWndFrame ) )  // Not the owner thread
+  {
+		DWORD err = GetLastError();
+    Application::executeFromMainThread( ControllerWindow::getInstance(), 2, this );
+  }
+}
+
+void Window::createMenu( HMENU hMenu, AMenuEntry *menu )
+{
+  if( menu->type == AMenuEntry::SUBMENU )
+  {
+    for( int i = 0; i < ((AMenu *)menu)->items(); i++ )
+    {
+      AMenuEntry *menuItem = ((AMenu *)menu)->getItemAt( i );
+      char *amp = strchr( menuItem->string, '~' );
+      if( amp ) *amp = '&';
+
+      if( menuItem->type == AMenuEntry::SEPARATOR )
+        AppendMenu( hMenu, MF_SEPARATOR, menuItem->id, NULL );
+      else
+      if( menuItem->type == AMenuEntry::MENUITEM )
+      {
+        char *str = new char[strlen( menuItem->string ) +
+               ((menuItem->shortcut) ? strlen( menuItem->shortcut ) : 0) + 10];
+
+        strcpy( str, menuItem->string );
+
+        if( menuItem->shortcut )
+        {
+          strcat( str, "\t" );
+          strcat( str, menuItem->shortcut );
+        }
+
+        AppendMenu( hMenu, MF_STRING, menuItem->id, str );
+
+        delete str;
+      }
+      else
+      {
+        HMENU popupMenu = CreateMenu();
+        createMenu( popupMenu, menuItem );
+        AppendMenu( hMenu, MF_POPUP, (UINT)popupMenu, menuItem->string );
+      }
+
+      if( amp ) *amp = '~';
+    }
+  }
+}
+
+HMENU Window::findMenuId( HMENU menu, int id )
+{
+	// loop all menu items
+
+	for( int i = 0; i < GetMenuItemCount( menu ); i++ )
+	{
+		if( GetMenuItemID( menu, i ) == id )
+			return menu;
+		HMENU subMenu = GetSubMenu( menu, i );
+		if( subMenu != NULL )
+		{
+			HMENU foundMenu = findMenuId( subMenu, id );
+			if( foundMenu != NULL ) return foundMenu;
+		}
+	}
+	return NULL;
+}
+
+void Window::popupMenu( AMenu *menu, int x, int y )
+{
+  HMENU hMenu = CreatePopupMenu();
+
+  createMenu( hMenu, menu );
+
+  // Popup the menu
+
+  POINT pnt;
+
+  pnt.x = x;
+  pnt.y = height - y - 1;
+
+  MapWindowPoints( getHWND(), HWND_DESKTOP, &pnt, 1 );
+
+
+	HideCaret( hWndClient );
+
+  TrackPopupMenu( hMenu, TPM_LEFTALIGN|TPM_LEFTBUTTON|TPM_RIGHTBUTTON, pnt.x, pnt.y, 0,
+                  hWndFrame,  NULL );
+	
+	ShowCaret( hWndClient );
+
+  DestroyMenu( hMenu );
+}
+
+void Window::repaint( Rect *rect, BOOL children )
+{
+  if( rect == NULL )
+  {
+    InvalidateRect( hWndClient, NULL, FALSE );
+  }
+  else
+  {
+    RECT orect = { rect->x, getClientHeight() - (rect->y + rect->height),
+                     rect->x + rect->width, getClientHeight() - rect->y };
+    InvalidateRect( hWndClient, &orect, FALSE );
+  }
+}
+
+void Window::processPaint()
+{
+/*	QMSG Message;
+
+	while( WinPeekMsg( Application::hab, &Message, hWndClient, WM_PAINT, WM_PAINT,
+									   PM_REMOVE ) )
+	{
+    RECTL rcl;
+    HPS hps = WinBeginPaint( hWndClient, NULLHANDLE, &rcl );
+    Rect rect( rcl.xLeft, rcl.yBottom, rcl.xRight - rcl.xLeft, rcl.yTop - rcl.yBottom );
+    Graphics graph( hps );
+    paint( &rect, &graph );
+    WinEndPaint( hps );
+	}*/
+}
+
+void Window::remapCoordinates( Window *from, Window *to, int &x, int &y )
+{
+	POINT ptl = {x,from->getHeight()-y};
+
+  MapWindowPoints( from->getHWND(), to->getHWND(), &ptl, 1 );
+	x = ptl.x;
+  y = to->getHeight()-ptl.y;
+}
+
+void Window::scrollVert( int delta, int bottom, int top )
+{
+//  PostMessage( hWndClient, WM_USER+10, (WPARAM)NULL, (LPARAM)NULL );
+  RECT scrollRect = { 0, getClientHeight()-top - 1, width, getClientHeight() - bottom };
+//  ScrollWindowEx( hWndClient, 0, -delta, &scrollRect, &scrollRect, NULL,
+//                   NULL, SW_INVALIDATE|SW_SCROLLCHILDREN );
+	SendMessage( hWndClient, WM_USER+11, (WPARAM)-delta, (LPARAM)&scrollRect );
+}
+
+void Window::scrollHorz( int delta, int left, int right )
+{
+//  PostMessage( hWndClient, WM_USER+10, (WPARAM)NULL, (LPARAM)NULL );
+  RECT scrollRect = { left, 0, right, getClientHeight() };
+//  ScrollWindowEx( hWndClient, delta, 0, &scrollRect, &scrollRect, NULL,
+//                   NULL, SW_INVALIDATE|SW_SCROLLCHILDREN );
+	SendMessage( hWndClient, WM_USER+12, (WPARAM)delta, (LPARAM)&scrollRect );
+}
+
+void Window::setSize( int width, int height )
+{
+  int oldWidth = this->width, oldHeight = this->height;
+
+  // We have to move also
+
+  RECT rect;
+
+  GetWindowRect( hWndFrame, &rect );
+
+  POINT pnt;
+
+  pnt.x = rect.left;
+  pnt.y = rect.top;
+
+	if( !isPopup )
+	  MapWindowPoints( HWND_DESKTOP, ((Window *)parent)->getHWND(), &pnt, 1 );
+
+  pnt.x;
+  pnt.y -= (height - oldHeight);
+
+  SetWindowPos( hWndFrame, HWND_TOP, pnt.x, pnt.y, width, height, SWP_NOZORDER | SWP_NOACTIVATE );
+
+  graphics->setWidth( width );
+  graphics->setHeight( width );
+  this->width = width;
+  this->height = height;
+  size( oldWidth, oldHeight);
+}
+
+void Window::setPos( int x, int y )
+{
+	int parentHeight = (isPopup) ? Desktop::getInstance()->getClientHeight() : 
+	                               parent->getClientHeight();  
+  SetWindowPos( hWndFrame, HWND_TOP, x, parentHeight - (height+y), 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+  this->x = x;
+  this->y = y;
+}
+
+BOOL Window::sendDataToWindow( char *windowTitle, char *message )
+{
+	HWND foundw = FindWindow( 0, "KonControllerWindow" );
+
+	if( foundw == NULL ) return FALSE;
+
+  // Allocate data
+
+
+  COPYDATASTRUCT cps;
+
+	cps.dwData = 0;
+	cps.cbData = strlen(message)+1;
+	cps.lpData = message;
+
+  SendMessage( foundw, WM_COPYDATA, (WPARAM)hWndFrame, (LPARAM)&cps );
+
+	return TRUE;
+}
+
+BOOL Window::popupWindow( char *windowTitle )
+{
+	HWND foundw = FindWindow( 0, "KonControllerWindow" );
+
+	if( foundw == NULL ) return FALSE;
+
+  HWND currentW = (HWND)SendMessage( foundw, WM_USER+30, (WPARAM)NULL, (LPARAM)NULL );
+
+  if( currentW != NULL )
+		W2K_SetForegroundWindow (currentW);	
+
+	return TRUE;
+	
+}
+
+void Window::setText( char *text )
+{
+	SetWindowText( hWndFrame, (LPCTSTR)text );
+}
+
+BOOL Window::isMinimized()
+{
+	WINDOWPLACEMENT pl;
+	pl.length = sizeof(WINDOWPLACEMENT);
+	GetWindowPlacement(hWndFrame, &pl );
+  return pl.showCmd == SW_SHOWMINIMIZED;
+}
+
+BOOL Window::isMaximized()
+{
+	WINDOWPLACEMENT pl;
+	pl.length = sizeof(WINDOWPLACEMENT);
+	GetWindowPlacement(hWndFrame, &pl );
+  return pl.showCmd == SW_SHOWMAXIMIZED;
+}
+
+void Window::restore()
+{
+	WINDOWPLACEMENT pl1, pl2;
+	pl1.length = sizeof(WINDOWPLACEMENT);
+	pl2.length = sizeof(WINDOWPLACEMENT);
+	GetWindowPlacement(hWndFrame, &pl1 );
+
+	pl2.showCmd = SW_RESTORE;
+
+	if( pl1.showCmd != SW_SHOWNORMAL )
+		SetWindowPlacement( hWndFrame, &pl2 );
+}
+
+Window::~Window()
+{
+  controls.deleteContent( TRUE );
+  controls.removeAll();
+  delete graphics;
+  if( hWndFrame != hWndClient )
+    DestroyWindow( hWndClient );
+  DestroyWindow( hWndFrame );
+/*	if( strcmp( className, "" ) )
+		UnregisterClass( className, Application::hInstance );*/
+}
+
+FrameWindow::FrameWindow( AWindow *parent, STRING title, int x, int y, int width, int height ) :
+  Window( x, y, width, height )
+{
+  oldWndProc = NULL;
+  this->parent = parent;
+  type = WINDOW;
+  id = Iterator::getNext();
+  char *fClassName = "KONFRAMEWINDOW";
+
+  HWND hWndParent = ((Window *)parent)->getHWND();
+
+  Application::tempthis = this;
+
+  if( !fbaseClassRegistered )
+  {
+    WNDCLASS wndClass;
+
+    wndClass.style = CS_HREDRAW | CS_VREDRAW;
+    wndClass.lpfnWndProc = WndProc;
+    wndClass.cbClsExtra = 4;
+    wndClass.cbWndExtra = 0;
+    wndClass.hInstance = Application::hInstance;
+    wndClass.hIcon = LoadIcon( Application::hInstance, (LPCTSTR)IDI_CAT );
+    wndClass.hCursor = NULL;
+    wndClass.hbrBackground = (HBRUSH)COLOR_APPWORKSPACE;
+    wndClass.lpszMenuName = NULL;
+    wndClass.lpszClassName = fClassName;
+
+    RegisterClass( &wndClass );
+    
+    fbaseClassRegistered = TRUE;
+  }
+
+  hWndFrame = CreateWindowEx( WS_EX_APPWINDOW, fClassName, title, WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN,
+                              x, parent->getHeight()-y-height, width, height, (HWND)NULL, //((Window *)parent)->getHWND(),
+                              (HMENU)NULL,  Application::getInstance(), NULL );
+
+  // Create the client window
+
+  RECT rect;
+
+  GetClientRect( hWndFrame, &rect );
+
+	registerBaseClass();
+
+  hWndClient = CreateWindow( className, "", WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN|WS_CLIPSIBLINGS, rect.left, rect.top,
+                             rect.right-rect.left, rect.bottom-rect.top, hWndFrame, NULL,
+                             Application::hInstance, NULL );
+
+
+  graphics = new Graphics( hWndClient, rect.right - rect.left, rect.bottom - rect.top );
+}
+
+void FrameWindow::checkMenuItem( int id, BOOL check )
+{
+	HMENU menu = findMenuId( GetMenu( hWndFrame ), id );
+	if( menu != NULL )
+  	CheckMenuItem( menu, id, MF_BYCOMMAND | ((check) ? MF_CHECKED : MF_UNCHECKED) );
+}
+
+void FrameWindow::enableMenuItem( int id, BOOL enable )
+{
+	HMENU menu = findMenuId( GetMenu( hWndFrame ), id );
+	if( menu != NULL )
+  	EnableMenuItem( menu, id, MF_BYCOMMAND | ((enable) ? MF_ENABLED : MF_GRAYED) );
+}
+
+EntryField::EntryField( Window *parent, int properties, int x, int y, int width,
+            int height) :
+  Window( parent, xlatProperties(properties|FILTERDIALOGTAB)|WS_CHILD, x, y, width, height ), 
+	selectedText(NULL)
+{
+  isBordered = properties & BORDER;
+  properties ^= BORDER;
+  internalEntryField = new Window( this, (char*)"EDIT", "",
+                             (xlatProperties(properties) ^ WS_TABSTOP) | ES_AUTOHSCROLL | 
+														 ((properties & NUMERIC) ? ES_NUMBER : 0)|WS_CHILD,
+                             0, 0, width, height );
+	internalEntryField->setDialogFilter(FILTERDIALOGARROWS|PASSDIALOGKEYS);
+  type = ENTRYFIELD;
+  internalEntryField->setType( INTERNALENTRYFIELD );
+  internalEntryField->size( 0, 0 );
+  internalEntryField->setVisible(TRUE);
+  internalEntryField->setOnTop();
+  parent->addControl( this );
+  setMaxLength( 32 );
+  size( 0, 0 );
+}
+
+void EntryField::size( int oldWidth, int oldHeight )
+{
+  if( isBordered )
+  {
+    internalEntryField->setPos( 2, 2 );
+    internalEntryField->setSize( width - 4, height - 4 );
+  }
+  else
+  {
+    internalEntryField->setPos( 0, 0 );
+    internalEntryField->setSize( width, height );
+  }
+}
+
+void EntryField::setText( char *text )
+{
+  SetWindowText( internalEntryField->getHWND(), text );
+	if( GetFocus() == internalEntryField->getHWND() )
+		SendMessage( internalEntryField->getHWND(), EM_SETSEL,
+				         WPARAM( 0 ), (LPARAM)-1 );
+}
+
+BOOL ListBox::actionPerformed( AKeyEvent *keyEvent )
+{
+  if( keyEvent->key == KeyDef::RETURN || keyEvent->key == KeyDef::ENTER )
+  {
+    performSelectionEvent(
+      (int)SendMessage( (HWND)hWndFrame, LB_GETCURSEL, WPARAM(0), LPARAM(0) ) );
+    return TRUE;
+  }
+  return FALSE;
+}
+
+int ListBox::getNextSelectedIndex( int index )
+{
+//  if( index == -1 ) index = 0;
+  int items = getItems();
+  while( ++index < items )
+  {
+    if( SendMessage( hWndFrame, LB_GETSEL, (WPARAM)index, 0 ) > 0 )
+    	return index;
+  }
+  return -1;
+}
+
+void ListBox::clearItems()
+{
+  SendMessage( hWndFrame, LB_SETCURSEL, (WPARAM)0, NULL );
+  SendMessage( hWndFrame, LB_RESETCONTENT, NULL, NULL );
+}
+
+LRESULT APIENTRY WndProcCombo( HWND hWnd, UINT iMessage,
+                          WPARAM mParam1, LPARAM mParam2)
+{
+	SComboBox *pWindow = (SComboBox *)GetWindowLong( hWnd, GWL_USERDATA );
+
+  return pWindow->wndProcCombo(hWnd,iMessage,mParam1,mParam2);
+}
+
+SComboBox::SComboBox( Window *parent, int properties, int x, int y, int width, int height, int listHeight ) :
+  Window( parent, (char*)"COMBOBOX", "",
+          xlatProperties(properties | CLIPSIBLINGS | FILTERDIALOGARROWS) |
+            WS_VSCROLL | WS_HSCROLL | WS_BORDER | WS_CHILD | ((properties & STATIC) ? CBS_DROPDOWNLIST : CBS_DROPDOWN),
+          x, y, width, height + listHeight ), maxLength(0), selectedText(NULL),
+          isStatic( (properties & STATIC) == STATIC )
+{
+  type = SCOMBOBOX;
+  this->height = height + listHeight;
+
+  POINT pt;
+  pt.x = 5; 
+  pt.y = 5; 
+  HWND hWndEdit = ChildWindowFromPoint(hWndFrame, pt); 
+
+  oldWndProcCombo = oldWndProc;
+ 	SetWindowLong(hWndFrame, GWL_WNDPROC, (LONG)WndProcCombo);
+
+  SetWindowLong(hWndEdit, GWL_USERDATA, (ULONG)this);
+ 	oldWndProc = (WNDPROC)SetWindowLong(hWndEdit, GWL_WNDPROC, (LONG)WndProc);
+  
+  // Move combobox so that yStart will be at the pos specified
+  setPos( x, y );
+
+  // Get the new pos and size if adjusted
+  parent->addControl( this );
+//  addKeyListener( this );
+  addFocusListener( this );
+}
+
+LRESULT SComboBox::wndProcCombo( HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam )
+{
+  switch( iMessage )
+  {
+    case WM_COMMAND :
+    {
+      switch( HIWORD(wParam) )
+      {
+        case CBN_SELCHANGE :
+          performFocusEvent( getSelectedIndex() );
+         break;
+      }
+    //  performFocusEvent(
+    //    (int)SendMessage( (HWND)hWnd, CB_GETCURSEL, WPARAM(0), LPARAM(0) ) );
+    printf( "hej" );
+      break;
+    }
+    case WM_SYSKEYDOWN :
+    case WM_KEYDOWN :
+    {
+      if( !(getFilterDialogArrows() &&
+          (wParam == VK_LEFT || wParam == VK_RIGHT || 
+           wParam == VK_UP || wParam == VK_DOWN) ))
+      {
+      	BOOL res = TRUE;
+        if( parent->getType() == DIALOG )
+          res = ((Dialog *)parent)->handleKEYDOWN( ((Window *)parent)->getHWND(), iMessage, wParam, lParam );
+        else
+        if( getPassDialogKeys() && hasParentAtLevel( this, 2 ) &&
+				    parent->getParent()->getType() == DIALOG )
+          res = ((Dialog *)parent->getParent())->handleKEYDOWN( ((Window *)parent->getParent())->getHWND(), iMessage, wParam, lParam );
+        else
+        if( getPassDialogKeys() && hasParentAtLevel( this, 3 ) &&
+				    parent->getParent()->getPassDialogKeys() &&
+            parent->getParent()->getParent()->getType() == DIALOG )
+          res = ((Dialog *)parent->getParent()->getParent())->handleKEYDOWN( ((Window *)parent->getParent()->getParent())->getHWND(), iMessage, wParam, lParam );
+
+        if( !res ) return FALSE;
+      }
+
+      int modifiers = 0;
+
+      if( GetKeyState( VK_SHIFT ) & 0x80 )
+        modifiers |= KeyDef::SHIFT;
+
+      if( GetKeyState( VK_CONTROL ) & 0x80 )
+        modifiers |= KeyDef::CTRL;
+
+      if( GetKeyState( VK_MENU ) & 0x80 )
+        modifiers |= KeyDef::kALT;
+
+      int key = 0;
+
+      switch( wParam )
+      {
+        case VK_UP : key = KeyDef::UP; break;
+        case VK_DOWN : key = KeyDef::DOWN; break;
+        case VK_LEFT : key = KeyDef::LEFT; break;
+        case VK_RIGHT : key = KeyDef::RIGHT; break;
+        case VK_PRIOR : key = KeyDef::PAGEUP; break;
+        case VK_NEXT : key = KeyDef::PAGEDOWN; break;
+        case VK_INSERT : key = KeyDef::INSERT; break;
+        case VK_DELETE : key = KeyDef::kDELETE; break;
+        case VK_HOME : key = KeyDef::HOME; break;
+        case VK_END : key = KeyDef::END; break;
+        case VK_ESCAPE : key = KeyDef::ESCAPE; break;
+        case VK_F1 : key = KeyDef::F1; break;
+        case VK_F2 : key = KeyDef::F2; break;
+        case VK_F3 : key = KeyDef::F3; break;
+        case VK_F4 : key = KeyDef::F4; break;
+        case VK_F5 : key = KeyDef::F5; break;
+        case VK_F6 : key = KeyDef::F6; break;
+        case VK_F7 : key = KeyDef::F7; break;
+        case VK_F8 : key = KeyDef::F8; break;
+        case VK_F9 : key = KeyDef::F9; break;
+        case VK_F10 : key = KeyDef::F10; break;
+        case VK_F11 : key = KeyDef::F11; break;
+        case VK_F12 : key = KeyDef::F12; break;
+      }
+
+      if( key != 0 )
+        if( performKeyEvent( this, modifiers, key ) ) return FALSE;
+
+      break;
+    }
+    case WM_SYSCHAR :
+    case WM_CHAR :
+    {
+    	BOOL res = TRUE;
+
+      if( parent->getType() == DIALOG )
+         res = ((Dialog *)parent)->handleCHAR( ((Window *)parent)->getHWND(), iMessage, wParam, lParam );
+      else
+      if( getPassDialogKeys() && 
+			   hasParentAtLevel( this, 2 ) &&
+			   parent->getParent()->getType() == DIALOG )
+         res = ((Dialog *)parent->getParent())->handleCHAR( ((Window *)parent->getParent())->getHWND(), iMessage, wParam, lParam );
+      else
+      if( getPassDialogKeys() && 
+			    hasParentAtLevel( this, 3 ) &&
+			    parent->getParent()->getPassDialogKeys() &&
+          parent->getParent()->getParent()->getType() == DIALOG )
+         res = ((Dialog *)parent->getParent()->getParent())->handleCHAR( ((Window *)parent->getParent()->getParent())->getHWND(), iMessage, wParam, lParam );
+
+			if( !res ) return FALSE;
+
+      if( parent->getType() == DIALOG && type != SCOMBOBOX )
+      	((Dialog *)parent)->focusHotkey( (int)wParam );
+
+      int key = (int)wParam;
+      int modifiers = 0;
+
+      if( GetKeyState( VK_SHIFT ) & 0x80 )
+        modifiers |= KeyDef::SHIFT;
+
+      if( GetKeyState( VK_CONTROL ) & 0x80 )
+      {
+        if( key <= 'Z' - 'A' + 1 )
+          key += 'A' - 1;
+        modifiers |= KeyDef::CTRL;
+      }
+
+      if( GetKeyState( VK_MENU ) & 0x80 )
+			{
+				if( !(modifiers & KeyDef::CTRL) )
+					modifiers |= KeyDef::kALT;
+			}
+
+      switch( key )
+      {
+        case 0x08 : key = KeyDef::BACKSPACE;break;
+        case 0x0d : key = KeyDef::RETURN; break;
+        case 0x09 : key = KeyDef::TAB; break;
+        case 0x20 : key = KeyDef::SPACE; break;
+      }
+
+      if( performKeyEvent( this, modifiers, key ) )
+      	return FALSE;
+
+      break;
+    }
+  }
+
+  if( oldWndProcCombo == NULL )
+    return DefWindowProc( hWnd, iMessage, wParam, lParam );
+  else
+#if defined _MSC_VER
+      return CallWindowProc( (WNDPROC)oldWndProcCombo, hWnd, iMessage, wParam, lParam );
+#else
+      return CallWindowProc( (FARPROC)oldWndProcCombo, hWnd, iMessage, wParam, lParam );
+#endif
+}
+
+int SComboBox::getNextSelectedIndex( int index )
+{
+//  if( index == -1 ) index = 0;
+  int items = getItems();
+  while( ++index < items )
+  {
+    if( SendMessage( hWndFrame, CB_GETCURSEL, (WPARAM)index, 0 ) > 0 )
+    	return index;
+  }
+  return -1;
+}
+
+void SComboBox::clearItems()
+{
+  SendMessage( hWndFrame, CB_SETCURSEL, (WPARAM)0, NULL );
+  SendMessage( hWndFrame, CB_RESETCONTENT, NULL, NULL );
+}
+
+int SComboBox::getInset( int horz )
+{
+  if( horz )
+    return GetSystemMetrics(SM_CXEDGE) * 2;
+  else
+    return GetSystemMetrics(SM_CYEDGE) * 2;
+}
+
+char *SComboBox::getEditText()
+{
+  if( !isStatic )
+  {
+    if( maxLength < GetWindowTextLength( hWndClient ) ) setMaxLength(GetWindowTextLength( hWndClient ));
+    GetWindowText( hWndClient, selectedText, maxLength );
+  }
+  else
+  {
+    int len = (int)SendMessage( hWndFrame, CB_GETLBTEXTLEN, (WPARAM)getSelectedIndex(), NULL );
+    setMaxLength(len);
+    getSelectedItem(maxLength, selectedText );
+  }    
+
+  return selectedText;
+}
+
+int SComboBox::getTextLength()
+{
+  return GetWindowTextLength( hWndClient );
+}
+
+void SComboBox::setText( char *text )
+{
+  SetWindowText( hWndClient, text );
+  selectItem( findItem( text, FALSE ) );
+}
+void SComboBox::selectText()
+{
+  SendMessage( hWndClient, CB_SETEDITSEL,
+              WPARAM( 0 ), (LPARAM)-1 );
+}
+
+void SComboBox::selectText( int start, int end )
+{
+  SendMessage( hWndClient, CB_SETEDITSEL,
+               WPARAM( start ), (LPARAM)end );
+}
+
+void SComboBox::setMaxLength( int chars )
+{
+  if( selectedText != NULL )
+    delete selectedText;
+
+  maxLength = chars;
+
+  selectedText = new char[maxLength+1];
+
+  SendMessage( hWndClient, CB_LIMITTEXT,
+              (WPARAM)maxLength, (LPARAM)0 );
+}
+
+int SComboBox::getEditBoxHeight()
+{
+  POINT pt;
+  pt.x = 1; 
+  pt.y = 1; 
+
+  HWND hWndEdit = ChildWindowFromPoint(hWndFrame, pt); 
+
+  RECT rect;
+  GetWindowRect( hWndEdit, &rect );
+  return rect.bottom - rect.top;
+}
+
+void SComboBox::setPos( int x, int y )
+{
+  RECT rect;
+
+  GetWindowRect( hWndFrame, &rect );
+  
+  int wy = parent->getClientHeight();
+  wy -= (getEditBoxHeight()+y);
+
+  SetWindowPos( hWndFrame, HWND_TOP, x, wy, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+  this->x = x;
+  this->y = y;
+
+  GetWindowRect( hWndFrame, &rect );
+}
+
+void SComboBox::setSize( int width, int height )
+{
+  int oldWidth = this->width, oldHeight = this->height;
+
+  // We have to move also
+
+  RECT rect;
+
+  GetWindowRect( hWndFrame, &rect );
+
+  POINT pnt;
+  
+  MapWindowPoints( NULL, ((Window *)parent)->hWndFrame, (LPPOINT)&rect, 1 );
+
+  pnt.x = rect.left;
+  pnt.y = rect.top;
+
+  pnt.x;
+  pnt.y -= (height - oldHeight);
+
+  // Size selects all text in the edit control if the text is contained within the
+  // listbox. To avoid this, remember text selection and reset it afterwards
+  DWORD start, end, packedSel;
+  packedSel = (DWORD)SendMessage( hWndFrame, CB_GETEDITSEL, (WPARAM)&start, (LPARAM)&end );
+
+  SetWindowPos( hWndFrame, HWND_TOP, pnt.x, pnt.y, width, height, SWP_NOZORDER | SWP_NOACTIVATE );
+
+  SendMessage( hWndFrame, CB_SETEDITSEL, (WPARAM)0, (LPARAM)packedSel );
+
+  getGraphics()->setWidth( width );
+  getGraphics()->setHeight( width );
+  this->width = width;
+  this->height = height;
+  size( oldWidth, oldHeight);
+}
+
+void SComboBox::actionPerformed( AFocusEvent *focusEvent )
+{
+  performSelectionEvent( focusEvent->getFocused() ); // chain
+}
+
+//BOOL SComboBox::actionPerformed( AKeyEvent *keyEvent )
+//{
+//  if( keyEvent->key == KeyDef::RETURN || keyEvent->key == KeyDef::ENTER )
+//  {
+//    performSelectionEvent(
+//      (int)SendMessage( (HWND)hWndFrame, CB_GETCURSEL, WPARAM(0), LPARAM(0) ) );
+//    return TRUE;
+//  }
+//
+//  if( getItems() == 0 ) return FALSE;
+//
+//  performSelectionEvent( getSelectedIndex() ); // chain
+//  return TRUE;
+//}

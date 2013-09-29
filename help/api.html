@@ -1,0 +1,6420 @@
+<html>
+<head>
+  <title>Kon function reference</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Kon function reference</h1>
+
+	<TABLE>
+		<TR>
+			<TD><B>a</B></TD>
+			<TD><a href='#fileLoadDialog'>fileLoadDialog</a></TD>
+			<TD><B>m</B></TD>
+			<TD><a href='#replaceStringFiles'>replaceStringFiles</a></TD>
+		<TR>
+			<TD><a href='#aboutDialog'>aboutDialog</a></TD>
+			<TD><a href='#fileSaveDialog'>fileSaveDialog</a></TD>
+			<TD><a href='#macroSaveDialog'>macroSaveDialog</a></TD>
+			<TD><a href='#resetMark'>resetMark</a></TD>
+		<TR>
+			<TD><a href='#addMenu'>addMenu</a></TD>
+			<TD><a href='#findString'>findString</a></TD>
+			<TD><a href='#markCharLeft'>markCharLeft</a></TD>
+			<TD><a href='#replaceDialog'>replaceDialog</a></TD>
+		<TR>
+			<TD><a href='#addMenuItem'>addMenuItem</a></TD>
+			<TD><a href='#findStringFiles'>findStringFiles</a></TD>
+			<TD><a href='#markCharRight'>markCharRight</a></TD>
+			<TD><a href='#resetViewWin'>resetViewWin</a></TD>
+		<TR>
+			<TD><a href='#addMenuSeparator'>addMenuSeparator</a></TD>
+			<TD><B>g</B></TD>
+			<TD><a href='#markNextWord'>markNextWord</a></TD>
+			<TD><a href='#rGetChar'>rGetChar</a></TD>
+		<TR>
+			<TD><a href='#addToolButton'>addToolButton</a></TD>
+			<TD><a href='#getBlockEnd'>getBlockEnd</a></TD>
+			<TD><a href='#markLine'>markLine</a></TD>
+			<TD><a href='#rGetText'>rGetText</a></TD>
+		<TR>
+			<TD><a href='#addToolSpace'>addToolSpace</a></TD>
+			<TD><a href='#getBlockStart'>getBlockStart</a></TD>
+			<TD><a href='#markLineDown'>markLineDown</a></TD>
+			<TD><B>s</B></TD>
+		<TR>
+			<TD><a href='#atLineEnd'>atLineEnd</a></TD>
+			<TD><a href='#getChar'>getChar</a></TD>
+			<TD><a href='#markLineUp'>markLineUp</a></TD>
+			<TD><a href='#saveFile'>saveFile</a></TD>
+		<TR>
+			<TD><B>b</B></TD>
+			<TD><a href='#getCursorColumn'>getCursorColumn</a></TD>
+			<TD><a href='#markPageDown'>markPageDown</a></TD>
+			<TD><a href='#saveFileAs'>saveFileAs</a></TD>
+		<TR>
+			<TD><a href='#beginMainMenu'>beginMainMenu</a></TD>
+			<TD><a href='#getFilename'>getFilename</a></TD>
+			<TD><a href='#markPageUp'>markPageUp</a></TD>
+			<TD><a href='#saveMacro'>saveMacro</a></TD>
+		<TR>
+			<TD><a href='#beginMark'>beginMark</a></TD>
+			<TD><a href='#getLine'>getLine</a></TD>
+			<TD><a href='#markPrevWord'>markPrevWord</a></TD>
+			<TD><a href='#searchDialog'>searchDialog</a></TD>
+		<TR>
+			<TD><a href='#beginPopupMenu'>beginPopupMenu</a></TD>
+			<TD><a href='#getLineStart'>getLineStart</a></TD>
+			<TD><a href='#markToDocumentEnd'>markToDocumentEnd</a></TD>
+			<TD><a href='#setBlockEnd'>setBlockEnd</a></TD>
+		<TR>
+			<TD><a href='#beginWindowMenu'>beginWindowMenu</a></TD>
+			<TD><a href='#getPosition'>getPosition</a></TD>
+			<TD><a href='#markToDocumentStart'>markToDocumentStart</a></TD>
+			<TD><a href='#setBlockStart'>setBlockStart</a></TD>
+		<TR>
+			<TD><a href='#bindKey'>bindKey</a></TD>
+			<TD><a href='#getScratchName'>getScratchName</a></TD>
+			<TD><a href='#markToLineEnd'>markToLineEnd</a></TD>
+			<TD><a href='#setCursorColumn'>setCursorColumn</a></TD>
+		<TR>
+			<TD><a href='#blockMarked'>blockMarked</a></TD>
+			<TD><a href='#getRecentFile'>getRecentFile</a></TD>
+			<TD><a href='#markToLineStart'>markToLineStart</a></TD>
+			<TD><a href='#setDelimitorLines'>setDelimitorLines</a></TD>
+		<TR>
+			<TD><B>c</B></TD>
+			<TD><a href='#getRecentFilesCount'>getRecentFilesCount</a></TD>
+			<TD><a href='#markWord'>markWord</a></TD>
+			<TD><a href='#setMark'>setMark</a></TD>
+		<TR>
+			<TD><a href='#charLeft'>charLeft</a></TD>
+			<TD><a href='#getSetting'>getSetting</a></TD>
+			<TD><a href='#messageBox'>messageBox</a></TD>
+			<TD><a href='#setScreenUpdate'>setScreenUpdate</a></TD>
+		<TR>
+			<TD><a href='#charRight'>charRight</a></TD>
+			<TD><a href='#getSyntaxName'>getSyntaxName</a></TD>
+			<TD><a href='#messageWindowDisplay'>messageWindowDisplay</a></TD>
+			<TD><a href='#setToolActive'>setToolActive</a></TD>
+		<TR>
+			<TD><a href='#charToString'>charToString</a></TD>
+			<TD><a href='#getText'>getText</a></TD>
+			<TD><a href='#messageWindowVisible'>messageWindowVisible</a></TD>
+			<TD><a href='#setView'>setView</a></TD>
+		<TR>
+			<TD><a href='#checkMenuItem'>checkMenuItem</a></TD>
+			<TD><a href='#getTextLength'>getTextLength</a></TD>
+			<TD><B>n</B></TD>
+			<TD><a href='#snapshot'>snapshot</a></TD>
+		<TR>
+			<TD><a href='#closeActiveWindow'>closeActiveWindow</a></TD>
+			<TD><a href='#getTime'>getTime</a></TD>
+			<TD><a href='#nextTab'>nextTab</a></TD>
+			<TD><a href='#startMacroRecord'>startMacroRecord</a></TD>
+		<TR>
+			<TD><a href='#closeFrameWindow'>closeFrameWindow</a></TD>
+			<TD><a href='#getWindowCount'>getWindowCount</a></TD>
+			<TD><a href='#nextView'>nextView</a></TD>
+			<TD><a href='#startUndoBlock'>startUndoBlock</a></TD>
+		<TR>
+			<TD><a href='#copyBlockToClipboard'>copyBlockToClipboard</a></TD>
+			<TD><a href='#getWindowFilename'>getWindowFilename</a></TD>
+			<TD><a href='#nextWord'>nextWord</a></TD>
+			<TD><a href='#switchField'>switchField</a></TD>
+		<TR>
+			<TD><a href='#copyMacroToClipboard'>copyMacroToClipboard</a></TD>
+			<TD><a href='#getWindowId'>getWindowId</a></TD>
+			<TD><B>o</B></TD>
+			<TD><a href='#switchToControl'>switchToControl</a></TD>
+		<TR>
+			<TD><a href='#copyTextToClipboard'>copyTextToClipboard</a></TD>
+			<TD><B>h</B></TD>
+			<TD><a href='#outdentBlock'>outdentBlock</a></TD>
+			<TD><a href='#switchToFile'>switchToFile</a></TD>
+		<TR>
+			<TD><a href='#createFrameWindow'>createFrameWindow</a></TD>
+			<TD><a href='#hasValidBlockMark'>hasValidBlockMark</a></TD>
+			<TD><B>p</B></TD>
+			<TD><B>t</B></TD>
+		<TR>
+			<TD><a href='#cutBlockToClipboard'>cutBlockToClipboard</a></TD>
+			<TD><B>i</B></TD>
+			<TD><a href='#pageDown'>pageDown</a></TD>
+			<TD><a href='#tabPressed'>tabPressed</a></TD>
+		<TR>
+			<TD><B>d</B></TD>
+			<TD><a href='#indent'>indent</a></TD>
+			<TD><a href='#pageUp'>pageUp</a></TD>
+			<TD><a href='#textModified'>textModified</a></TD>
+		<TR>
+			<TD><a href='#debug'>debug</a></TD>
+			<TD><a href='#indentBlock'>indentBlock</a></TD>
+			<TD><a href='#pasteBlockFromClipboard'>pasteBlockFromClipboard</a></TD>
+			<TD><a href='#toAscii'>toAscii</a></TD>
+		<TR>
+			<TD><a href='#deleteBlock'>deleteBlock</a></TD>
+			<TD><a href='#insertLine'>insertLine</a></TD>
+			<TD><a href='#popupMenu'>popupMenu</a></TD>
+			<TD><a href='#toChar'>toChar</a></TD>
+		<TR>
+			<TD><a href='#deleteCharacter'>deleteCharacter</a></TD>
+			<TD><a href='#insertString'>insertString</a></TD>
+			<TD><a href='#popPos'>popPos</a></TD>
+			<TD><a href='#toDocumentEnd'>toDocumentEnd</a></TD>
+		<TR>
+			<TD><a href='#deleteLine'>deleteLine</a></TD>
+			<TD><a href='#integrityCheck'>integrityCheck</a></TD>
+			<TD><a href='#prefsDialog'>prefsDialog</a></TD>
+			<TD><a href='#toDocumentStart'>toDocumentStart</a></TD>
+		<TR>
+			<TD><a href='#deletePreviousCharacter'>deletePreviousCharacter</a></TD>
+			<TD><a href='#isInteger'>isInteger</a></TD>
+			<TD><a href='#prevTab'>prevTab</a></TD>
+			<TD><a href='#toggleColumnBlock'>toggleColumnBlock</a></TD>
+		<TR>
+			<TD><a href='#deleteText'>deleteText</a></TD>
+			<TD><a href='#isRecording'>isRecording</a></TD>
+			<TD><a href='#prevWord'>prevWord</a></TD>
+			<TD><a href='#toggleRelativePos'>toggleRelativePos</a></TD>
+		<TR>
+			<TD><a href='#deleteToEOL'>deleteToEOL</a></TD>
+			<TD><a href='#isString'>isString</a></TD>
+			<TD><a href='#print'>print</a></TD>
+			<TD><a href='#toInt'>toInt</a></TD>
+		<TR>
+			<TD><a href='#deleteWord'>deleteWord</a></TD>
+			<TD><B>j</B></TD>
+			<TD><a href='#printDialog'>printDialog</a></TD>
+			<TD><a href='#toLineEnd'>toLineEnd</a></TD>
+		<TR>
+			<TD><B>e</B></TD>
+			<TD><a href='#jumpToLine'>jumpToLine</a></TD>
+			<TD><a href='#printFile'>printFile</a></TD>
+			<TD><a href='#toLineStart'>toLineStart</a></TD>
+		<TR>
+			<TD><a href='#enableMenuItem'>enableMenuItem</a></TD>
+			<TD><a href='#jumpToLineDialog'>jumpToLineDialog</a></TD>
+			<TD><a href='#pushPos'>pushPos</a></TD>
+			<TD><a href='#toString'>toString</a></TD>
+		<TR>
+			<TD><a href='#endMacroRecord'>endMacroRecord</a></TD>
+			<TD><a href='#jumpToMark'>jumpToMark</a></TD>
+			<TD><B>q</B></TD>
+			<TD><B>u</B></TD>
+		<TR>
+			<TD><a href='#endMainMenu'>endMainMenu</a></TD>
+			<TD><a href='#jumpToPosDialog'>jumpToPosDialog</a></TD>
+			<TD><a href='#queryLineDialog'>queryLineDialog</a></TD>
+			<TD><a href='#undo'>undo</a></TD>
+		<TR>
+			<TD><a href='#endMark'>endMark</a></TD>
+			<TD><a href='#jumpToPosition'>jumpToPosition</a></TD>
+			<TD><a href='#queryView'>queryView</a></TD>
+			<TD><a href='#undoAvailable'>undoAvailable</a></TD>
+		<TR>
+			<TD><a href='#endPopupMenu'>endPopupMenu</a></TD>
+			<TD><B>k</B></TD>
+			<TD><B>r</B></TD>
+			<TD><a href='#updateMainMenu'>updateMainMenu</a></TD>
+		<TR>
+			<TD><a href='#endUndoBlock'>endUndoBlock</a></TD>
+			<TD><a href='#keepBlock'>keepBlock</a></TD>
+			<TD><a href='#readRelease'>readRelease</a></TD>
+			<TD><a href='#updateSetting'>updateSetting</a></TD>
+		<TR>
+			<TD><a href='#endWindowMenu'>endWindowMenu</a></TD>
+			<TD><B>l</B></TD>
+			<TD><a href='#readRequest'>readRequest</a></TD>
+			<TD><B>w</B></TD>
+		<TR>
+			<TD><a href='#executeKFromClipboard'>executeKFromClipboard</a></TD>
+			<TD><a href='#length'>length</a></TD>
+			<TD><a href='#redo'>redo</a></TD>
+			<TD><a href='#window'>window</a></TD>
+		<TR>
+			<TD><B>f</B></TD>
+			<TD><a href='#lineDown'>lineDown</a></TD>
+			<TD><a href='#redoAvailable'>redoAvailable</a></TD>
+			<TD></TD>
+		<TR>
+			<TD><a href='#fileDialog'>fileDialog</a></TD>
+			<TD><a href='#lineUp'>lineUp</a></TD>
+			<TD><a href='#repeatFind'>repeatFind</a></TD>
+			<TD></TD>
+		<TR>
+			<TD><a href='#fileExists'>fileExists</a></TD>
+			<TD><a href='#loadFile'>loadFile</a></TD>
+			<TD><a href='#replaceString'>replaceString</a></TD>
+			<TD></TD>
+	</TABLE>
+	<HR>
+	<a name='aboutDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>aboutDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display About dialog <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='addMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>addMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Add a sub menu to a menu. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>atId</I>              </TD>
+								<TD width = '80%'>
+	The menu id for where the sub-menu 
+																												should be placed               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>string</I>              </TD>
+								<TD width = '80%'>
+	Menu title               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>menuId</I>              </TD>
+								<TD width = '80%'>
+	Id of menu               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='addMenuItem'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>addMenuItem</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Add a menu item to a menu <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>atId</I>              </TD>
+								<TD width = '80%'>
+	The menu id where the menu item should
+																												be placed.               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>string</I>              </TD>
+								<TD width = '80%'>
+	Menu title               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>command</I>              </TD>
+								<TD width = '80%'>
+	A valid K-statement to execute
+																													 when this menu item is selected.               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>menuId</I>              </TD>
+								<TD width = '80%'>
+	Id of menu item               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='addMenuSeparator'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>addMenuSeparator</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Add a menu separator to a menu. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>atId</I>              </TD>
+								<TD width = '80%'>
+	The menu id where the separator should
+																												be placed.               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='addToolButton'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>addToolButton</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Adds a tool to the toolbar <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>command</I>              </TD>
+								<TD width = '80%'>
+	A valid K-statement               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>bitmap</I>              </TD>
+								<TD width = '80%'>
+	bitmap file name               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>description</I>              </TD>
+								<TD width = '80%'>
+	Tool description               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>id</I>              </TD>
+								<TD width = '80%'>
+	Tool ID               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='addToolSpace'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>addToolSpace</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Adds a space delimitor to the toolbar <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='atLineEnd'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>atLineEnd</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Checks if there is a line end at the specified psoition. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>reader</I>              </TD>
+								<TD width = '80%'>
+	Read handler               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>pos</I>              </TD>
+								<TD width = '80%'>
+	Position to check               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if there is a line end at the position           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='beginMainMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>beginMainMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Start building then main menu. Menu build must be ended with a endMainMenu.
+			 See menu.k for an example how to build the main menu. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='beginMark'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>beginMark</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Start marking text. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='beginPopupMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>beginPopupMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Start building a popup menu. See menu.k for an example how to use this function. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='beginWindowMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>beginWindowMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Start building the window drop-down menu. This menu is recreated at certain
+			 occasions. See menu.k for an example how to use this function <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>id</I>              </TD>
+								<TD width = '80%'>
+	Menu id for the window menu               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='bindKey'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>bindKey</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Binds a key sequence to a K-command <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>keySeq</I>              </TD>
+								<TD width = '80%'>
+	Describes the key sequence.<BR>
+																													<BR>
+																													Form a key sequence as:<BR>
+																													Modifer1+Key1-Modifer2+Key2...ModiferN+KeyN<BR>
+																													<BR>
+																													Example: Ctrl+q-Ctrl+f<BR>
+																													<BR>
+																													Recognized key constants:<BR>
+																													Ctrl, Alt, Shift, Left, Right, 
+																													Up, Down, PageUp, PageDown,
+																													Home, End, Insert, Delete, 
+																													Escape, Enter, Backspace, 
+																													Return, Tab, Space,
+																													F1-F12, any alphanumeric character.              </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>command</I>              </TD>
+								<TD width = '80%'>
+	Any valid K-statement               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='blockMarked'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>blockMarked</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Callback function. Called when the active textbuffer has a block marked. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>isMarked</I>              </TD>
+								<TD width = '80%'>
+	TRUE if block is marked               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='charLeft'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>charLeft</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move one character left <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='charRight'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>charRight</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move one character right <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='charToString'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>charToString</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Converts a character code to a string. Returns the string. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>char</I>              </TD>
+								<TD width = '80%'>
+	Integer representing a character code               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	String           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='checkMenuItem'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>checkMenuItem</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Set or remove a check mark next to a menu item.<BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>id</I>              </TD>
+								<TD width = '80%'>
+	Menu id where the mark should set or reset               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>checked</I>              </TD>
+								<TD width = '80%'>
+	TRUE to set, FALSE to remove               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='closeActiveWindow'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>closeActiveWindow</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Close the active control (window). <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='closeFrameWindow'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>closeFrameWindow</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Close the main window. Will close all controls within it. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='copyBlockToClipboard'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>copyBlockToClipboard</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Copy selected text to the clipboard <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='copyMacroToClipboard'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>copyMacroToClipboard</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Copy the currently recorded macro to the clipboard <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='copyTextToClipboard'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>copyTextToClipboard</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Copy text to clipboard <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>text</I>              </TD>
+								<TD width = '80%'>
+	Text to copy               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='createFrameWindow'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>createFrameWindow</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Create a new main window <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='cutBlockToClipboard'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>cutBlockToClipboard</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Cut selected text to the clipboard <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='debug'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>debug</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Debug memory. Internal use only <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='deleteBlock'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>deleteBlock</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Delete the selected block. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='deleteCharacter'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>deleteCharacter</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Delete the current character <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='deleteLine'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>deleteLine</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Deletes the line at cursor. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='deletePreviousCharacter'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>deletePreviousCharacter</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Delete the previous character from cursor position. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='deleteText'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>deleteText</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Delete text <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Start position               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>size</I>              </TD>
+								<TD width = '80%'>
+	Length of text to delete               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='deleteToEOL'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>deleteToEOL</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Deletes to end of line. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='deleteWord'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>deleteWord</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Deletes the current word. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='enableMenuItem'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>enableMenuItem</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Enable or disable a menu item <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>id</I>              </TD>
+								<TD width = '80%'>
+	Menu id which should be enabled/disabled               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>enabled</I>              </TD>
+								<TD width = '80%'>
+	TRUE to enable, FALSE to disable               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='endMacroRecord'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>endMacroRecord</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	End recording the macro. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='endMainMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>endMainMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	End building the main menu <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='endMark'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>endMark</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	End marking text. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='endPopupMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>endPopupMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	End building a popup menu <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='endUndoBlock'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>endUndoBlock</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Ends the current undo block. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='endWindowMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>endWindowMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	End building the window menu <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='executeKFromClipboard'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>executeKFromClipboard</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Execute K-code residing in the clipboard <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='fileDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>fileDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display the file requester. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>title</I>              </TD>
+								<TD width = '80%'>
+	Title of dialog, e.g. "Open", "Save."               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>filename</I>              </TD>
+								<TD width = '80%'>
+	Initial file name               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>type</I>              </TD>
+								<TD width = '80%'>
+	FILEDLGSAVE (0) or FILEDLGOPEN (1)               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	If a filename is selected, the filename is returned, otherwise an empty 
+				string is returned           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='fileExists'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>fileExists</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Check if a file exists in the file system<BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>filename</I>              </TD>
+								<TD width = '80%'>
+	Filename to test               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if the specified filename exists           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='fileLoadDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>fileLoadDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Brings up a file dialog and loads the selected file. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='fileSaveDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>fileSaveDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Brings up a file dialog and saves the selected file. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='findString'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>findString</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Find a string in the text <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>string</I>              </TD>
+								<TD width = '80%'>
+	String to search for               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>options</I>              </TD>
+								<TD width = '80%'>
+	Options string:<BR><BR>
+																													 'd': Global search. (Not set: Selected text) <BR>
+																													 'b': Backward search. (Not set: Forward search) <BR>
+																													 's': Search selected text. (Not set: Search whole file) <BR>
+																													 'u': Case insensitive search. <BR>
+																													 'w': Find whole words only. <BR>
+																													 'g': Use regular expressions.              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if string was found           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='findStringFiles'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>findStringFiles</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Find a string in multiple files and display the results in the message window. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>searchString</I>              </TD>
+								<TD width = '80%'>
+	String to search for               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>options</I>              </TD>
+								<TD width = '80%'>
+	Options string:<BR><BR>
+																													 'd': Global search. (Not set: Selected text) <BR>
+																													 'b': Backward search. (Not set: Forward search) <BR>
+																													 's': Search selected text. (Not set: Search whole file) <BR>
+																													 'u': Case insensitive search. <BR>
+																													 'w': Find whole words only. <BR>
+																													 'g': Use regular expressions. <BR>
+																													 'r': Search sub directories.              </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>path</I>              </TD>
+								<TD width = '80%'>
+	Path where to start searching               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>files</I>              </TD>
+								<TD width = '80%'>
+	Files to search, separated by ';'. Wildcards allowed.               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getBlockEnd'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getBlockEnd</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the marked block end. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Block end           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getBlockStart'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getBlockStart</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the marked block start. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Block start           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getChar'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getChar</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Return a character <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Position in the text               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Character code           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getCursorColumn'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getCursorColumn</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the current column for the cursor. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Column           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getFilename'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getFilename</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the filename for the current file <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Filename           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getLine'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getLine</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the current line in the text. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Current line           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getLineStart'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getLineStart</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the line start for the current line. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Character position for linestart           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getPosition'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getPosition</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the cursor position in the text. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Character position           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getScratchName'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getScratchName</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the a scratch buffer name. No buffer is opened, this
+				has to be done using loadFile. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	filename           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getRecentFile'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getRecentFile</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the recently opened file at a certain position in the list. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>pos</I>              </TD>
+								<TD width = '80%'>
+	Position in the list               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Filename           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getRecentFilesCount'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getRecentFilesCount</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the number of files in the recently opened files list <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Number of files           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getSetting'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getSetting</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Query setting <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>setting</I>              </TD>
+								<TD width = '80%'>
+	One of the following strings:<BR><BR>
+																													 'tabsize': Returns the tab size. <BR>
+																													 'maxUndoSize': Max number of undo steps.<BR>
+																													 'rightmargin': The right margin.<BR>
+																													 'markfg': Colorvalue(RGB) of mark foreground.<BR>
+																													 'markbg': Colorvalue(RGB) of mark background.<BR>
+																													 'hilitefg': Colorvalue(RGB) of highligt foreground.<BR>
+																													 'hilitebg': Colorvalue(RGB) of highlight background.<BR>
+																													 'hexcursorfg': Colorvalue(RGB) of hex cursor.<BR>
+																													 'hexcursorbg': Colorvalue(RGB) of hex cursor background.<BR>
+																													 'standarddelim': Standard delimitor string. (When no syntax highlighting is defined.)<BR>
+																													 'columnblock': Columnblock marking (TRUE/FALSE).<BR>
+																													 'crlf': TRUE if CR+LF line end sequence should be used, FALSE if LF only.<BR>
+																													 'stripnameinnotebook': TRUE if only filename without path should be displayed in notebook tabs.<BR>
+																													 'insertmode': TRUE if insert mode, FALSE if overwrite mode.<BR>
+																													 'backupfiles': TRUE if .BAK file should be created on file save.<BR>
+																													 'persistentblocks': TRUE if persistent blocks should be used.<BR>
+																													 'showrightmargin': TRUE if the right margin should be shown in the text window.<BR>
+																													 'syntaxhighlight': TRUE if syntax highlightinh should be used.<BR>
+																													 'autosave': TRUE if auto save should be done.<BR>
+																													 'usetab': TRUE to insert real tab character (0x9), FALSE to insert spaces.<BR>
+																													 'optimalfill': TRUE to fill long space runs whith tab character (0x9) when possible.              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Returns the setting           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getSyntaxName'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getSyntaxName</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the name of the current syntax highlighting scheme <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Name of scheme           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getText'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getText</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Get text <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Position where to retrieve text               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>size</I>              </TD>
+								<TD width = '80%'>
+	Length of text               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Text string           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getTextLength'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getTextLength</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the length of the file <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Current file length           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getTime'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getTime</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the current time. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>formatstring</I>              </TD>
+								<TD width = '80%'>
+	Format string:<BR><BR> %a
+					%A: Abbreviated weekday name<BR>
+					%b: Full weekday name<BR>
+					%B: Abbreviated month name<BR>
+					%c: Full month name<BR>
+					%d: Date and time representation appropriate for locale<BR>
+					%H: Day of month as decimal number (01 - 31)<BR>
+					%I: Hour in 24-hour format (00 - 23)<BR>
+					%j: Hour in 12-hour format (01 - 12)<BR>
+					%m: Day of year as decimal number (001 - 366)<BR>
+					%M: Month as decimal number (01 - 12)<BR>
+					%p: Minute as decimal number (00 - 59)<BR>
+					%S: Current locale’s A.M./P.M. indicator for 12-hour clock<BR>
+					%U: Second as decimal number (00 - 59)<BR>
+					%w: Week of year as decimal number, with Sunday as first day of week (00 - 53)<BR>
+					%W: Weekday as decimal number (0 – 6; Sunday is 0)<BR>
+					%x: Week of year as decimal number, with Monday as first day of week (00 - 53)<BR>
+					%X: Date representation for current locale<BR>
+					%y: Time representation for current locale<BR>
+					%Y: Year without century, as decimal number (00 - 99)<BR>
+					%z, %Z: Year with century, as decimal number<BR>
+					%%: Time-zone name or abbreviation; no characters if time zone is unknown<BR>
+					%%: Percent sign<BR>
+								</TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Formatted time string           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getWindowCount'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getWindowCount</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the number of opened windows (Controls) <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Number of controls           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getWindowFilename'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getWindowFilename</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the filename for the specified position in the window list <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>pos</I>              </TD>
+								<TD width = '80%'>
+	Position in the list               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Filename           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='getWindowId'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>getWindowId</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the ID for a specific window <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>pos</I>              </TD>
+								<TD width = '80%'>
+	Position in the window list               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Window ID           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='hasValidBlockMark'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>hasValidBlockMark</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Check if a block is marked. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if a block is marked           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='indent'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>indent</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Indent a line <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Position in text               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>fromColumn</I>              </TD>
+								<TD width = '80%'>
+	Column from where text should be indented               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>toColumn</I>              </TD>
+								<TD width = '80%'>
+	Column where text should be indented to               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='indentBlock'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>indentBlock</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Indents a selected block. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>steps</I>              </TD>
+								<TD width = '80%'>
+	Spaces to indent               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='insertLine'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>insertLine</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Inserts a line break. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='insertString'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>insertString</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Insert a text string in the text.<BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>string</I>              </TD>
+								<TD width = '80%'>
+	String to insert               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='integrityCheck'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>integrityCheck</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Insert a text string in the text.<BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='isInteger'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>isInteger</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Check if the supplied value is an integer <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>arg</I>              </TD>
+								<TD width = '80%'>
+	Value to test               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if the supplied value is an integer           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='isRecording'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>isRecording</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Check if a macro is recording. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if a macro is recording.           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='isString'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>isString</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Check if the supplied value is a string <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>arg</I>              </TD>
+								<TD width = '80%'>
+	Value to test               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if the supplied value is a string           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='jumpToLine'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>jumpToLine</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Jump to a line in the text <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>line</I>              </TD>
+								<TD width = '80%'>
+	Line to jump to               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='jumpToLineDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>jumpToLineDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Jumps to the line specified in the dialog. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='jumpToMark'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>jumpToMark</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Restores the current position from a slot. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>markNum</I>              </TD>
+								<TD width = '80%'>
+	Slot 0-9               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='jumpToPosDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>jumpToPosDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Jumps to the position specified in the dialog. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='jumpToPosition'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>jumpToPosition</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Jump to an absolute character position in the text <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Character position               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='keepBlock'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>keepBlock</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Sets if blocks should be temporary persistent. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>keep</I>              </TD>
+								<TD width = '80%'>
+	TRUE for temporary persistent blocks               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='length'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>length</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the length of an array or string <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>array</I>              </TD>
+								<TD width = '80%'>
+	Array or string               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Length of string           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='lineDown'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>lineDown</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move one line down <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='lineUp'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>lineUp</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move one line up <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='loadFile'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>loadFile</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Start loading a file <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>filename</I>              </TD>
+								<TD width = '80%'>
+	Filename of file to load               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='macroSaveDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>macroSaveDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Brings up a file dialog and saves the currently recorded macro. 
+				The macro is saved as a K function. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markCharLeft'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markCharLeft</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks one char left. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markCharRight'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markCharRight</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks one char right. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markNextWord'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markNextWord</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks the next word. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markLine'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markLine</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks the current line. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markLineDown'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markLineDown</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks one line down. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markLineUp'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markLineUp</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks one line up. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markPageDown'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markPageDown</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks one page down. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markPageUp'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markPageUp</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks one page up. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markPrevWord'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markPrevWord</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks the previous word. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markToDocumentEnd'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markToDocumentEnd</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks to document end. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markToDocumentStart'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markToDocumentStart</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks to document start. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markToLineEnd'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markToLineEnd</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks to line end. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markToLineStart'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markToLineStart</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks to line start. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='markWord'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>markWord</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Marks the current word. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='messageBox'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>messageBox</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display a message box.<BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>title</I>              </TD>
+								<TD width = '80%'>
+	Title of message box               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>message</I>              </TD>
+								<TD width = '80%'>
+	Message               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>type</I>              </TD>
+								<TD width = '80%'>
+	MBERROR (1), MBWARNING (2), MBMESSAGE (3), MBQUERY (4)               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	MBRESOK (5) <BR>
+			 MBRESCANCEL (6) <BR>
+			 MBRESYES (7) <BR>
+			 MBRESNO (8) <BR>
+							</TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='messageWindowDisplay'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>messageWindowDisplay</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Displays or hides message window <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>show</I>              </TD>
+								<TD width = '80%'>
+	TRUE to show               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='messageWindowVisible'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>messageWindowVisible</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Check if the message window is visible. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Returns TRUE if the message window is visible           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='nextTab'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>nextTab</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move to next control in the opened files notebook <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='nextView'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>nextView</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Switch to the next view. (currently ASCIIVIEW (0) or HEXVIEW (1)). <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='nextWord'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>nextWord</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Moves to the next word. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='outdentBlock'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>outdentBlock</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Outdents a selected block. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>steps</I>              </TD>
+								<TD width = '80%'>
+	Spaces to outdent               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='pageDown'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>pageDown</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move one page down <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='pageUp'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>pageUp</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move one page up <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='pasteBlockFromClipboard'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>pasteBlockFromClipboard</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Paste text from clipboard at the current position <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if data was available           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='popupMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>popupMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display a popup menu <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>windowObject</I>              </TD>
+								<TD width = '80%'>
+	Passed from callback function buildPopupMenu               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>x</I>              </TD>
+								<TD width = '80%'>
+	Passed from callback function buildPopupMenu               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>y</I>              </TD>
+								<TD width = '80%'>
+	Passed from callback function buildPopupMenu               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='popPos'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>popPos</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Pop a position from the position stack. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='prefsDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>prefsDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display the preferences dialog <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='prevTab'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>prevTab</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move to previous control in the opened files notebook <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='prevWord'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>prevWord</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Moves to the previous word. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='print'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>print</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Prints a text string to the message window <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>data</I>              </TD>
+								<TD width = '80%'>
+	String or value to display               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='printDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>printDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Displays the print dialog <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='printFile'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>printFile</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Prints the current file. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='pushPos'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>pushPos</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Push the current position onto the position stack. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='queryLineDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>queryLineDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display a dialog with an entry field. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>title</I>              </TD>
+								<TD width = '80%'>
+	Title of the dialog               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>query</I>              </TD>
+								<TD width = '80%'>
+	Text of dialog               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>data</I>              </TD>
+								<TD width = '80%'>
+	(By reference) Initial data and returned data               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Returns TRUE if the dialog was confirmed.           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='queryView'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>queryView</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display a dialog with an entry field. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	ASCIIVIEW (0) or HEXVIEW (1)           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='readRelease'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>readRelease</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Close the current read handle. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='readRequest'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>readRequest</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns a handle for read requests. Must be closed using readRelease after use! <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Reader handle           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='redo'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>redo</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Redo one step <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='redoAvailable'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>redoAvailable</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Callback function. Called when the active textbuffer has redo available. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>hasRedo</I>              </TD>
+								<TD width = '80%'>
+	TRUE if redo is available               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='repeatFind'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>repeatFind</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Repat last search or replace operation. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if string was found           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='replaceString'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>replaceString</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Replace a string <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>searchString</I>              </TD>
+								<TD width = '80%'>
+	String to search for               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>replaceString</I>              </TD>
+								<TD width = '80%'>
+	String to replace with               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>options</I>              </TD>
+								<TD width = '80%'>
+	Options string:<BR><BR>
+																													 'd': Global search. (Not set: Selected text) <BR>
+																													 'b': Backward search. (Not set: Forward search) <BR>
+																													 's': Search selected text. (Not set: Search whole file) <BR>
+																													 'u': Case insensitive search. <BR>
+																													 'w': Find whole words only. <BR>
+																													 'g': Use regular expressions. <BR>
+																													 'n': Prompt before replace.<BR>
+																													 'a': Replace all occurences. (Not set: Replace only the first found.)              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if string was found           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='replaceStringFiles'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>replaceStringFiles</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Replace strings in multiple files <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>searchString</I>              </TD>
+								<TD width = '80%'>
+	String to search for               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>replaceString</I>              </TD>
+								<TD width = '80%'>
+	String to replace with               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>options</I>              </TD>
+								<TD width = '80%'>
+	Options string:<BR><BR>
+																													 'd': Global search. (Not set: Selected text) <BR>
+																													 'b': Backward search. (Not set: Forward search) <BR>
+																													 's': Search selected text. (Not set: Search whole file) <BR>
+																													 'u': Case insensitive search. <BR>
+																													 'w': Find whole words only. <BR>
+																													 'g': Use regular expressions. <BR>
+																													 'n': Prompt before replace.<BR>
+																													 'a': Replace all occurences. (Not set: Replace only the first found.)<BR>
+																													 'r': Search sub directories.              </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>path</I>              </TD>
+								<TD width = '80%'>
+	Path where to start searching               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>files</I>              </TD>
+								<TD width = '80%'>
+	Files to search, separated by ';'. Wildcards allowed.               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='resetMark'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>resetMark</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Reset block markers. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='replaceDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>replaceDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display the search and replace dialog. The dialog will issue the replace command. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='resetViewWin'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>resetViewWin</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	DEBUG <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='rGetChar'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>rGetChar</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Return a character using a reader handle <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>reader</I>              </TD>
+								<TD width = '80%'>
+	Reader handle               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Position in the text               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Character code           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='rGetText'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>rGetText</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Get text using reader handle <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>reader</I>              </TD>
+								<TD width = '80%'>
+	Reader handle               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Position where to retrieve text               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>size</I>              </TD>
+								<TD width = '80%'>
+	Length of text               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Text string           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='saveFile'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>saveFile</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Save the current file <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='saveFileAs'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>saveFileAs</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Save the current file to a different file name. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>filename</I>              </TD>
+								<TD width = '80%'>
+	New filename               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='saveMacro'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>saveMacro</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Save the currently recorded macro <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>filename</I>              </TD>
+								<TD width = '80%'>
+	Filename to save to               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='searchDialog'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>searchDialog</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Display the search dialog. The dialog will issue the search command. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='setBlockEnd'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>setBlockEnd</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Sets the block end <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Position of block end               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='setBlockStart'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>setBlockStart</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Sets the block start <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>position</I>              </TD>
+								<TD width = '80%'>
+	Position of block start               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='setCursorColumn'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>setCursorColumn</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Jump to column <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>column</I>              </TD>
+								<TD width = '80%'>
+	Column to jump to               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='setDelimitorLines'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>setDelimitorLines</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Sets a list of delimitor lines which are displayed in the Ascii view. These are
+			 ideal when viewing files with entries in a fixed field length layout. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>lines</I>              </TD>
+								<TD width = '80%'>
+	Array of columns where delimitor lines should be placed.              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='setMark'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>setMark</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Saves the current position in a slot. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>markNum</I>              </TD>
+								<TD width = '80%'>
+	Slot 0-9               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='setScreenUpdate'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>setScreenUpdate</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Saves the current position in a slot. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>active</I>              </TD>
+								<TD width = '80%'>
+	TRUE to update screen               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='setToolActive'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>setToolActive</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Set a tool active <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>id</I>              </TD>
+								<TD width = '80%'>
+	ID of the tool               </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>active</I>              </TD>
+								<TD width = '80%'>
+	TRUE or FALSE               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='setView'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>setView</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Set view for current file <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>view</I>              </TD>
+								<TD width = '80%'>
+	ASCIVIEW (0) or HEXVIEW (1)               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='snapshot'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>snapshot</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	DEBUG <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='startMacroRecord'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>startMacroRecord</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Start recording a macro. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='startUndoBlock'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>startUndoBlock</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Start an undo block. Operations between this command and endUndoBlock will be
+			 undone/redone in a single operation. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='switchField'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>switchField</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	In hex view only: Switch between HEX and ASCII fields. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='switchToControl'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>switchToControl</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Switch focus to a control. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>id</I>              </TD>
+								<TD width = '80%'>
+	Id of the control               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if success           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='switchToFile'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>switchToFile</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Switch focus to a control containing a specific file. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>filename</I>              </TD>
+								<TD width = '80%'>
+	Filename               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if success           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='tabPressed'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>tabPressed</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Inserts a tab. Inserts a tab character or spaces depending on settings. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='textModified'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>textModified</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Callback function. Called when the active textbuffer has been modified <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>modified</I>              </TD>
+								<TD width = '80%'>
+	TRUE if modified               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toAscii'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toAscii</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Returns the ASCII code for a character. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>data</I>              </TD>
+								<TD width = '80%'>
+	String where the first char will be converted to it's ASCII code               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Integer           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toChar'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toChar</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Converts a character code to a string. Returns the string. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>data</I>              </TD>
+								<TD width = '80%'>
+	Integer representing a character code               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	String           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toDocumentEnd'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toDocumentEnd</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move to file end <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toDocumentStart'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toDocumentStart</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move to file start <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toggleColumnBlock'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toggleColumnBlock</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Toggle between column block and common block marking. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toggleRelativePos'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toggleRelativePos</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Toggles between relative position display, and absolute position display. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toInt'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toInt</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Converts a string to an integer, if the string contains a valid numeric string. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>data</I>              </TD>
+								<TD width = '80%'>
+	String containing an integer, or an integer               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Integer           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toLineEnd'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toLineEnd</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move to line end <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toLineStart'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toLineStart</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move to line start <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='toString'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>toString</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Move to line start <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>data</I>              </TD>
+								<TD width = '80%'>
+	Integer or string value               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='undo'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>undo</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Undo one step <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	TRUE if successful           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='undoAvailable'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>undoAvailable</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Callback function. Called when the active textbuffer has undo available. <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>hasUndo</I>              </TD>
+								<TD width = '80%'>
+	TRUE if undo is available               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='updateMainMenu'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>updateMainMenu</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Reflect changes in the main menu to the display <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='updateSetting'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>updateSetting</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	Update a setting <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>setting</I>              </TD>
+								<TD width = '80%'>
+	One of the following strings:<BR><BR>
+																													 'tabsize': Set the tab size. <BR>
+																													 'maxUndoSize': Max number of undo steps.<BR>
+																													 'rightmargin': The right margin.<BR>
+																													 'markfg': Colorvalue(RGB) of mark foreground.<BR>
+																													 'markbg': Colorvalue(RGB) of mark background.<BR>
+																													 'hilitefg': Colorvalue(RGB) of highligt foreground.<BR>
+																													 'hilitebg': Colorvalue(RGB) of highlight background.<BR>
+																													 'hexcursorfg': Colorvalue(RGB) of hex cursor.<BR>
+																													 'hexcursorbg': Colorvalue(RGB) of hex cursor background.<BR>
+																													 'standarddelim': Standard delimitor string. (When no syntax highlighting is defined.)<BR>
+																													 'columnblock': Columnblock marking (TRUE/FALSE).<BR>
+																													 'crlf': TRUE if CR+LF line end sequence should be used, FALSE if LF only.<BR>
+																													 'stripnameinnotebook': TRUE if only filename without path should be displayed in notebook tabs.<BR>
+																													 'insertmode': TRUE if insert mode, FALSE if overwrite mode.<BR>
+																													 'backupfiles': TRUE if .BAK file should be created on file save.<BR>
+																													 'persistentblocks': TRUE if persistent blocks should be used.<BR>
+																													 'showrightmargin': TRUE if the right margin should be shown in the text window.<BR>
+																													 'syntaxhighlight': TRUE if syntax highlightinh should be used.<BR>
+																													 'autosave': TRUE if auto save should be done.<BR>
+																													 'usetab': TRUE to insert real tab character (0x9), FALSE to insert spaces.<BR>
+																													 'optimalfill': TRUE to fill long space runs whith tab character (0x9) when possible.              </TD>
+							</TR>
+							<TR valign=top>
+								<TD width = '20%' align=right>
+	<I>update</I>              </TD>
+								<TD width = '80%'>
+	New setting               </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+	<a name='window'>
+	<TABLE width='100%'>
+		<TR valign=top>
+			<TD width = '30%'>
+	<B><I>window</I></B>
+			</TD>
+			<TD width = '70%'>
+				<TABLE width='100%'>
+					<TR valign=top>
+						<TD>
+	<B>Description:</B><BR>
+	DEBUG <BR>          </TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Parameters</B><BR>
+							<TABLE width='100%' cellspacing=10>
+							<TR valign=top>
+								<TD width = '30%'>
+								<I>none</I>              </TD>
+							</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR valign=top>
+						<TD>
+							<B>Return value:</B><BR>
+	Nothing           </TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+
+</body>
+</html>

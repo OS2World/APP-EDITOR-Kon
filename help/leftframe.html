@@ -1,0 +1,449 @@
+<html>
+<head>
+<title>JavaScript Tree Control</title>
+<style>
+body{
+	font-size:10.0pt;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color: navy;
+}
+.trigger{
+	cursor: pointer;
+	cursor: hand;
+}
+.branch{
+	display: none;
+	margin-left: 16px;
+}
+
+A:link { color: navy }       /* unvisited link */
+A:visited { color: navy }   /* visited links */
+A:active { color: navy }    /* active links */
+
+</style>
+<script language="JavaScript">
+var openImg = new Image();
+openImg.src = "open.gif";
+var closedImg = new Image();
+closedImg.src = "closed.gif";
+
+function showBranch(branch){
+	var objBranch = document.getElementById(branch).style;
+	if(objBranch.display=="block")
+		objBranch.display="none";
+	else
+		objBranch.display="block";
+}
+
+function swapFolder(img){
+	objImg = document.getElementById(img);
+	if(objImg.src.indexOf('closed.gif')>-1)
+		objImg.src = openImg.src;
+	else
+		objImg.src = closedImg.src;
+}
+</script>
+</head>
+<body>
+<div class="trigger" onClick="showBranch('Main');swapFolder('folder0')">
+	<img src="closed.gif" border="0" id="folder0">
+	<a href="intro.html" target="main">Main</a>
+</div>
+	<span class="branch" id="Main">
+		<img src="doc.gif"><a href="keyfeatures.html" target="main">Key features</a><br>
+	</span>
+<div class="trigger" onClick="showBranch('Getting started');swapFolder('folder2')">
+	<img src="closed.gif" border="0" id="folder2">
+	<a href="start.html" target="main">Getting started</a>
+</div>
+	<span class="branch" id="Getting started">
+		<img src="doc.gif"><a href="start.html#windowsetup" target="main">The Kon windows</a><br>
+		<img src="doc.gif"><a href="start.html#editandmove" target="main">Editing and navigating in the text</a><br>
+		<img src="doc.gif"><a href="start.html#wordwrap" target="main">Word wrap</a><br>
+		<img src="doc.gif"><a href="start.html#hexeditor" target="main">Hex editor</a><br>
+		<img src="doc.gif"><a href="start.html#macros" target="main">Macro recording</a><br>
+		<img src="doc.gif"><a href="start.html#uncommon" target="main">Some not so common features</a><br>
+		<span class="trigger" onClick="showBranch('searchdetails');swapFolder('folder7')">
+			<img src="closed.gif" border="0" id="folder7">
+	    <a href="start.html#search" target="main">Search for text</a><br>
+		</span>
+			<span class="branch" id="searchdetails">
+		    <img src="doc.gif"><a href="searchreplace.html" target="main">Search details</a><br>
+		    <img src="doc.gif"><a href="grep.html" target="main">Regular expressions</a><br>
+ 			</span>
+		<span class="trigger" onClick="showBranch('replacedetails');swapFolder('folder8')">
+			<img src="closed.gif" border="0" id="folder8">
+	    <a href="start.html#replace" target="main">Search and replace text</a><br>
+		</span>
+			<span class="branch" id="replacedetails">
+		    <img src="doc.gif"><a href="searchreplace.html" target="main">Search/replace details</a><br>
+		    <img src="doc.gif"><a href="grep.html" target="main">Regular expressions</a><br>
+ 			</span>
+		<img src="doc.gif"><a href="start.html#unicode" target="main">Unicode</a><br>
+	</span>
+<div class="trigger" onClick="showBranch('configure');swapFolder('folder3')">
+	<img src="closed.gif" border="0" id="folder3">
+	<a href="configure.html" target="main">Configuring</a>
+</div>
+	<span class="branch" id="configure">
+		<img src="doc.gif"><a href="prefs.html" target="main">Settings preferences</a><br>
+		<img src="doc.gif"><a href="keybind.html" target="main">Modify key bindings</a><br>
+		<img src="doc.gif"><a href="konstartup.html" target="main">Kon startup</a><br>
+		<img src="doc.gif"><a href="kmodules.html" target="main">K modules</a><br>
+		<img src="doc.gif"><a href="kfunref.html#updateSettings" target="main">Modify settings directly from K</a><br>
+		<img src="doc.gif"><a href="syntax.html" target="main">Modifying/adding to syntax highlighting definitions</a><br>
+	</span>
+<div class="trigger" onClick="showBranch('programming');swapFolder('folder4')">
+	<img src="closed.gif" border="0" id="folder4">
+	<a href="programming.html" target="main">Programming</a>
+</div>
+	<span class="branch" id="programming">
+		<span class="trigger" onClick="showBranch('kprogramming');swapFolder('folder5')">
+			<img src="closed.gif" border="0" id="folder5">
+	    <a href="kprogramming.html" target="main">K programming and introduction</a><br>
+		</span>
+			<span class="branch" id="kprogramming">
+		    <img src="doc.gif"><a href="kprogramming.html#K quickstart" target="main">K quickstart</a><br>
+		    <img src="doc.gif"><a href="kprogramming.html#K language definition" target="main">K language definition</a><br>
+ 			</span>
+		<span class="trigger" onClick="showBranch('kfunref');swapFolder('folder6')">
+			<img src="closed.gif" border="0" id="folder6">
+	    <a href="kfunref.html" target="main">K function reference</a><br>
+		</span>
+			<span class="branch" id="kfunref">
+         <div class="trigger" onClick="showBranch('A');swapFolder('folderA')">
+         <img src="closed.gif" border="0" id="folderA">
+         A<br>
+         </div>
+           <span class="branch" id="A">
+              <img src="doc.gif"><a href="kfunref.html#aboutDialog" target="main">aboutDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#addMenu" target="main">addMenu</a><br>
+              <img src="doc.gif"><a href="kfunref.html#addMenuItem" target="main">addMenuItem</a><br>
+              <img src="doc.gif"><a href="kfunref.html#addMenuSeparator" target="main">addMenuSeparator</a><br>
+              <img src="doc.gif"><a href="kfunref.html#addToolButton" target="main">addToolButton</a><br>
+              <img src="doc.gif"><a href="kfunref.html#addToolSpace" target="main">addToolSpace</a><br>
+              <img src="doc.gif"><a href="kfunref.html#atLineEnd" target="main">atLineEnd</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('B');swapFolder('folderB')">
+         <img src="closed.gif" border="0" id="folderB">
+         B<br>
+         </div>
+           <span class="branch" id="B">
+              <img src="doc.gif"><a href="kfunref.html#beginMainMenu" target="main">beginMainMenu</a><br>
+              <img src="doc.gif"><a href="kfunref.html#beginMark" target="main">beginMark</a><br>
+              <img src="doc.gif"><a href="kfunref.html#beginPopupMenu" target="main">beginPopupMenu</a><br>
+              <img src="doc.gif"><a href="kfunref.html#beginSubmenuUpdate" target="main">beginSubmenuUpdate</a><br>
+              <img src="doc.gif"><a href="kfunref.html#bindKey" target="main">bindKey</a><br>
+              <img src="doc.gif"><a href="kfunref.html#blockMarked" target="main">blockMarked</a><br>
+              <img src="doc.gif"><a href="kfunref.html#browse" target="main">browse</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('C');swapFolder('folderC')">
+         <img src="closed.gif" border="0" id="folderC">
+         C<br>
+         </div>
+           <span class="branch" id="C">
+              <img src="doc.gif"><a href="kfunref.html#charLeft" target="main">charLeft</a><br>
+              <img src="doc.gif"><a href="kfunref.html#charRight" target="main">charRight</a><br>
+              <img src="doc.gif"><a href="kfunref.html#charToString" target="main">charToString</a><br>
+              <img src="doc.gif"><a href="kfunref.html#checkMenuItem" target="main">checkMenuItem</a><br>
+              <img src="doc.gif"><a href="kfunref.html#clearAll" target="main">clearAll</a><br>
+              <img src="doc.gif"><a href="kfunref.html#clearSavedPositions" target="main">clearSavedPositions</a><br>
+              <img src="doc.gif"><a href="kfunref.html#closeActiveWindow" target="main">closeActiveWindow</a><br>
+              <img src="doc.gif"><a href="kfunref.html#closeControl" target="main">closeControl</a><br>
+              <img src="doc.gif"><a href="kfunref.html#closeFrameWindow" target="main">closeFrameWindow</a><br>
+              <img src="doc.gif"><a href="kfunref.html#convertBufferFromUnicode" target="main">convertBufferFromUnicode</a><br>
+              <img src="doc.gif"><a href="kfunref.html#copyBlockToClipboard" target="main">copyBlockToClipboard</a><br>
+              <img src="doc.gif"><a href="kfunref.html#copyMacroToClipboard" target="main">copyMacroToClipboard</a><br>
+              <img src="doc.gif"><a href="kfunref.html#copyTextToClipboard" target="main">copyTextToClipboard</a><br>
+              <img src="doc.gif"><a href="kfunref.html#createFrameWindow" target="main">createFrameWindow</a><br>
+              <img src="doc.gif"><a href="kfunref.html#cutBlockToClipboard" target="main">cutBlockToClipboard</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('D');swapFolder('folderD')">
+         <img src="closed.gif" border="0" id="folderD">
+         D<br>
+         </div>
+           <span class="branch" id="D">
+              <img src="doc.gif"><a href="kfunref.html#debug" target="main">debug</a><br>
+              <img src="doc.gif"><a href="kfunref.html#deleteBlock" target="main">deleteBlock</a><br>
+              <img src="doc.gif"><a href="kfunref.html#deleteCharacter" target="main">deleteCharacter</a><br>
+              <img src="doc.gif"><a href="kfunref.html#deleteLine" target="main">deleteLine</a><br>
+              <img src="doc.gif"><a href="kfunref.html#deletePreviousCharacter" target="main">deletePreviousCharacter</a><br>
+              <img src="doc.gif"><a href="kfunref.html#deleteText" target="main">deleteText</a><br>
+              <img src="doc.gif"><a href="kfunref.html#deleteToEOL" target="main">deleteToEOL</a><br>
+              <img src="doc.gif"><a href="kfunref.html#deleteWord" target="main">deleteWord</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('E');swapFolder('folderE')">
+         <img src="closed.gif" border="0" id="folderE">
+         E<br>
+         </div>
+           <span class="branch" id="E">
+              <img src="doc.gif"><a href="kfunref.html#enableMenuItem" target="main">enableMenuItem</a><br>
+              <img src="doc.gif"><a href="kfunref.html#endMacroRecord" target="main">endMacroRecord</a><br>
+              <img src="doc.gif"><a href="kfunref.html#endMainMenu" target="main">endMainMenu</a><br>
+              <img src="doc.gif"><a href="kfunref.html#endMark" target="main">endMark</a><br>
+              <img src="doc.gif"><a href="kfunref.html#endPopupMenu" target="main">endPopupMenu</a><br>
+              <img src="doc.gif"><a href="kfunref.html#endSubmenuUpdate" target="main">endSubmenuUpdate</a><br>
+              <img src="doc.gif"><a href="kfunref.html#endUndoBlock" target="main">endUndoBlock</a><br>
+              <img src="doc.gif"><a href="kfunref.html#executeKFromClipboard" target="main">executeKFromClipboard</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('F');swapFolder('folderF')">
+         <img src="closed.gif" border="0" id="folderF">
+         F<br>
+         </div>
+           <span class="branch" id="F">
+              <img src="doc.gif"><a href="kfunref.html#fileExists" target="main">fileExists</a><br>
+              <img src="doc.gif"><a href="kfunref.html#fileLoadDialog" target="main">fileLoadDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#fileSaveDialog" target="main">fileSaveDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#fillColumnBlock" target="main">fillColumnBlock</a><br>
+              <img src="doc.gif"><a href="kfunref.html#findString" target="main">findString</a><br>
+              <img src="doc.gif"><a href="kfunref.html#findStringFiles" target="main">findStringFiles</a><br>
+              <img src="doc.gif"><a href="kfunref.html#findStringGrep" target="main">findStringGrep</a><br>
+              <img src="doc.gif"><a href="kfunref.html#focusCommandBar" target="main">focusCommandBar</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('G');swapFolder('folderG')">
+         <img src="closed.gif" border="0" id="folderG">
+         G<br>
+         </div>
+           <span class="branch" id="G">
+              <img src="doc.gif"><a href="kfunref.html#getBlockEnd" target="main">getBlockEnd</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getBlockStart" target="main">getBlockStart</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getChar" target="main">getChar</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getCurrentControlId" target="main">getCurrentControlId</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getCursorColumn" target="main">getCursorColumn</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getEncoding" target="main">getEncoding</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getFileId" target="main">getFileId</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getFilename" target="main">getFilename</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getLine" target="main">getLine</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getKonDir" target="main">getKonDir</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getLineStart" target="main">getLineStart</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getLineEnd" target="main">getLineEnd</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getMarkBeginColumn" target="main">getMarkBeginColumn</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getMarkEndColumn" target="main">getMarkEndColumn</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getPosition" target="main">getPosition</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getScratchName" target="main">getScratchName</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getScreenUpdate" target="main">getScreenUpdate</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getRecentFile" target="main">getRecentFile</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getRecentFilesCount" target="main">getRecentFilesCount</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getSetting" target="main">getSetting</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getSyntaxCount" target="main">getSyntaxCount</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getSyntaxName" target="main">getSyntaxName</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getSyntaxNameAtPos" target="main">getSyntaxNameAtPos</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getText" target="main">getText</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getTextLength" target="main">getTextLength</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getTime" target="main">getTime</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getWindowCount" target="main">getWindowCount</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getWindowFilename" target="main">getWindowFilename</a><br>
+              <img src="doc.gif"><a href="kfunref.html#getWindowId" target="main">getWindowId</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('H');swapFolder('folderH')">
+         <img src="closed.gif" border="0" id="folderH">
+         H<br>
+         </div>
+           <span class="branch" id="H">
+              <img src="doc.gif"><a href="kfunref.html#hasSavedPositions" target="main">hasSavedPositions</a><br>
+              <img src="doc.gif"><a href="kfunref.html#hasValidBlockMark" target="main">hasValidBlockMark</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('I');swapFolder('folderI')">
+         <img src="closed.gif" border="0" id="folderI">
+         I<br>
+         </div>
+           <span class="branch" id="I">
+              <img src="doc.gif"><a href="kfunref.html#indent" target="main">indent</a><br>
+              <img src="doc.gif"><a href="kfunref.html#indentBlock" target="main">indentBlock</a><br>
+              <img src="doc.gif"><a href="kfunref.html#insertLine" target="main">insertLine</a><br>
+              <img src="doc.gif"><a href="kfunref.html#insertString" target="main">insertString</a><br>
+              <img src="doc.gif"><a href="kfunref.html#integrityCheck" target="main">integrityCheck</a><br>
+              <img src="doc.gif"><a href="kfunref.html#isInteger" target="main">isInteger</a><br>
+              <img src="doc.gif"><a href="kfunref.html#isRecording" target="main">isRecording</a><br>
+              <img src="doc.gif"><a href="kfunref.html#isString" target="main">isString</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('J');swapFolder('folderJ')">
+         <img src="closed.gif" border="0" id="folderJ">
+         J<br>
+         </div>
+           <span class="branch" id="J">
+              <img src="doc.gif"><a href="kfunref.html#jumpToLine" target="main">jumpToLine</a><br>
+              <img src="doc.gif"><a href="kfunref.html#jumpToLineDialog" target="main">jumpToLineDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#jumpToNextPos" target="main">jumpToNextPos</a><br>
+              <img src="doc.gif"><a href="kfunref.html#jumpToNumberedSavedPos" target="main">jumpToNumberedSavedPos</a><br>
+              <img src="doc.gif"><a href="kfunref.html#jumpToPosDialog" target="main">jumpToPosDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#jumpToPosition" target="main">jumpToPosition</a><br>
+              <img src="doc.gif"><a href="kfunref.html#jumpToPrevPos" target="main">jumpToPrevPos</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('K');swapFolder('folderK')">
+         <img src="closed.gif" border="0" id="folderK">
+         K<br>
+         </div>
+           <span class="branch" id="K">
+              <img src="doc.gif"><a href="kfunref.html#keepBlock" target="main">keepBlock</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('L');swapFolder('folderL')">
+         <img src="closed.gif" border="0" id="folderL">
+         L<br>
+         </div>
+           <span class="branch" id="L">
+              <img src="doc.gif"><a href="kfunref.html#launchProcess" target="main">launchProcess</a><br>
+              <img src="doc.gif"><a href="kfunref.html#launchProcessToMessages" target="main">launchProcessToMessages</a><br>
+              <img src="doc.gif"><a href="kfunref.html#leftString" target="main">leftString</a><br>
+              <img src="doc.gif"><a href="kfunref.html#length" target="main">length</a><br>
+              <img src="doc.gif"><a href="kfunref.html#lineDown" target="main">lineDown</a><br>
+              <img src="doc.gif"><a href="kfunref.html#lineUp" target="main">lineUp</a><br>
+              <img src="doc.gif"><a href="kfunref.html#loadDialog" target="main">loadDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#loadFile" target="main">loadFile</a><br>
+              <img src="doc.gif"><a href="kfunref.html#loadModule" target="main">loadModule</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('M');swapFolder('folderM')">
+         <img src="closed.gif" border="0" id="folderM">
+         M<br>
+         </div>
+           <span class="branch" id="M">
+              <img src="doc.gif"><a href="kfunref.html#macroSaveDialog" target="main">macroSaveDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markAll" target="main">markAll</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markCharLeft" target="main">markCharLeft</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markCharRight" target="main">markCharRight</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markNextWord" target="main">markNextWord</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markLine" target="main">markLine</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markLineDown" target="main">markLineDown</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markLineUp" target="main">markLineUp</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markPageDown" target="main">markPageDown</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markPageUp" target="main">markPageUp</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markPrevWord" target="main">markPrevWord</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markToDocumentEnd" target="main">markToDocumentEnd</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markToDocumentStart" target="main">markToDocumentStart</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markToLineEnd" target="main">markToLineEnd</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markToLineStart" target="main">markToLineStart</a><br>
+              <img src="doc.gif"><a href="kfunref.html#markWord" target="main">markWord</a><br>
+              <img src="doc.gif"><a href="kfunref.html#messageBox" target="main">messageBox</a><br>
+              <img src="doc.gif"><a href="kfunref.html#messageWindowDisplay" target="main">messageWindowDisplay</a><br>
+              <img src="doc.gif"><a href="kfunref.html#messageWindowVisible" target="main">messageWindowVisible</a><br>
+              <img src="doc.gif"><a href="kfunref.html#midString" target="main">midString</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('N');swapFolder('folderN')">
+         <img src="closed.gif" border="0" id="folderN">
+         N<br>
+         </div>
+           <span class="branch" id="N">
+              <img src="doc.gif"><a href="kfunref.html#nextTab" target="main">nextTab</a><br>
+              <img src="doc.gif"><a href="kfunref.html#nextView" target="main">nextView</a><br>
+              <img src="doc.gif"><a href="kfunref.html#nextWord" target="main">nextWord</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('O');swapFolder('folderO')">
+         <img src="closed.gif" border="0" id="folderO">
+         O<br>
+         </div>
+           <span class="branch" id="O">
+              <img src="doc.gif"><a href="kfunref.html#outdentBlock" target="main">outdentBlock</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('P');swapFolder('folderP')">
+         <img src="closed.gif" border="0" id="folderP">
+         P<br>
+         </div>
+           <span class="branch" id="P">
+              <img src="doc.gif"><a href="kfunref.html#pageDown" target="main">pageDown</a><br>
+              <img src="doc.gif"><a href="kfunref.html#pageUp" target="main">pageUp</a><br>
+              <img src="doc.gif"><a href="kfunref.html#pasteBlockFromClipboard" target="main">pasteBlockFromClipboard</a><br>
+              <img src="doc.gif"><a href="kfunref.html#popupMenu" target="main">popupMenu</a><br>
+              <img src="doc.gif"><a href="kfunref.html#popPos" target="main">popPos</a><br>
+              <img src="doc.gif"><a href="kfunref.html#popupWindow" target="main">popupWindow</a><br>
+              <img src="doc.gif"><a href="kfunref.html#prefsDialog" target="main">prefsDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#prevTab" target="main">prevTab</a><br>
+              <img src="doc.gif"><a href="kfunref.html#prevWord" target="main">prevWord</a><br>
+              <img src="doc.gif"><a href="kfunref.html#print" target="main">print</a><br>
+              <img src="doc.gif"><a href="kfunref.html#printDialog" target="main">printDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#printFile" target="main">printFile</a><br>
+              <img src="doc.gif"><a href="kfunref.html#pushPos" target="main">pushPos</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('Q');swapFolder('folderQ')">
+         <img src="closed.gif" border="0" id="folderQ">
+         Q<br>
+         </div>
+           <span class="branch" id="Q">
+              <img src="doc.gif"><a href="kfunref.html#queryLineDialog" target="main">queryLineDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#queryView" target="main">queryView</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('R');swapFolder('folderR')">
+         <img src="closed.gif" border="0" id="folderR">
+         R<br>
+         </div>
+           <span class="branch" id="R">
+              <img src="doc.gif"><a href="kfunref.html#readRelease" target="main">readRelease</a><br>
+              <img src="doc.gif"><a href="kfunref.html#readRequest" target="main">readRequest</a><br>
+              <img src="doc.gif"><a href="kfunref.html#redo" target="main">redo</a><br>
+              <img src="doc.gif"><a href="kfunref.html#redoAvailable" target="main">redoAvailable</a><br>
+              <img src="doc.gif"><a href="kfunref.html#repeatFind" target="main">repeatFind</a><br>
+              <img src="doc.gif"><a href="kfunref.html#replaceString" target="main">replaceString</a><br>
+              <img src="doc.gif"><a href="kfunref.html#replaceStringFiles" target="main">replaceStringFiles</a><br>
+              <img src="doc.gif"><a href="kfunref.html#resetMark" target="main">resetMark</a><br>
+              <img src="doc.gif"><a href="kfunref.html#replaceDialog" target="main">replaceDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#resetViewWin" target="main">resetViewWin</a><br>
+              <img src="doc.gif"><a href="kfunref.html#rGetChar" target="main">rGetChar</a><br>
+              <img src="doc.gif"><a href="kfunref.html#rGetText" target="main">rGetText</a><br>
+              <img src="doc.gif"><a href="kfunref.html#rightString" target="main">rightString</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('S');swapFolder('folderS')">
+         <img src="closed.gif" border="0" id="folderS">
+         S<br>
+         </div>
+           <span class="branch" id="S">
+              <img src="doc.gif"><a href="kfunref.html#saveDialog" target="main">saveDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#saveFile" target="main">saveFile</a><br>
+              <img src="doc.gif"><a href="kfunref.html#saveFileAs" target="main">saveFileAs</a><br>
+              <img src="doc.gif"><a href="kfunref.html#saveMacro" target="main">saveMacro</a><br>
+              <img src="doc.gif"><a href="kfunref.html#saveNumberedPos" target="main">saveNumberedPos</a><br>
+              <img src="doc.gif"><a href="kfunref.html#savePos" target="main">savePos</a><br>
+              <img src="doc.gif"><a href="kfunref.html#searchDialog" target="main">searchDialog</a><br>
+              <img src="doc.gif"><a href="kfunref.html#setBlockEnd" target="main">setBlockEnd</a><br>
+              <img src="doc.gif"><a href="kfunref.html#setBlockStart" target="main">setBlockStart</a><br>
+              <img src="doc.gif"><a href="kfunref.html#setCursorColumn" target="main">setCursorColumn</a><br>
+              <img src="doc.gif"><a href="kfunref.html#setDelimitorLines" target="main">setDelimitorLines</a><br>
+              <img src="doc.gif"><a href="kfunref.html#setScreenUpdate" target="main">setScreenUpdate</a><br>
+              <img src="doc.gif"><a href="kfunref.html#setSyntax" target="main">setSyntax</a><br>
+              <img src="doc.gif"><a href="kfunref.html#setToolActive" target="main">setToolActive</a><br>
+              <img src="doc.gif"><a href="kfunref.html#setView" target="main">setView</a><br>
+              <img src="doc.gif"><a href="kfunref.html#snapshot" target="main">snapshot</a><br>
+              <img src="doc.gif"><a href="kfunref.html#startMacroRecord" target="main">startMacroRecord</a><br>
+              <img src="doc.gif"><a href="kfunref.html#startUndoBlock" target="main">startUndoBlock</a><br>
+              <img src="doc.gif"><a href="kfunref.html#stringToChar" target="main">stringToChar</a><br>
+              <img src="doc.gif"><a href="kfunref.html#switchField" target="main">switchField</a><br>
+              <img src="doc.gif"><a href="kfunref.html#switchExecutingControl" target="main">switchExecutingControl</a><br>
+              <img src="doc.gif"><a href="kfunref.html#switchToControl" target="main">switchToControl</a><br>
+              <img src="doc.gif"><a href="kfunref.html#switchToFile" target="main">switchToFile</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('T');swapFolder('folderT')">
+         <img src="closed.gif" border="0" id="folderT">
+         T<br>
+         </div>
+           <span class="branch" id="T">
+              <img src="doc.gif"><a href="kfunref.html#tabPressed" target="main">tabPressed</a><br>
+              <img src="doc.gif"><a href="kfunref.html#textModified" target="main">textModified</a><br>
+              <img src="doc.gif"><a href="kfunref.html#toDocumentEnd" target="main">toDocumentEnd</a><br>
+              <img src="doc.gif"><a href="kfunref.html#toDocumentStart" target="main">toDocumentStart</a><br>
+              <img src="doc.gif"><a href="kfunref.html#toggleColumnBlock" target="main">toggleColumnBlock</a><br>
+              <img src="doc.gif"><a href="kfunref.html#toggleRelativePos" target="main">toggleRelativePos</a><br>
+              <img src="doc.gif"><a href="kfunref.html#toInt" target="main">toInt</a><br>
+              <img src="doc.gif"><a href="kfunref.html#toLineEnd" target="main">toLineEnd</a><br>
+              <img src="doc.gif"><a href="kfunref.html#toLineStart" target="main">toLineStart</a><br>
+              <img src="doc.gif"><a href="kfunref.html#toString" target="main">toString</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('U');swapFolder('folderU')">
+         <img src="closed.gif" border="0" id="folderU">
+         U<br>
+         </div>
+           <span class="branch" id="U">
+              <img src="doc.gif"><a href="kfunref.html#undo" target="main">undo</a><br>
+              <img src="doc.gif"><a href="kfunref.html#undoAvailable" target="main">undoAvailable</a><br>
+              <img src="doc.gif"><a href="kfunref.html#unloadModule" target="main">unloadModule</a><br>
+              <img src="doc.gif"><a href="kfunref.html#updateMainMenu" target="main">updateMainMenu</a><br>
+              <img src="doc.gif"><a href="kfunref.html#updateSetting" target="main">updateSetting</a><br>
+           </span>
+         <div class="trigger" onClick="showBranch('W');swapFolder('folderW')">
+         <img src="closed.gif" border="0" id="folderW">
+         W<br>
+         </div>
+           <span class="branch" id="W">
+              <img src="doc.gif"><a href="kfunref.html#window" target="main">window</a><br>
+           </span>
+ 			</span>
+	</span>
+</body>
+</html>

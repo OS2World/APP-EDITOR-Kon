@@ -1,0 +1,239 @@
+body {
+	font-size:10.0pt;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+  margin-left: 0.5em;
+}
+
+p {
+	font-size:10.0pt;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+td {
+	font-size:10.0pt;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	vertical-align: top;
+}
+
+old {
+	font-family:"Times New Roman";
+}
+
+h1 {
+	font-size:140%;
+	font-family:Arial;
+}
+
+h2 {
+	font-size:120%;
+	font-family:Arial;
+	font-style:italic;
+}
+
+h3 {
+	font-size:120%;
+	font-family:Arial;
+}
+
+h4 {
+	font-size:110%;
+	font-family:Arial;
+}
+
+.h5 {
+	font-size:110%;
+	font-style:Italic;
+}
+
+a.link {
+	font-size:110%;
+	font-family:Arial;
+  color: rgb(0,0, 255);
+}
+
+a {
+  color: rgb(0,0, 255);
+}
+
+a.visited {
+  color: rgb(0,0,255);
+}
+
+a.hover {
+  color: rgb(128,0,0);
+}
+
+.title {
+	font-size:200%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+.subtitle {
+	font-size:120%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-style:Italic;
+  text-align: center;
+}
+
+.footer1 {
+	font-size:120%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.centered {
+  text-align: center;
+}
+
+pre {
+  white-space: -moz-pre-wrap;
+}
+
+.navbar {
+  color: white;
+  font-weight: bold;
+  height: 20px;
+  font-size: small;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.capt {
+  font-weight: bold;
+}
+
+.code {
+  align: center;
+	background-color:#D5DCFF;
+  border-color: rgb(0,0,0);
+  border-style: solid;
+  padding: 0.5em;
+  font-family: monospace;
+  margin: 0.5em;
+	white-space: pre
+}
+
+.definition {
+  align: center;
+	background-color:#99CCFF;
+  border-color: rgb(0,0,0);
+  border-style: solid;
+  padding: 0.5em;
+  font-family: monospace;
+  margin: 0.5em;
+	white-space: pre
+}
+
+.example2 {
+  align: center;
+	background-color:#FFFFFF;
+  border-color: rgb(0,0,0);
+  border-style: solid;
+  padding: 0.5em;
+  font-family: monospace;
+  margin: 0.5em;
+	white-space: pre
+}
+
+.definition3 {
+  padding: 0.5em;
+  font-family: monospace;
+  margin: 0.5em;
+	white-space: pre
+}
+
+.syntact {
+  align: center;
+  background-color: rgb(192,192,192);
+  border-color: rgb(128,128,128);
+  border-style: ridge;
+  padding: 0.5em;
+}
+
+.codeb {
+  margin-left: 4em;
+}
+
+.sample {
+  background-color: rgb(192,192,192);
+  border-color: rgb(128,128,128);
+  border-style: ridge;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-family: monospace;
+}
+
+.example {
+  background-color: rgb(192,192,192);
+  border-color: rgb(128,128,128);
+  border-style: ridge;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-family: monospace;
+}
+
+.examplec {
+  background-color: rgb(192,192,192);
+  border-color: rgb(128,128,128);
+  border-style: ridge;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-family: monospace;
+}
+
+.xample {
+  background-color: rgb(192,192,192);
+  border-color: rgb(128,128,128);
+  border-style: ridge;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-family: monospace;
+}
+
+.quickex {
+  font-weight: bold;
+  white-space: pre;
+  font-family: monospace;
+}
+
+.tag {
+  color: rgb(255,0,0);
+}
+
+.attrib {
+  color: rgb(0,128,0);
+}
+
+.aval {
+  color: rgb(255,165,0);
+  font-weight: bold; 
+}
+
+.aval-default {
+  color: rgb(255,165,0);
+  font-weight: bold; 
+  text-decoration: underline;
+}
+
+.spec {
+  color: rgb(255,0,0);
+  font-size: small;
+}
+
+.keyname {
+  font-variant: small_caps;
+}
+
+.task {
+  border-left: rgb(0,0,128);
+  border-left-style: solid;
+  padding-left: 1ex;
+}
+
+.api {
+	font-size:60%;
+}
+

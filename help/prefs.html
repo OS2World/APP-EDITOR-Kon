@@ -1,0 +1,211 @@
+<html>
+<head>
+  <title>Preferences</title>
+
+  <link REL=STYLESHEET TYPE="text/css" HREF="help.css">
+</head>
+<body BGCOLOR=white>
+
+<h1>Preferences</h1>
+
+<a class="link" href="#editor">Editor settings</a><br>
+<a class="link" href="#display">Display settings</a><br>
+<a class="link" href="#ascii1">Ascii view settings (1)</a><br>
+<a class="link" href="#ascii2">Ascii view settings (2)</a><br>
+<a class="link" href="#hex">Hex view settings</a><br>
+<a class="link" href="#misc">Misc settings</a><br>
+
+<a name="editor"><h2>Editor settings</h2></a>
+
+<img src=OptEditor.gif><br><br>
+
+<table width="80%">
+	<tr>
+		<td valign="top" width="20%"><i>Persistent selection</i></td>
+		<td valign="top" width="80%">When checked, block selections will not be reset when the
+		                cursor is moved.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Use tab</i></td>
+		<td valign="top" width="80%">When checked, a tab characters (0x09) is inserted when the
+		                tab key is pressed, otherwise spaces are inserted until
+										the next tab stop.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Optimal fill</i></td>
+		<td valign="top" width="80%">When checked, indenting will use tab characters (0x09)
+		                whenever it is possible.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Enable virtual space</i></td>
+		<td valign="top" width="80%">When checked, it is possible to move the cursor
+                                 beyond the end of a line.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Tab size</i></td>
+		<td valign="top" width="80%">The tab size in characters.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Word separators</i></td>
+		<td valign="top" width="80%">A list of characters which is used to separate words. 
+		                These may be overrided by the current syntax definition.
+										</td>
+	<tr>
+		<td valign="top" width="20%"><i>Max undo size</i></td>
+		<td valign="top" width="80%">The maximum number of bytes the undo buffer may use. One 
+		                byte is roughly equal to one character.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Line ending</i></td>
+		<td valign="top" width="80%">The character sequence used for ending a line. Note that
+		                the loaded file will NOT have it's line endings modified.
+										This setting only affects new line endings inserted in the 
+										text..</td>
+	</tr>
+</table>
+
+<a name="display"><h2>Display settings</h2></a>
+
+<img src=OptDisplay.gif><br><br>
+
+<table width="80%">
+	<tr>
+		<td valign="top" width="20%"><i>Syntax highlighting</i></td>
+		<td valign="top" width="80%">Check to enable syntax highlighting.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Show right margin</i></td>
+		<td valign="top" width="80%">Show the right margin as a thin line. Note that
+		                             Kon does not support on the fly word wrapping.
+																 The right margin is only used as an indicator.
+																 </td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Right margin</i></td>
+		<td valign="top" width="80%">The right margin (in characters).</td>
+	</tr>
+</table>
+
+<a name="ascii1"><h2>Ascii view (1)</h2></a>
+
+<img src=OptAscii1.gif><br><br>
+
+<table width="80%">
+	<tr>
+		<td valign="top" width="20%"><i>Font</i></td>
+		<td valign="top" width="80%">Select the font you wish to use.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Font size</i></td>
+		<td valign="top" width="80%">Select the font size. For bitmapped fonts
+                                 in OS/2, the size is displayed in width and
+                                 height of the character box.
+																 </td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Fixed width only</i></td>
+		<td valign="top" width="80%">Check to use fixed width fonts only. This is
+                                 the recommended setting.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Bitmapped fonts only</i></td>
+		<td valign="top" width="80%">Check to use bitmapped fonts only. This is the
+                                 recommended setting for OS/2.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Font and colors</i></td>
+		<td valign="top" width="80%">Select the item you wish to change the color
+                                 or font for.</td>
+	</tr>
+</table>
+
+<a name="ascii2"><h2>Ascii view (2)</h2></a>
+
+<img src=OptAscii2.gif><br><br>
+
+<table width="80%">
+	<tr>
+		<td valign="top" width="20%"><i>Show line numbers</i></td>
+		<td valign="top" width="80%">When checked, the line numbers are shown in 
+                                 the left margin.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Show saved positions</i></td>
+		<td valign="top" width="80%">When checked, saved positions are shown in the
+                                 left margin.
+																 </td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Characters</i></td>
+		<td valign="top" width="80%">Width of the left margin in characters.</td>
+	</tr>
+</table>
+
+<a name="hex"><h2>Hex view</h2></a>
+
+<img src=OptHex.gif><br><br>
+
+<p>Same as for <a href="#ascii1">Ascii view (1)</a>.</p>
+
+<a name="misc"><h2>Misc settings</h2></a>
+
+<img src=OptMisc.gif><br><br>
+
+<table width="80%">
+	<tr>
+		<td valign="top" width="20%"><i>Backup files</i></td>
+		<td valign="top" width="80%">When checked, when saving a file, the file to
+                                 be overwritten is saved with a .BAK extension.
+                                 </td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Use system file dialog</i></td>
+		<td valign="top" width="80%">When checked, the system file dialog is used.
+                                 For Windows this should normally be checked,
+                                 but in OS/2 Kon's replacement dialog may be a
+                                 better choice.
+																 </td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Use alternate fonts in GUI</i></td>
+		<td valign="top" width="80%">Check to use a larger font for the GUI than
+                                 the system fonts.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Autosave</i></td>
+		<td valign="top" width="80%">When checked, unsaved files will be 
+                                 automatically saved to &lt;KON HOMEDIR&gt;\ASV
+                                 at the specified intervals. When the file is
+                                 closed, the autosaved file is removed. Note 
+                                 that the original file is never overwritten!
+                                 The autosaved file is stored in a separate 
+                                 directory, as above.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Autoclose main window</i></td>
+		<td valign="top" width="80%">When checked, Kon will close the application
+		                             when the last file is closed. Otherwise,
+																 a new scratch window will be opened.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Show command field</i></td>
+		<td valign="top" width="80%">When checked, a command field for entering
+                                 K commands will be shown at the bottom of
+                                 the Kon editor window.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Reuse existing control</i></td>
+		<td valign="top" width="80%">If a file is to be loaded which already
+                                 has been loaded into Kon, focus is switched to
+                                 that control instead of opening a new one.</td>
+	</tr>
+	<tr>
+		<td valign="top" width="20%"><i>Query before loading Unicode file</i></td>
+		<td valign="top" width="80%">Ask whether a unicode file should be
+                                 converted from Unicode into Ansi when
+                                 loaded or be kept as binary.</td>
+	</tr>
+	</table>
+
+</body>
+</html>
